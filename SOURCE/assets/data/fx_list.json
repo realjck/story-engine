@@ -1,0 +1,22 @@
+[{
+  "value": "debug",
+  "id": "1"
+}, {
+  "value": "jingle",
+  "id": "2"
+}, {
+  "value": "titre",
+  "id": "3"
+}, {
+  "value": "turn_page",
+  "id": "4"
+}, {
+  "value": "applause",
+  "id": "5"
+}, {
+  "value": "right",
+  "id": "6"
+}, {
+  "value": "wrong",
+  "id": "7"
+}]

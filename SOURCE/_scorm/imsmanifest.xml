@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This is a Reload version 2.5.6 SCORM 1.2 Content Package document-->
+<!--Spawned from the Reload Content Package Generator - http://www.reload.ac.uk-->
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="MANIFEST-3BF0F307100E8F9BE95049E0366DD0A9" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+  <organizations default="ORG-6882360CCA879A00D4F6FE8567C3E953">
+    <organization identifier="ORG-6882360CCA879A00D4F6FE8567C3E953" structure="hierarchical">
+      <title>Agir contre les comportements inappropriés (harcèlement et agissements sexistes) : les fondamentaux</title>
+      <item identifier="ITEM-B8F417E36F3FA1FDAC85CF6EC572DC50" isvisible="true" identifierref="RES-43EA29636236C6323FFDF7753A3E6956">
+        <title>Agir contre les comportements inappropriés (harcèlement et agissements sexistes) : les fondamentaux</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-43EA29636236C6323FFDF7753A3E6956" type="webcontent" href="index.html" adlcp:scormtype="sco">
+      <file href="index.html" />
+    </resource>
+  </resources>
+</manifest>
+

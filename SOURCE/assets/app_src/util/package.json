@@ -1,0 +1,6 @@
+{
+	"name": "util",
+	"description": "Utils by JCK",
+	"version": "1.0.0",
+	"dojoBuild": "package.js"
+}

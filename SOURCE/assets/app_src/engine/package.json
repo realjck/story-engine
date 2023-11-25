@@ -1,0 +1,6 @@
+{
+	"name": "engine",
+	"description": "main engine of the project",
+	"version": "1.0.0",
+	"dojoBuild": "package.js"
+}

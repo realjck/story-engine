@@ -192,9 +192,8 @@ Syntaxe			|	Description
 ### Possibilité de faire de la SYNCHRO LIGNE PAR LIGNE avec un personnage (avec le contenu du dialogue depuis la feuille STORY) :
 
 **Exemple :** `CONTENU_MONCONTENU, 4`	< Si le chiffre 4 est égal aux nombre de lignes de la feuille CONTENU correspondante, alors il y a synchronisation de l'apparition des textes avec les voix-off. A contrario si le contenu, les 4 lignes de dialogue sont lus à la suite une fois tous les élements de contenu affichés à l'écran.
-~~~~
-(Notez qu'il est aussi possible de mettre des sons voix-off dans la colonne SON (cf tableau ci-dessus), mais ceux-ci n'affichent pas de sous-titres, car l'on considère qu'il reprennent la lecure audio du texte affiché.)
-~~~~
+
+> Notez qu'il est aussi possible de mettre des sons voix-off dans la colonne SON (cf tableau ci-dessus), mais ceux-ci n'affichent pas de sous-titres, car l'on considère qu'il reprennent la lecure audio du texte affiché.
 
 # Finalisation / Export SCORM / Mise en ligne : 
 ## Enregistrer l'Excel dans assets/data/ et éditer `app/data/_ExcelName.js` pour y indiquer le nom de celui-ci :

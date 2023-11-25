@@ -10,13 +10,13 @@
 
 - **BROWSER COMPATIBILITY FOR ANDROID/IOS/WEB** Responsive and full-screen modes, mobile detection
 
-- **INTERACTIVITY: MULTIPLE-CHOICE QUIZZES, CLASSIFICATION, CLICK ELEMENTS, DRAG/DROP**, with the option to create custom interactive screens using external JS files and JSON content
+- **INTERACTIVITY: MULTIPLE-CHOICE QUIZZES, CLASSIFICATION, CLICK ELEMENTS, DRAG/DROP**, also custom interactive screens with external JS files and JSON content
 
-- **AUTOMATED MODULE CONTENT** Through XLS parsing included in `./assets/data/MyStoy.xls`
+- **AUTOMATED MODULE CONTENT** Through XLS parsing included in `./assets/data/MyStory.xls`
 
 - **SCORM 1.2 / 2004 FOR LMS**, or standard web (automatic detection of connection mode)
 
-- **VIDEO** intégration in mp4 format with the use of mediaelement.js
+- **VIDEO** intégration in mp4 format with the use of mediaelement.js library
 
 - **'PACKAGED' JS LIBRARIES AND RESOURCES**: No CDNs or external resources; all JS libraries are statically copied for easy maintainability
 
@@ -54,24 +54,24 @@ The whole project had been developped in ECMAScript Edition 5 (ES5) for the use 
 
 That means nottably the use of `var` and DOM declared variables, and non-arrow `function fn(){}` syntax.
 
-an update to recent ECMA SCRIPT would be useful for future developement, but not necessary at this time, the tool being optimized during the past years until today for the most recent browsers (Chrome / Safari)
+an update to recent ECMA SCRIPT would be useful for future developement, but not necessary at this time, the tool being optimized during the past years until today for the most recent browsers (Chrome / Safari).
 
 ## Usage for developement / mod:
 
 - Clone the whole repository. All JS librairies are directly included (no installation).
 
-- If you mod something in `app_src/`, then you need to recompile the source, a BATCH file is ready to use :
+- If you mod something in `app_src/`, then you need to recompile the source, a BASH file is ready to use, run it from your CLI :
 `SOURCE/assets/app_src/COMPILE.BAT`
 
 - For Linux / Mac users you can find .sh scripts as well in /dojo/utils/
 
 - Launch with index.html or package .zip for LMS
 
-**Packages and structure of modules :**
+**Packages and structure of modules:**
 
 - `animator/` : related to Adobe Animate (tween objects, buttons, quizzes, drag-drop, ...)
 
-- `engine/` : main modules (`Player.js` contains the methods for the UI, Launch and SCORM | `ChapitrePlayer.js` contains the methods that parse the Storyboard into playable actions)
+- `engine/` : main modules (`Player.js` contains the methods for the UI, Launch and SCORM | `ChapitrePlayer.js` contains the methods that parse the storyboard into playable actions)
 
 - `util/` : modules not related to Adobe Animate (JsonHandler, Bootstrap modals, timers, sound management, etc.)
 
@@ -113,7 +113,7 @@ Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé
 
 # Mode d'emploi intégration
 
-## CREATION DU SCENARIO Storyboard - MODULE - SOUS-MODULE - Client
+## CREATION DU SCENARIO Storyboard
 
 1) Lancer `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` exécuter le script
 ---
@@ -126,7 +126,7 @@ Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé
 *Note : Dans le prologue, la phrase qui commence par "retrouvons" est utilisé comme déclencheur pour afficher la vignette des personnages lorsque Marcillac présente.*
 
 
-# Modifications possibles dans le XLSX :
+# Modifications possibles dans le XLS :
 
 ## FEUILLE STORY:
 
@@ -158,7 +158,7 @@ Syntaxe	| Description
 Possibilité de rajouter du script JS dans la 4eme colonne de la feuille STORY. Ex.: `Tween.init(scene.pot_de_fleur, {pop:true})` - le mot clé 'scene' correspond au MovieClip de la scène en cours
 
 
-## SYNTAXE DES FEUILLES "QUIZ_xxx" :
+## SYNTAXE DES FEUILLES 'QUIZ_xxx' :
 
 Prendre un modèle existant et copier coller les questions (la ligne 'consigne' est facultative, et la ligne 'feedback' est quant à elle obligatoire (laisser vide si non utilisé).
 
@@ -167,7 +167,7 @@ Notez qu'il est possible de forcer la possibilité de réponse multiple pour un 
 
 
 
-## SYNTAXE DES FEUILLES "CONTENU_xxx":
+## SYNTAXE DES FEUILLES 'CONTENU_xxx' :
 
 ### colonne 'texte' :
 
@@ -221,7 +221,7 @@ Dans le cas du multi-langue, plusieurs fichiers Excel doivent être dans le doss
 
 (Dans ce cas le module ne propose pas de choix de langue.)
 
-### EDITER LA CONFIG POUR LA MISE EN PACK SCORM (si nécessaire)
+### ÉDITER LA CONFIG POUR LA MISE EN PACK SCORM (si nécessaire)
 Permet de régler la langue par défaut, le mode plein-écran, et la détection du scorm automatique
 
 - `assets/app/CONFIG.js`
@@ -234,7 +234,7 @@ Permet de régler la langue par défaut, le mode plein-écran, et la détection 
 <script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
 ~~~~
 
-### PLACER LES FICHIERS SCORM A LA RACINE / PACKAGER .ZIP
+### PLACER LES FICHIERS SCORM À LA RACINE / PACKAGER .ZIP
 
 / Lancer `index.html` 
 

@@ -2,11 +2,9 @@
 
 *Version 4.2 // 11/2023*
 
-## [Click here to launch repository sample](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
-
 # <img src="./SOURCE/assets/images/langs/en.png" alt="en flag" width="25px"/> About
 
-## A toolbox and ready-to-use template for creating interactive learning modules in full-front JS with **Adobe Animate**.
+## A toolbox and ready-to-use template for creating interactive learning modules in full-front JS with **Adobe Animate** [[Click here to launch repository sample]](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
 
 ## Features:
 

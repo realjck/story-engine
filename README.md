@@ -67,42 +67,57 @@ _* A story presented in a linear format with chapters, featuring animated charac
 
 The entire project has been developed in ECMAScript Edition 5 (ES5), specifically tailored for utilization with the Dojo toolkit. The primary motivation for employing the Dojo toolkit lies in its capacity for asynchronous module handling.
 
-This entails the utilization of `var` and DOM-declared variables, as well as the non-arrow function syntax `fn(){}`.
+This entails the utilization of `var` and DOM-declared variables, as well as the non-arrow function syntax `function(){}`.
 
 While an update to a more recent ECMAScript version could prove beneficial for future development, it is not deemed necessary at present. The tool has undergone optimization over the years, ensuring compatibility with the latest browsers, such as Chrome and Safari.
 
-## Usage for developement:
+## Usage for modification of source code:
 
-- Clone the whole repository. All JS librairies are directly included (no installation).
+Clone the whole repository. All JS librairies are directly included (no installation).
 
-- If you modify something in `app_src/`, then you need to recompile the source, a BASH file is ready to use, run it from your CLI :
-`SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
-
-**Modules packages in `app_src/`:**
-
-- `animator/` : related to Adobe Animate (tween objects, buttons, quizzes, drag-drop, ...)
-
-- `engine/` : main modules (`Player.js` contains the methods for the UI, Launch and SCORM | `ChapitrePlayer.js` contains the methods that parse the storyboard into playable actions)
-
-- `util/` : modules not related to Adobe Animate (JsonHandler, Bootstrap modals, timers, sound management, etc.)
-
-- `pdf/` : for pdf generation (see module `EasyPDF.js`)
+Package folder in `app_src/` | Description
+--- | ---
+`/dojo/` | Dojo Toolkit 1.17.3
+`/animator/` | related to Adobe Animate (tween objects, buttons, quizzes, drag-drop, ...)
+`/engine/` | main modules (`Player.js` contains the methods for the UI, Launch and SCORM, `ChapitrePlayer.js` contains the methods that parse the storyboard into playable actions)
+`/util/` | modules not related to Adobe Animate (JsonHandler, Bootstrap modals, timers, sound management, etc.)
+`/pdf/` | for pdf generation (see module `EasyPDF.js`)
 
 ---
+
+### Comment/Uncomment these lines in `index.html` to switch between developement and production mode:
+
+~~~~
+!-- to modify for prod -->
+<!-- <script src="assets/app_src/config/dojoConfig.js"></script> -->
+<!-- <script data-dojo-config="async: true" src="assets/app_src/dojo/dojo/dojo.js"></script> -->
+<script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
+~~~~
+
+A BASH file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
+
+This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js`.
+
+> Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
+
 
 # <img src="./SOURCE/assets/images/langs/fr.png" alt="fr flag" width="25px"/> À propos
 
 Base d'outils et template prêt à l'emploi pour la réalisation de modules d'apprentissage intéractifs avec **Adobe Animate**
 
-### Fichier `Animate.fla` :
+## Fichier `Animate.fla` :
 
-- personnalisation possible des éléments d'interface :
+### Personnalisation possible des éléments d'interface :
 
 <img src="./presentation-version-history/screenshot1.jpg" alt="screenshot"/> 
 
-- Positionnement des décors et personnages / réglages des plans caméra pour le storyboard :
+---
+
+### Positionnement des décors et personnages / réglages des plans pour le storyboard (Les décors ont une frame de code JS à leur racine pour déclarer les personnages utilisés et les positions caméra) :
 
 <img src="./presentation-version-history/screenshot2.jpg" alt="screenshot"/>
+
+---
 
 ### Générateur Word vers Excel avec script VBA `STORYBOARD-XLS-DATA-MAKER/` pour la rédaction du contenu :
 
@@ -124,7 +139,7 @@ Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé
 
 # Mode d'emploi intégration
 
-## CREATION DU SCENARIO Storyboard
+## CRÉATION DU SCENARIO Storyboard à partir d'un document Word (formaté avec Styles comme modèle fourni) :
 
 1) Lancer `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` exécuter le script
 ---
@@ -141,16 +156,6 @@ Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé
 
 ## FEUILLE STORY:
 
-### colonne 'perso' :
-
-Syntaxe	| Description
---- | ---
-`perso{turn}` ou `perso{turnstay}`	|	tourne le personnage de l'autre côté au moment de la réplique soit 1 fois soit de manière permanente
-`{all}`	|	synchro labiale du son sur tous les personnages de la scène (chorus)
-`{none}`	|	aucune synchro labiale (exemple : bruitage)
-
-
-
 ### colonne 'deroule' :
 
 Syntaxe	| Description
@@ -162,6 +167,13 @@ Syntaxe	| Description
 `DECOR:______,FADE:true` | idem précédent mais avec effet de fondu au noir en apparition
 `SURMESURE_xxxxxx` | exécute l'écran sur-mesure contenu dans le script `xxxxxx.js` dans `app/` (bien penser à mettre nom du label/clip dans le JS, cf commentaires dans fichiers d'exemples fournis dans ce pack)
 
+### colonne 'perso' :
+
+Syntaxe	| Description
+--- | ---
+`perso{turn}` ou `perso{turnstay}`	|	tourne le personnage de l'autre côté au moment de la réplique soit 1 fois soit de manière permanente
+`{all}`	|	synchro labiale du son sur tous les personnages de la scène (chorus)
+`{none}`	|	aucune synchro labiale (exemple : bruitage)
 
 
 ### colonne 'script' :
@@ -175,7 +187,6 @@ Prendre un modèle existant et copier coller les questions (la ligne 'consigne' 
 
 La bonne réponse est indiquée par le mot "ok". Il est possible d'avoir une bonne réponse (QCU) ou bien plusieurs (QCM)
 Notez qu'il est possible de forcer la possibilité de réponse multiple pour un QCU en utilisant "okm" à la place de "ok"
-
 
 
 ## SYNTAXE DES FEUILLES 'CONTENU_xxx' :
@@ -202,13 +213,13 @@ Syntaxe			|	Description
 
 ### Possibilité de faire de la SYNCHRO LIGNE PAR LIGNE avec un personnage (avec le contenu du dialogue depuis la feuille STORY) :
 
-**Exemple :** `CONTENU_MONCONTENU, 4`	< Si le chiffre 4 est égal aux nombre de lignes de la feuille CONTENU correspondante, alors il y a synchronisation de l'apparition des textes avec les voix-off. A contrario si le contenu, les 4 lignes de dialogue sont lus à la suite une fois tous les élements de contenu affichés à l'écran.
+**Exemple :** `CONTENU_MONCONTENU, 4` : Si le chiffre 4 est égal aux nombre de lignes de la feuille CONTENU correspondante, alors il y a synchronisation de l'apparition des textes avec les voix-off. A contrario, les 4 lignes de dialogue sont lues une fois tous les élements de contenu affichés à l'écran.
 
-> Notez qu'il est aussi possible de mettre des sons voix-off dans la colonne SON (cf tableau ci-dessus), mais ceux-ci n'affichent pas de sous-titres, car l'on considère qu'il reprennent la lecure audio du texte affiché.
+Notez qu'il est aussi possible de mettre des sons voix-off dans la colonne SON (cf tableau ci-dessus), mais ceux-ci n'affichent pas de sous-titres, car l'on considère qu'il reprennent la lecure audio du texte affiché.
 
-# Finalisation / Export SCORM / Mise en ligne : 
+# Finalisation / Export SCORM / Mise en ligne :
+
 ## Enregistrer l'Excel dans assets/data/ et éditer `app/data/ExcelName.js` pour y indiquer le nom de celui-ci :
-
 
 ### DEFINIR LE MULTI-LANGUE (OPTION) :
 Dans le cas du multi-langue, plusieurs fichiers Excel doivent être dans le dossier data/ , chacun finissant par "-XX", (XX correspondant à la langue)

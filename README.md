@@ -4,31 +4,46 @@
 
 # <img src="./SOURCE/assets/images/langs/en.png" alt="en flag" width="25px"/> About
 
-## A toolbox and ready-to-use template for creating interactive learning modules in full-front JS with **Adobe Animate** [[Click here to launch repository sample]](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
+## Streamlining Digital Learning: Use Adobe Animate with a Comprehensive Toolbox and Ready-to-Use Template for Stories* in Full JavaScript
+
+### [[Click here to launch the repository source]](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
+
+_* A story presented in a linear format with chapters, featuring animated characters with voice-overs. Each chapter includes scenes, informative content screens, quizzes, and other interactive activities. The content is seamlessly integrated with bookmarks and tracking functionality for Learning Management Systems, such as Moodle._
 
 ## Features:
 
-- **BROWSER COMPATIBILITY FOR ANDROID/IOS/WEB** Responsive and full-screen modes, mobile detection
+- **Cross-Platform Compatibility:**
+   Ensures optimal performance on Android, iOS, and web platforms with responsive and full-screen modes, incorporating mobile detection capabilities.
 
-- **INTERACTIVITY: MULTIPLE-CHOICE QUIZZES, CLASSIFICATION, CLICK ELEMENTS, DRAG/DROP**, also custom interactive screens with external JS files and JSON content
+- **Enhanced Interactivity:**
+   Provides diverse interactive elements such as multiple-choice quizzes, classification exercises, click interactions, and drag-and-drop features. Additionally, allows the creation of custom interactive screens using external JS files and JSON content.
 
-- **AUTOMATED MODULE CONTENT** Through XLS parsing included in `./assets/data/MyStory.xls`
+- **Automated Module Content Management:**
+   Implements automated content handling through XLS parsing, seamlessly integrated within a "./assets/data/MyStory.xls" Excel file.
 
-- **SCORM 1.2 / 2004 FOR LMS**, or standard web (automatic detection of connection mode)
+- **LMS Compatibility:**
+   Supports both SCORM 1.2 and 2004 standards for Learning Management Systems, with automatic detection of connection modes for standard web usage.
 
-- **VIDEO** intégration in mp4 format with the use of mediaelement.js library
+- **Integrated Video Content:**
+   Facilitates video integration in mp4 format utilizing the mediaelement.js library.
 
-- **'PACKAGED' JS LIBRARIES AND RESOURCES**: No CDNs or external resources; all JS libraries are statically copied for easy maintainability
+- **Packaged JS Libraries and Resources:**
+   Eliminates reliance on CDNs or external resources, ensuring all assets libraries are statically copied for easy maintenance.
 
-- **RESOURCE PRELOADING**: All content (voiceovers/images) is preloaded at module launch
+- **Resource Preloading:**
+   Enhances user experience by preloading all module content, including voiceovers and images, upon launch.
 
-- **ERROR HANDLING**: In case of JS error, a PDF report is generated, and a modal prompts the user to download it
+- **Robust Error Handling:**
+   In the event of a JavaScript error, generates a detailed PDF report and prompts the user to download it through a modal interface.
 
-- **MULTI-LANGUAGE STORYBOARDS MANAGEMENT** with language selection at launch for the user
+- **Multilingual Storyboards Management:**
+   Offers language selection at launch, providing users with a multi-language experience.
 
-- **AUTO-GENERATED CERTIFICATES AND PDF** : Learners can download their final quiz reviews and school-branded certificate with their name, score, etc.
+- **Auto-Generated Certificates and PDFs:**
+    Enables learners to download personalized final quiz reviews and school-branded certificates, featuring their name, score, and other relevant details.
 
-- **CUSTOMIZABLE**: Source code included in this repository for tool customization/extensibility
+- **Customizable:**
+    Includes the source code in the repository, allowing for tool customization and extensibility.
 
 ## JS Librairies included:
 - **Dojo Toolkit 1.17.3**
@@ -48,13 +63,13 @@
 - sheetjs / xlsx.js
 - shortcut.js
 
-## Nota bene
+## Important note
 
-The whole project had been developped in ECMAScript Edition 5 (ES5) for the use of Dojo toolkit, which use is mainly for the possibility of asynchrone modules.
+The entire project has been developed in ECMAScript Edition 5 (ES5), specifically tailored for utilization with the Dojo toolkit. The primary motivation for employing the Dojo toolkit lies in its capacity for asynchronous module handling.
 
-That means nottably the use of `var` and DOM declared variables, and non-arrow `function fn(){}` syntax.
+This entails the utilization of `var` and DOM-declared variables, as well as the non-arrow function syntax `fn(){}`.
 
-an update to recent ECMA SCRIPT would be useful for future developement, but not necessary at this time, the tool being optimized during the past years until today for the most recent browsers (Chrome / Safari).
+While an update to a more recent ECMAScript version could prove beneficial for future development, it is not deemed necessary at present. The tool has undergone optimization over the years, ensuring compatibility with the latest browsers, such as Chrome and Safari.
 
 ## Usage for developement / mod:
 

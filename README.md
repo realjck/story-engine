@@ -1,8 +1,8 @@
 # E-LEARNING ENGINE ANIMATE JS
 
-*Version 4.2 // 11/2023*
+Version 4.2 // 11/2023
 
-# <img src="./SOURCE/assets/images/langs/en.png" alt="en flag" width="25px"/> About
+# About
 
 ## Streamlining Digital Learning: Use Adobe Animate with a Comprehensive Toolbox and Ready-to-Use Template for Stories* in Full JavaScript
 
@@ -102,36 +102,31 @@ This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js
 
 > Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
 
+## File `Animate.fla`:
 
-# <img src="./SOURCE/assets/images/langs/fr.png" alt="fr flag" width="25px"/> À propos
-
-Base d'outils et template prêt à l'emploi pour la réalisation de modules d'apprentissage intéractifs avec **Adobe Animate**
-
-## Fichier `Animate.fla` :
-
-### Personnalisation possible des éléments d'interface :
+### Customization of Interface Elements:
 
 <img src="./presentation-version-history/screenshot1.jpg" alt="screenshot"/> 
 
 ---
 
-### Positionnement des décors et personnages / réglages des plans pour le storyboard (Les décors ont une frame de code JS à leur racine pour déclarer les personnages utilisés et les positions caméra) :
+### Placement of Backgrounds and Characters / Settings for Storyboard Shots (Backgrounds have a JS code frame at their root to declare the characters used and camera positions):
 
 <img src="./presentation-version-history/screenshot2.jpg" alt="screenshot"/>
 
 ---
 
-### Générateur Word vers Excel avec script VBA `STORYBOARD-XLS-DATA-MAKER/` pour la rédaction du contenu :
+### Word to Excel Generator with VBA Script `STORYBOARD-XLS-DATA-MAKER/` for Content Creation:
 
-Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé sous Word à un fichier story.xls pouvant être lu par le programme (`./STORYBOARD-XLS-DATA-MAKER/CONSTRUCTION_WORD_IMPORTER.vba`)
+An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in Word into a story.xls file that can be read by the program (`./STORYBOARD-XLS-DATA-MAKER/CONSTRUCTION_WORD_IMPORTER.vba`)
 
 <img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/> 
 
-### Personnalisation et modifications via classeur Excel `.assets/data/yourStory.xls` :
+### Customization and Modifications via Excel Workbook `.assets/data/yourStory.xls`:
 
 <img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
 
-### Exécution dans navigateur / Environnement LMS (Moodle, etc.) :
+### Execution in Browser / LMS Environment (Moodle, etc.):
 
 <img src="./presentation-version-history/screenshot5.jpg" alt="screenshot"/>
 
@@ -139,117 +134,115 @@ Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé
 
 ---
 
-# Mode d'emploi intégration
+# Integration Instructions
 
-## CRÉATION DU SCENARIO Storyboard à partir d'un document Word (formaté avec Styles comme modèle fourni) :
+## CREATING THE Storyboard FROM A Word Document (formatted with Styles as provided in the template):
 
-1) Lancer `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` exécuter le script
----
-2) Choisir le Word à transformer vers Excel
----
-3) Dans le fichier XLS généré, effectuer les tâches suivantes :
-- Passer tous les titres en `TITRE:......,DECOR:.....` pour définir les décors d'Animate voulus pour chaque chapitre
-- S'assurer que la feuille du quiz final est bien appelée QUIZ_FINAL
+### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the script
 
-*Note : Dans le prologue, la phrase qui commence par "retrouvons" est utilisé comme déclencheur pour afficher la vignette des personnages lorsque Marcillac présente.*
+### Choose the Word document to transform to Excel
 
+### In the generated XLS file, perform the following tasks:
+- Set all titles as `TITRE:......,DECOR:.....` to define the Animate backgrounds desired for each chapter
+- Ensure that the final quiz sheet is named QUIZ_FINAL
 
-# Modifications possibles dans le XLS :
+> Note: In the prologue, the sentence starting with "retrouvons" is used as a trigger to display the character thumbnails when Marcillac is introduced.
 
-## FEUILLE STORY:
+# Possible Modifications in the XLS:
 
-### colonne 'deroule' :
+## STORY SHEET:
 
-Syntaxe	| Description
+### 'deroule' column:
+
+Syntax	| Description
 --- | ---
-`CONTENU_xxxxxx` | Ecran de contenu ancrage + images
-`QUIZ_xxxxxx` | Quiz QCM/QCU
-`VIDEO_myvideo` | joue la vidéo assets/videos/myvideo.mp4 (format recommandé : 1280x640, .mp4 (h264), autour de 700kbs)
-`DECOR:______` | permet de faire une transition de décor à l'intérieur d'un chapitre
-`DECOR:______,FADE:true` | idem précédent mais avec effet de fondu au noir en apparition
-`SURMESURE_xxxxxx` | exécute l'écran sur-mesure contenu dans le script `xxxxxx.js` dans `app/` (bien penser à mettre nom du label/clip dans le JS, cf commentaires dans fichiers d'exemples fournis dans ce pack)
+`CONTENU_xxxxxx` | Content screen with anchoring + images
+`QUIZ_xxxxxx` | Multiple-choice quiz
+`VIDEO_myvideo` | plays the video assets/videos/myvideo.mp4 (recommended format: 1280x640, .mp4 (h264), around 700kbs)
+`DECOR:______` | allows a transition of the background within a chapter
+`DECOR:______,FADE:true` | same as above but with a fade-in effect to black
 
-### colonne 'perso' :
+### 'perso' column:
 
-Syntaxe	| Description
+Syntax	| Description
 --- | ---
-`perso{turn}` ou `perso{turnstay}`	|	tourne le personnage de l'autre côté au moment de la réplique soit 1 fois soit de manière permanente
-`{all}`	|	synchro labiale du son sur tous les personnages de la scène (chorus)
-`{none}`	|	aucune synchro labiale (exemple : bruitage)
+`perso{turn}` or `perso{turnstay}`	|	turns the character to the other side at the time of the line, either once or permanently
+`{all}`	|	lip synchronization of the sound on all characters in the scene (chorus)
+`{none}`	|	no lip synchronization (e.g., sound effect)
 
+### 'script' column:
 
-### colonne 'script' :
+Possibility to add JS script in the 4th column of the STORY sheet. Example: `Tween.init(scene.pot_de_fleur, {pop:true})` - the keyword 'scene' corresponds to the MovieClip of the current scene
 
-Possibilité de rajouter du script JS dans la 4eme colonne de la feuille STORY. Ex.: `Tween.init(scene.pot_de_fleur, {pop:true})` - le mot clé 'scene' correspond au MovieClip de la scène en cours
+## SYNTAX OF 'QUIZ_xxx' SHEETS:
 
+Copy and paste questions from an existing model (the 'instruction' line is optional, and the 'feedback' line is mandatory (leave empty if not used).
 
-## SYNTAXE DES FEUILLES 'QUIZ_xxx' :
+The correct answer is indicated by the word "ok". It is possible to have one correct answer (QCU) or multiple (QCM)
+Note that it is possible to force the possibility of multiple answers for a QCU by using "okm" instead of "ok"
 
-Prendre un modèle existant et copier coller les questions (la ligne 'consigne' est facultative, et la ligne 'feedback' est quant à elle obligatoire (laisser vide si non utilisé).
+## SYNTAX OF 'CONTENU_xxx' SHEETS:
 
-La bonne réponse est indiquée par le mot "ok". Il est possible d'avoir une bonne réponse (QCU) ou bien plusieurs (QCM)
-Notez qu'il est possible de forcer la possibilité de réponse multiple pour un QCU en utilisant "okm" à la place de "ok"
+### 'texte' column:
 
-
-## SYNTAXE DES FEUILLES 'CONTENU_xxx' :
-
-### colonne 'texte' :
-
-Syntaxe			|	Description
+Syntax			|	Description
 --- | ---
-`xxxxxxxxxx`		| 	< texte en taille normale
-`GRAS:xxxxxxxxx`	|	< texte en gras
-`SMALL:xxxxxxxxx`	|	< texte en plus petit
-`-xxxxxxxxxxxxx`	|	< texte en plus petit avec bullet point
-`espace`			|	< ligne d'espace (environ 2 lignes)
+`xxxxxxxxxx`		| 	< normal-sized text
+`GRAS:xxxxxxxxx`	|	< bold text
+`SMALL:xxxxxxxxx`	|	< smaller text
+`-xxxxxxxxxxxxx`	|	< smaller text with bullet point
+`espace`			|	< space line (about 2 lines)
 
+### 'media' column:
 
-### colonne 'media' :
-
-Syntaxe			|	Description 							
+Syntax			|	Description 							
  ---- | ----
-`IMG:xxxxx.png`	| 	< ajoute une image à gauche du texte (étendue en hauteur lorsque répété sur plusiers cases à la suite)
-`IMGLINE:xxxxx.png`	|	< ajoute une image à gauche de la hauteur de la première ligne de texte
-`IMGCORNER:xxxxx.png`	|	< ajoute une image en haut à droite de l'écran
-`SON:xxxxxx.mp3`	|	< ajoute un son en synchro de la ligne (nécessite un personnage)
+`IMG:xxxxx.png`	| 	< adds an image to the left of the text (extends in height when repeated over several consecutive cells)
+`IMGLINE:xxxxx.png`	|	< adds an image to the left of the height of the first line of text
+`IMGCORNER:xxxxx.png`	|	< adds an image in the top right of the screen
+`SON:xxxxxx.mp3`	|	< adds sound in sync with the line (requires a character)
 
-### Possibilité de faire de la SYNCHRO LIGNE PAR LIGNE avec un personnage (avec le contenu du dialogue depuis la feuille STORY) :
+### Possibility of dialog with a character in an informative content screen (with the lines of dialog read from the STORY sheet):
 
-**Exemple :** `CONTENU_MONCONTENU, 4` : Si le chiffre 4 est égal aux nombre de lignes de la feuille CONTENU correspondante, alors il y a synchronisation de l'apparition des textes avec les voix-off. A contrario, les 4 lignes de dialogue sont lues une fois tous les élements de contenu affichés à l'écran.
+**Example:** `CONTENU_MYCONTENT,4` where:
 
-Notez qu'il est aussi possible de mettre des sons voix-off dans la colonne SON (cf tableau ci-dessus), mais ceux-ci n'affichent pas de sous-titres, car l'on considère qu'il reprennent la lecure audio du texte affiché.
+- `CONTENU_MYCONTENT` references the corresponding content sheet in the workbook
 
-# Finalisation / Export SCORM / Mise en ligne :
+- `,4` corresponds of the 4 next lines of character dialog in the STORY Sheet below the command
 
-## Enregistrer l'Excel dans assets/data/ et éditer `app/data/ExcelName.js` pour y indiquer le nom de celui-ci :
+Will lead to this result :
 
-### DEFINIR LE MULTI-LANGUE (OPTION) :
-Dans le cas du multi-langue, plusieurs fichiers Excel doivent être dans le dossier data/ , chacun finissant par "-XX", (XX correspondant à la langue)
+> If the value of 4 matches the number of lines in the corresponding CONTENU_MYCONTENT sheet, it means that the texts and voice-overs are synchronized in their appearance. Alternatively, if the number of lines of CONTENU_MYCONTENT is different than 4, theses 4 lines of dialogue are spoken after all the content elements have been presented on the screen.
 
-**Exemple de ExcelName.js pour multilang fr + en :**
+> Note that it is also possible to put voice-over sounds in the SON column of the content sheet (see table above), but these **do not display subtitles** because it is considered that they take up the audio reading of the displayed text.
+
+# Finalization / SCORM Export / Online Publishing:
+
+## Save the Excel in assets/data/ and edit `app/data/ExcelName.js` to indicate its filename:
+
+~~~~
+	var __ExcelName = "story.xls";
+	var __Langs = ["en"];
+~~~~
+
+### DEFINE MULTI-LANGUAGE (OPTIONAL):
+In the case of multi-language, several Excel files must be in the data/ folder, each ending with "-XX" (XX corresponding to the language)
+
+**Example of ExcelName.js for multilingual fr + en:**
 
 ~~~
 	var __ExcelName = "story.xls";
 	var __Langs = ["en", "fr"];
 ~~~
 
-(Les fichiers Excel correspondants seront dans ce cas : 'story-fr.xls' et 'story-en.xls')
+(In this case, the corresponding Excel files will be `story-fr.xls` and `story-en.xls`)
 
-**Dans le cas d'un module classique mono-langue, on aura :**
-
-~~~~
-	var __ExcelName = "story.xls";
-	var __Langs = ["fr"];
-~~~~
-
-(Dans ce cas le module ne propose pas de choix de langue.)
-
-### ÉDITER LA CONFIG POUR LA MISE EN PACK SCORM (si nécessaire)
-Permet de régler la langue par défaut, le mode plein-écran, et la détection du scorm automatique
+### EDIT THE CONFIGURATION FOR SCORM PACKAGING (if necessary)
+Allows you to set the default language, full-screen mode, and automatic SCORM detection
 
 - `assets/app/CONFIG.js`
 
-### S'ASSURER QUE L'INDEX.HTML EST EN MODE PROD
+### MAKE SURE THAT INDEX.HTML IS IN PRODUCTION MODE
 ~~~~
 !-- to modify for prod -->
 <!-- <script src="assets/app_src/config/dojoConfig.js"></script> -->
@@ -257,17 +250,18 @@ Permet de régler la langue par défaut, le mode plein-écran, et la détection 
 <script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
 ~~~~
 
-### PLACER LES FICHIERS SCORM À LA RACINE / PACKAGER .ZIP
+### PLACE THE SCORM FILES AT THE ROOT / ZIP PACKAGER
 
-/ Lancer `index.html` 
+/ Launch `index.html`
 
+---
 
-# Licence MIT
+# MIT License
 
-Droit d'auteur (c) [2023] [jck]
+Copyright 2023 JCK
 
-La présente autorise, gratuitement, toute personne obtenant une copie de ce logiciel et des fichiers de documentation associés (le "Logiciel"), à traiter le Logiciel sans restriction, notamment, sans limitation, les droits d'utiliser, de copier, de modifier, de fusionner, de publier, de distribuer, de sous-licencier et/ou de vendre des copies du Logiciel, et d'autoriser les personnes à qui le Logiciel est fourni de le faire, sous réserve des conditions suivantes :
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Le présent avis de droit d'auteur et cet avis d'autorisation doivent être inclus dans toutes copies ou parties substantielles du Logiciel.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPRESSE OU IMPLICITE, NOTAMMENT, MAIS SANS S'Y LIMITER, LES GARANTIES DE QUALITÉ MARCHANDE, D'ADÉQUATION À UN USAGE PARTICULIER ET D'ABSENCE DE CONTREFAÇON. EN AUCUN CAS, LES AUTEURS OU DÉTENTEURS DU DROIT D'AUTEUR NE SERONT RESPONSABLES DE TOUT RÉCLAMATION, DOMMAGE OU AUTRE RESPONSABILITÉ, QUE CE SOIT DANS UNE ACTION DE CONTRAT, DÉLIT OU AUTRE, DÉCOULANT DE, OU EN LIEN AVEC LE LOGICIEL OU L'UTILISATION, OU D'AUTRES TRAITEMENTS DANS LE LOGICIEL.
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

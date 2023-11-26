@@ -6,7 +6,7 @@
 
 ## Streamlining Digital Learning: Use Adobe Animate with a Comprehensive Toolbox and Ready-to-Use Template for Stories* in Full JavaScript
 
-### [[Click here to launch the repository source]](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
+### [[Click here to launch the repository source sample]](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
 
 _* A story presented in a linear format with chapters, featuring animated characters with voice-overs. Each chapter includes scenes, informative content screens, quizzes, and other interactive activities. The content is seamlessly integrated with bookmarks and tracking functionality for Learning Management Systems, such as Moodle._
 
@@ -25,7 +25,7 @@ _* A story presented in a linear format with chapters, featuring animated charac
    Supports both SCORM 1.2 and 2004 standards for Learning Management Systems, with automatic detection of connection modes for standard web usage.
 
 - **Integrated Video Content:**
-   Facilitates video integration in mp4 format utilizing the mediaelement.js library.
+   Facilitates video integration in mp4 direfctly from the Excel Storyboard.
 
 - **Packaged JS Libraries and Resources:**
    Eliminates reliance on CDNs or external resources, ensuring all assets libraries are statically copied for easy maintenance.
@@ -71,18 +71,14 @@ This entails the utilization of `var` and DOM-declared variables, as well as the
 
 While an update to a more recent ECMAScript version could prove beneficial for future development, it is not deemed necessary at present. The tool has undergone optimization over the years, ensuring compatibility with the latest browsers, such as Chrome and Safari.
 
-## Usage for developement / mod:
+## Usage for developement:
 
 - Clone the whole repository. All JS librairies are directly included (no installation).
 
-- If you mod something in `app_src/`, then you need to recompile the source, a BASH file is ready to use, run it from your CLI :
-`SOURCE/assets/app_src/COMPILE.BAT`
+- If you modify something in `app_src/`, then you need to recompile the source, a BASH file is ready to use, run it from your CLI :
+`SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
 
-- For Linux / Mac users you can find .sh scripts as well in /dojo/utils/
-
-- Launch with index.html or package .zip for LMS
-
-**Packages and structure of modules:**
+**Modules packages in `app_src/`:**
 
 - `animator/` : related to Adobe Animate (tween objects, buttons, quizzes, drag-drop, ...)
 

@@ -25,7 +25,7 @@ _* A story presented in a linear format with chapters, featuring animated charac
    Supports both SCORM 1.2 and 2004 standards for Learning Management Systems, with automatic detection of connection modes for standard web usage.
 
 - **Integrated Video Content:**
-   Facilitates video integration in mp4 direfctly from the Excel Storyboard.
+   Facilitates video integration in mp4 directly from the Excel Storyboard.
 
 - **Packaged JS Libraries and Resources:**
    Eliminates reliance on CDNs or external resources, ensuring all assets libraries are statically copied for easy maintenance.

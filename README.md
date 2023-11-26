@@ -71,9 +71,11 @@ This entails the utilization of `var` and DOM-declared variables, as well as the
 
 While an update to a more recent ECMAScript version could prove beneficial for future development, it is not deemed necessary at present. The tool has undergone optimization over the years, ensuring compatibility with the latest browsers, such as Chrome and Safari.
 
-## Usage for modification of source code:
+## Usage
 
 Clone the whole repository. All JS librairies are directly included (no installation).
+
+## Customizations and Modifications in `app_src/`:
 
 Package folder in `app_src/` | Description
 --- | ---

@@ -110,7 +110,7 @@ Base d'outils et template prêt à l'emploi pour la réalisation de modules d'ap
 
 ### Générateur Word vers Excel avec script VBA `STORYBOARD-XLS-DATA-MAKER/` pour la rédaction du contenu :
 
-Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé sous Word à un fichier DATA.XLS pouvant être lu par le programme (`./STORYBOARD-XLS-DATA-MAKER/CONSTRUCTION_WORD_IMPORTER.vba`)
+Un fichier EXCEL-IMPORTER.XLSM permet la transformation d'un scénario réalisé sous Word à un fichier story.xls pouvant être lu par le programme (`./STORYBOARD-XLS-DATA-MAKER/CONSTRUCTION_WORD_IMPORTER.vba`)
 
 <img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/> 
 

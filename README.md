@@ -2,7 +2,7 @@
 
 *Version 4.2 // 11/2023*
 
-## [Click here to launch repository sample](SOURCE/index.html)
+## [Click here to launch repository sample](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
 
 # <img src="./SOURCE/assets/images/langs/en.png" alt="en flag" width="25px"/> About
 
@@ -198,13 +198,13 @@ Syntaxe			|	Description
 > Notez qu'il est aussi possible de mettre des sons voix-off dans la colonne SON (cf tableau ci-dessus), mais ceux-ci n'affichent pas de sous-titres, car l'on considère qu'il reprennent la lecure audio du texte affiché.
 
 # Finalisation / Export SCORM / Mise en ligne : 
-## Enregistrer l'Excel dans assets/data/ et éditer `app/data/_ExcelName.js` pour y indiquer le nom de celui-ci :
+## Enregistrer l'Excel dans assets/data/ et éditer `app/data/ExcelName.js` pour y indiquer le nom de celui-ci :
 
 
 ### DEFINIR LE MULTI-LANGUE (OPTION) :
 Dans le cas du multi-langue, plusieurs fichiers Excel doivent être dans le dossier data/ , chacun finissant par "-XX", (XX correspondant à la langue)
 
-**Exemple de _ExcelName.js pour multilang fr + en :**
+**Exemple de ExcelName.js pour multilang fr + en :**
 
 ~~~
 	var __ExcelName = "story.xls";

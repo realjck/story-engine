@@ -96,7 +96,7 @@ Package folder in `app_src/` | Description
 <script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
 ~~~~
 
-A BASH file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
+A Windows batch file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
 
 This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js`.
 

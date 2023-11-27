@@ -136,7 +136,7 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 
 # Integration Instructions
 
-## CGENERATING THE STORYBOARD FROM A Word Document (formatted with Styles as outlined in the template):
+## GENERATING THE STORYBOARD FROM A Word Document (formatted with Styles as outlined in the template):
 
 ### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the script
 

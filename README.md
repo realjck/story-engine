@@ -19,7 +19,7 @@ _* A story presented in a linear format with chapters, featuring animated charac
    Provides diverse interactive elements such as multiple-choice quizzes, classification exercises, click interactions, and drag-and-drop features. Additionally, allows the creation of custom interactive screens using external JS files and JSON content.
 
 - **Automated Module Content Management:**
-   Implements automated content handling through XLS parsing, seamlessly integrated within a "./assets/data/MyStory.xls" Excel file.
+   Implements automated content handling through XLS parsing, seamlessly integrated within a "./assets/data/story.xls" Excel file.
 
 - **LMS Compatibility:**
    Supports both SCORM 1.2 and 2004 standards for Learning Management Systems, with automatic detection of connection modes for standard web usage.
@@ -110,7 +110,7 @@ This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js
 
 ---
 
-### Placement of Backgrounds and Characters / Settings for Storyboard Shots (Backgrounds have a JS code frame at their root to declare the characters used and camera positions):
+### Placement of Backgrounds and Characters / Settings for Storyboard Shots (Scenes with characters have a JS code frame at their root to declare the characters used and the camera positions):
 
 <img src="./presentation-version-history/screenshot2.jpg" alt="screenshot"/>
 
@@ -122,7 +122,7 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 
 <img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/> 
 
-### Customization and Modifications via Excel Workbook `.assets/data/yourStory.xls`:
+### Customization and Modifications of the generated Excel Workbook:
 
 <img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
 
@@ -136,19 +136,17 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 
 # Integration Instructions
 
-## CREATING THE Storyboard FROM A Word Document (formatted with Styles as provided in the template):
+## CGENERATING THE STORYBOARD FROM A Word Document (formatted with Styles as outlined in the template):
 
 ### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the script
 
-### Choose the Word document to transform to Excel
+### Select the Word document for conversion to Excel
 
-### In the generated XLS file, perform the following tasks:
-- Set all titles as `TITRE:......,DECOR:.....` to define the Animate backgrounds desired for each chapter
+### Within the generated XLS file, execute the following actions:
+- Set all titles as `TITRE:......,DECOR:.....` to define the Animate scenes desired for each chapter
 - Ensure that the final quiz sheet is named QUIZ_FINAL
 
-> Note: In the prologue, the sentence starting with "retrouvons" is used as a trigger to display the character thumbnails when Marcillac is introduced.
-
-# Possible Modifications in the XLS:
+# Possible Modifications in the Excel workbook:
 
 ## STORY SHEET:
 
@@ -178,8 +176,12 @@ Possibility to add JS script in the 4th column of the STORY sheet. Example: `Twe
 
 Copy and paste questions from an existing model (the 'instruction' line is optional, and the 'feedback' line is mandatory (leave empty if not used).
 
-The correct answer is indicated by the word "ok". It is possible to have one correct answer (QCU) or multiple (QCM)
-Note that it is possible to force the possibility of multiple answers for a QCU by using "okm" instead of "ok"
+A sheet has the capacity to include any quantity of questions.
+
+A question can have up to six answers.
+
+The correct answer is indicated by the word `ok`. It is possible to have one correct answer (QCU) or multiple (QCM)
+Note that it is possible to force the possibility of multiple answers for a QCU by using `okm` instead of `ok`.
 
 ## SYNTAX OF 'CONTENU_xxx' SHEETS:
 
@@ -191,7 +193,7 @@ Syntax			|	Description
 `GRAS:xxxxxxxxx`	|	< bold text
 `SMALL:xxxxxxxxx`	|	< smaller text
 `-xxxxxxxxxxxxx`	|	< smaller text with bullet point
-`espace`			|	< space line (about 2 lines)
+`espace`			|	< space line
 
 ### 'media' column:
 
@@ -220,8 +222,10 @@ Will lead to this result :
 
 ## Save the Excel in assets/data/ and edit `app/data/ExcelName.js` to indicate its filename:
 
+Filename of Excel workbook can be any name:
+
 ~~~~
-	var __ExcelName = "story.xls";
+	var __ExcelName = "MyStoryV1.xls";
 	var __Langs = ["en"];
 ~~~~
 
@@ -237,10 +241,15 @@ In the case of multi-language, several Excel files must be in the data/ folder, 
 
 (In this case, the corresponding Excel files will be `story-fr.xls` and `story-en.xls`)
 
-### EDIT THE CONFIGURATION FOR SCORM PACKAGING (if necessary)
-Allows you to set the default language, full-screen mode, and automatic SCORM detection
+### MODIFY THE CONFIGURATION FILE `assets/app/CONFIG.js` FOR SCORM PACKAGING (if required)
 
-- `assets/app/CONFIG.js`
+**Enables customization of the following options:**
+
+- `__lang: string ('fr', 'en', ...)` - The initial language setting upon launch pertains to the messages preceding the module's initiation. After launch, the language isdynamically detected based on the specification in the Excel CONFIG sheet.
+
+- `__nofs: bool` - The option to enable or disable full-screen mode is provided. In certain deployment environments, full-screen functionality may encounter limitations. To address this scenario, this option can be configured to `true` to conceal the full-screen button within the interface.
+
+- `__disableAjax: bool` - During startup, the module conducts AJAX requests to determine the existence of SCORM 1.2 / 2004 files. If there is a need to disable these requests, this option can be set to `true`. In such instances, it is necessary to manually declare the SCORM version in `app/launcher.js` at line 54: `__scorm = "1.2"` (or "2004"). Additionally, the SCORM detection can be turned off by modifying line 55 to change `__gm = "lms"` to `"web"`.
 
 ### MAKE SURE THAT INDEX.HTML IS IN PRODUCTION MODE
 ~~~~

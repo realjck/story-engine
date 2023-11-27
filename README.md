@@ -65,12 +65,11 @@ _* A story presented in a linear format with chapters, featuring animated charac
 
 ## Important note
 
-The entire project has been developed in ECMAScript Edition 5 (ES5), specifically tailored for utilization with the Dojo toolkit. The primary motivation for employing the Dojo toolkit lies in its capacity for asynchronous module handling.
+The entire project has been developed in ECMAScript Edition 5 (ES5), specifically tailored for utilization with the Dojo toolkit. The primary motivation for employing the Dojo toolkit was the capacity for asynchronous module handling at the time I started to make the main framework (2012).
 
 This entails the utilization of `var` and DOM-declared variables, as well as the non-arrow function syntax `function(){}`.
 
-While an update to a more recent ECMAScript version could prove beneficial for future development, it is not deemed necessary at present. The tool has undergone optimization over the years, ensuring compatibility with the latest browsers, such as Chrome and Safari.
-
+Although updating to a more recent ECMAScript version may offer advantages for future development, it is currently not considered necessary. The tool has undergone optimization over the years, ensuring compatibility with major browsers including Chrome, Mozilla, IE11 (no longer necessary, hopefully), and Safari on both desktop and mobile platforms.
 ## Usage
 
 Clone the whole repository. All JS librairies are directly included (no installation).

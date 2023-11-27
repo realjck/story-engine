@@ -122,7 +122,7 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 
 <img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/> 
 
-### Customization and Modifications of the generated Excel Workbook:
+### Generated Excel Workbook:
 
 <img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
 

@@ -99,7 +99,7 @@ A Windows batch file is ready to use to recompile the source: open a cmd console
 
 This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js`.
 
-> Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
+> Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process compounded by the inclusion of jQuery syntax. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
 
 ## File `Animate.fla`:
 

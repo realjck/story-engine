@@ -203,7 +203,7 @@ Syntax			|	Description
 `IMGCORNER:xxxxx.png`	|	< adds an image in the top right of the screen
 `SON:xxxxxx.mp3`	|	< adds sound in sync with the line (requires a character)
 
-### Possibility of dialog with a character in an informative content screen (with the lines of dialog read from the STORY sheet):
+### Possibility of dialog with a character in an informative text/images content screen (with the lines of dialog read from the STORY sheet):
 
 **Example:** `CONTENU_MYCONTENT,4` where:
 

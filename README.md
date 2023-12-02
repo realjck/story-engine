@@ -1,4 +1,4 @@
-# E-LEARNING ENGINE ANIMATE JS
+# e-learning-engine-animate-js
 
 Version 4.2 // 11/2023
 
@@ -6,7 +6,7 @@ Version 4.2 // 11/2023
 
 ## Streamlining Digital Learning: Use Adobe Animate with a Comprehensive Toolbox and Ready-to-Use Template for Stories* in Full JavaScript
 
-### [[Click here to launch the repository source sample]](https://realjck.github.io/ELEARNING-ENGINE/SOURCE/index.html)
+### [[Click here to launch the repository source sample]](https://realjck.github.io/elearning-engine/SOURCE/index.html)
 
 _* A story presented in a linear format with chapters, featuring animated characters with voice-overs. Each chapter includes scenes, informative content screens, quizzes, and other interactive activities. The content is seamlessly integrated with bookmarks and tracking functionality for Learning Management Systems, such as Moodle._
 

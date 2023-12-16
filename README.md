@@ -12,14 +12,14 @@ _* A story presented in a linear format with chapters, featuring animated charac
 
 ## Features:
 
-- **Cross-Platform Compatibility:**
-   Ensures optimal performance on Android, iOS, and web platforms with responsive and full-screen modes, incorporating mobile detection capabilities.
+- **Cross-Platform:**
+   Ensures compatibility on Chrome/Safari, and major web browsers with responsive and full-screen modes, incorporating mobile detection capabilities.
 
 - **Enhanced Interactivity:**
    Provides diverse interactive elements such as multiple-choice quizzes, classification exercises, click interactions, and drag-and-drop features. Additionally, allows the creation of custom interactive screens using external JS files and JSON content.
 
 - **Automated Module Content Management:**
-   Implements automated content handling through XLS parsing, seamlessly integrated within a "./assets/data/story.xls" Excel file.
+   Implements content handling through XLS parsing, integrated within an Excel file included in the package and parsed at launch.
 
 - **LMS Compatibility:**
    Supports both SCORM 1.2 and 2004 standards for Learning Management Systems, with automatic detection of connection modes for standard web usage.
@@ -28,10 +28,10 @@ _* A story presented in a linear format with chapters, featuring animated charac
    Facilitates video integration in mp4 directly from the Excel Storyboard.
 
 - **Packaged JS Libraries and Resources:**
-   Eliminates reliance on CDNs or external resources, ensuring all assets libraries are statically copied for easy maintenance.
+   Eliminates reliance on CDNs or external dependencies, ensuring all assets libraries are statically copied for simpler maintenance and use on extranets.
 
 - **Resource Preloading:**
-   Enhances user experience by preloading all module content, including voiceovers and images, upon launch.
+   Enhances user experience by preloading all module content, including voiceover and images, upon launch.
 
 - **Robust Error Handling:**
    In the event of a JavaScript error, generates a detailed PDF report and prompts the user to download it through a modal interface.
@@ -43,7 +43,7 @@ _* A story presented in a linear format with chapters, featuring animated charac
     Enables learners to download personalized final quiz reviews and school-branded certificates, featuring their name, score, and other relevant details.
 
 - **Customizable:**
-    Includes the source code in the repository, allowing for tool customization and extensibility.
+    Includes the source code in the repository, feel free to clone or fork this project to customize it according to your needs.
 
 ## JS Librairies included:
 - **Dojo Toolkit 1.17.3**
@@ -55,7 +55,7 @@ _* A story presented in a linear format with chapters, featuring animated charac
 - jquery easing 1.3
 - js.cookie 2.1.4
 - jspdf 1.5.3
-- mediaelement
+- mediaelement.js
 - moment.js with locales
 - pipwerks SCORM API
 - pleaserotate.js
@@ -69,7 +69,7 @@ The entire project has been developed in ECMAScript Edition 5 (ES5), specificall
 
 This entails the utilization of `var` and DOM-declared variables, as well as the non-arrow function syntax `function(){}`.
 
-Although updating to a more recent ECMAScript version may offer advantages for future development, it is currently not considered necessary. The tool has undergone optimization over the years, ensuring compatibility with major browsers including Chrome, Mozilla, IE11 (no longer necessary, hopefully), and Safari on both desktop and mobile platforms.
+Although updating to a more recent ECMAScript version may offer advantages for future development, it is currently not considered necessary. The tool has undergone optimization over the years, ensuring compatibility with major browsers including Chrome, Mozilla, Internet Explorer (no longer necessary, hopefully), and Safari on both desktop and mobile platforms.
 ## Usage
 
 Clone the whole repository. All JS librairies are directly included (no installation).

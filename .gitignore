@@ -1,0 +1,5 @@
+# ignore Idea config files
+.idea
+SOURCE/assets/app_src/dojo/util/buildscripts/buildscripts.iml
+SOURCE/assets/app_src/dojo/util/doh/doh.iml
+SOURCE/assets/app_src/dojo/util/shrinksafe/shrinksafe.iml

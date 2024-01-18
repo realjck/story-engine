@@ -74,33 +74,6 @@ Although updating to a more recent ECMAScript version may offer advantages for f
 
 Clone the whole repository. All JS librairies are directly included (no installation).
 
-## Customizations and Modifications in `app_src/`:
-
-Package folder in `app_src/` | Description
---- | ---
-`/dojo/` | Dojo Toolkit 1.17.3
-`/animator/` | related to Adobe Animate (tween objects, buttons, quizzes, drag-drop, ...)
-`/engine/` | main modules (`Player.js` contains the methods for the UI, Launch and SCORM, `ChapitrePlayer.js` contains the methods that parse the storyboard into playable actions)
-`/util/` | modules not related to Adobe Animate (JsonHandler, Bootstrap modals, timers, sound management, etc.)
-`/pdf/` | for pdf generation (see module `EasyPDF.js`)
-
----
-
-### Comment/Uncomment these lines in `index.html` to switch between development and production mode:
-
-~~~~
-!-- to modify for prod -->
-<!-- <script src="assets/app_src/config/dojoConfig.js"></script> -->
-<!-- <script data-dojo-config="async: true" src="assets/app_src/dojo/dojo/dojo.js"></script> -->
-<script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
-~~~~
-
-A Windows batch file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
-
-This will compile the `app_src/` files into a new file in `app/App.js.uncompressed.js`.
-
-> Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process compounded by the inclusion of jQuery syntax. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
-
 ## Design integration in Adobe Animate:
 
 File `SOURCE/Animate.fla`
@@ -115,7 +88,7 @@ Within Adobe Animate, the library consolidates UI-related elements within a desi
 
 To ensure proper preparation of custom scenes in Adobe Animate, it is imperative to maintain consistent nomenclature across three key components for the scenes MovieClips:
 
-1. Name of the MovieClip in the library 
+1. Name of the MovieClip in the library
 2. Instance name in properties once positioned on the timeline
 3. Label of the frame at the MovieClip position
 
@@ -125,27 +98,13 @@ When incorporating characters, adhere to the specific integration guidelines out
 
 ---
 
-### Word to Excel Generator with VBA Script `STORYBOARD-XLS-DATA-MAKER/` for Content Creation:
-
-An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in Word into a story.xls file that can be read by the program (`./STORYBOARD-XLS-DATA-MAKER/CONSTRUCTION_WORD_IMPORTER.vba`)
-
-<img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/>
-
-<img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
-
-### Execution in Browser / LMS Environment (Moodle, etc.):
-
-<img src="./presentation-version-history/screenshot5.jpg" alt="screenshot"/>
-
-<img src="./presentation-version-history/screenshot6.jpg" alt="screenshot"/>
-
----
-
 # Integration Instructions
 
 ## Generating the storyboard from a Word document (formatted with Styles as outlined in the template):
 
-### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the script
+### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the VBA script included inside.
+
+<img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/>
 
 ### Select the Word document for conversion to Excel
 
@@ -154,6 +113,8 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 - Ensure that the final quiz sheet is named QUIZ_FINAL
 
 # Possible Modifications in the Excel workbook:
+
+<img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
 
 ## Story sheet:
 
@@ -225,6 +186,8 @@ Will lead to this result :
 
 > Note that it is also possible to put voice-over sounds in the SON column of the content sheet (see table above), but these **do not display subtitles** because it is considered that they take up the audio reading of the displayed text.
 
+---
+
 # Finalization / SCORM Export / Online Publishing:
 
 ## Save the Excel in assets/data/ and edit `app/data/ExcelName.js` to indicate its filename:
@@ -268,7 +231,7 @@ In the case of multi-language (__Langs size > 1), several Excel files must be in
 <script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
 ~~~~
 
-## Use for lms / production
+### Clean and prepares the solution
 
 Instructions for preparing the production files are documented in file names beginning with underscore (`_lorem ipsum`) in the source and assets folders. These files should of course be excluded for production as well as the assets/app_src/ folder.
 
@@ -291,6 +254,41 @@ Package.zip/
 ├── imsmanifest.xml
 └── <.xsd files>
 ~~~~
+
+### Execution in Browser / LMS Environment (Moodle, etc.):
+
+<img src="./presentation-version-history/screenshot5.jpg" alt="screenshot"/>
+
+<img src="./presentation-version-history/screenshot6.jpg" alt="screenshot"/>
+
+---
+
+# Guidance for development and build:
+
+Folder `SOURCE/assets/app_src/`:
+
+Package folder in `app_src/` | Description
+--- | ---
+`/dojo/` | Dojo Toolkit 1.17.3
+`/animator/` | related to Adobe Animate (tween objects, buttons, quizzes, drag-drop, ...)
+`/engine/` | main modules (`Player.js` contains the methods for the UI, Launch and SCORM, `ChapitrePlayer.js` contains the methods that parse the storyboard into playable actions)
+`/util/` | modules not related to Adobe Animate (JsonHandler, Bootstrap modals, timers, sound management, etc.)
+`/pdf/` | for pdf generation (see module `EasyPDF.js`)
+
+### Comment/Uncomment these lines in `index.html` to switch between development and production mode:
+
+~~~~
+!-- to modify for prod -->
+<!-- <script src="assets/app_src/config/dojoConfig.js"></script> -->
+<!-- <script data-dojo-config="async: true" src="assets/app_src/dojo/dojo/dojo.js"></script> -->
+<script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
+~~~~
+
+A Windows batch file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
+
+This will compile the `app_src/` files into a new file in `app/App.js.uncompressed.js`.
+
+> Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process compounded by the inclusion of jQuery syntax. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
 
 ---
 

@@ -43,7 +43,7 @@ _* A story presented in a linear format with chapters, featuring animated charac
     Enables learners to download personalized final quiz reviews and school-branded certificates, featuring their name, score, and other details.
 
 - **Customizable:**
-    Includes the source code in the repository, feel free to clone or fork this project to customize it according to your needs.
+    Includes the source code in the repository, feel free to clone or fork the project and customize it according to your needs.
 
 ## JS Librairies included:
 - **Dojo Toolkit 1.17.3**
@@ -101,15 +101,25 @@ This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js
 
 > Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process compounded by the inclusion of jQuery syntax. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
 
-## File `Animate.fla`:
+## Design integration in Adobe Animate:
 
-### Customization of Interface Elements:
+File `SOURCE/Animate.fla`
+
+### Customize graphic elements:
+
+Within Adobe Animate, the library consolidates UI-related elements within a designated __elements subdirectory. Characters and scene elements are situated both at the root level and in their respective directories. For optimal project organization when utilizing custom graphics, it is advisable to streamline the library by removing all root-level elements, with the exception of the __elements directory.
 
 <img src="./presentation-version-history/screenshot1.jpg" alt="screenshot"/> 
 
 ---
 
-### Placement of Backgrounds and Characters / Settings for Storyboard Shots (Scenes with characters have a JS code frame at their root to declare the characters used and the camera positions):
+To ensure proper preparation of custom scenes in Adobe Animate, it is imperative to maintain consistent nomenclature across three key components:
+
+1. The name of the clip
+2. The name of the clip instance
+3. The label of the main scene in which it is positioned
+
+When incorporating characters, adhere to the specific integration guidelines outlined in the project. Characters are consolidated within a primary MovieClip named _PERSOS. It is crucial to assign identical names to both their instance and corresponding label. Additionally, essential JavaScript variables should be positioned at the root of the scene, specifying the character names and scene coordinates when the character is zoomed in during dialogue. See screenshot below:
 
 <img src="./presentation-version-history/screenshot2.jpg" alt="screenshot"/>
 
@@ -119,9 +129,7 @@ This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js
 
 An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in Word into a story.xls file that can be read by the program (`./STORYBOARD-XLS-DATA-MAKER/CONSTRUCTION_WORD_IMPORTER.vba`)
 
-<img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/> 
-
-### Generated Excel Workbook:
+<img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/>
 
 <img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
 
@@ -135,7 +143,7 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 
 # Integration Instructions
 
-## GENERATING THE STORYBOARD FROM A Word Document (formatted with Styles as outlined in the template):
+## Generating the storyboard from a Word document (formatted with Styles as outlined in the template):
 
 ### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the script
 
@@ -147,7 +155,7 @@ An EXCEL-IMPORTER.XLSM file allows the transformation of a scenario created in W
 
 # Possible Modifications in the Excel workbook:
 
-## STORY SHEET:
+## Story sheet:
 
 ### 'deroule' column:
 
@@ -182,7 +190,7 @@ A question can have up to six answers.
 The correct answer is indicated by the word `ok`. It is possible to have one correct answer (QCU) or multiple (QCM)
 Note that it is possible to force the possibility of multiple answers for a QCU by using `okm` instead of `ok`.
 
-## SYNTAX OF 'CONTENU_xxx' SHEETS:
+## Syntax of 'CONTENU_xxx' sheets:
 
 ### 'texte' column:
 
@@ -228,8 +236,9 @@ Filename of Excel workbook can be any name:
 	var __Langs = ["en"];
 ~~~~
 
-### DEFINE MULTI-LANGUAGE (OPTIONAL):
-In the case of multi-language, several Excel files must be in the data/ folder, each ending with "-XX" (XX corresponding to the language)
+### Define multi-language (optional):
+
+In the case of multi-language (__Langs size > 1), several Excel files must be in the data/ folder, each ending with "-XX" (XX corresponding to the corresponding language)
 
 **Example of ExcelName.js for multilingual fr + en:**
 
@@ -240,17 +249,18 @@ In the case of multi-language, several Excel files must be in the data/ folder, 
 
 (In this case, the corresponding Excel files will be `story-fr.xls` and `story-en.xls`)
 
-### MODIFY THE CONFIGURATION FILE `assets/app/CONFIG.js` FOR SCORM PACKAGING (if required)
+### Modify the configuration file `assets/app/CONFIG.js` for SCORM packaging (if required)
 
 **Enables customization of the following options:**
 
-- `__lang: string ('fr', 'en', ...)` - The initial language setting upon launch pertains to the messages preceding the module's initiation. After launch, the language isdynamically detected based on the specification in the Excel CONFIG sheet.
+- `__lang: string` - The initial language setting upon launch pertains to the messages preceding the module's initiation. After launch, the language is dynamically detected based on the specification in the Excel CONFIG sheet.
 
 - `__nofs: bool` - The option to enable or disable full-screen mode is provided. In certain deployment environments, full-screen functionality may encounter limitations. To address this scenario, this option can be configured to `true` to conceal the full-screen button within the interface.
 
 - `__disableAjax: bool` - During startup, the module conducts AJAX requests to determine the existence of SCORM 1.2 / 2004 files. If there is a need to disable these requests, this option can be set to `true`. In such instances, it is necessary to manually declare the SCORM version in `app/launcher.js` at line 54: `__scorm = "1.2"` (or "2004"). Additionally, the SCORM detection can be turned off by modifying line 55 to change `__gm = "lms"` to `"web"`.
 
-### MAKE SURE THAT INDEX.HTML IS IN PRODUCTION MODE
+### Make sure that `index.html` is in production mode
+
 ~~~~
 !-- to modify for prod -->
 <!-- <script src="assets/app_src/config/dojoConfig.js"></script> -->
@@ -258,9 +268,29 @@ In the case of multi-language, several Excel files must be in the data/ folder, 
 <script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
 ~~~~
 
-### PLACE THE SCORM FILES AT THE ROOT / ZIP PACKAGER
+## Use for lms / production
 
-/ Launch `index.html`
+Instructions for preparing your production files are documented in file names beginning with underscore (`_lorem ipsum`) in the source and assets folders. These files should of course be excluded for production as well as the assets/app_src/ folder.
+
+**The `SOURCE/` folder is the web root (or zip root in case of a LMS package).**
+
+**Web:**
+~~~~
+./
+├── assets/
+├── animate.js
+└── index.html
+~~~~
+
+**SCORM 1.2 .zip:**
+~~~~
+Package.zip/
+├── assets/
+├── animate.js
+├── index.html
+├── imsmanifest.xml
+└── <.xsd files>
+~~~~
 
 ---
 

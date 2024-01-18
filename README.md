@@ -97,7 +97,7 @@ Package folder in `app_src/` | Description
 
 A Windows batch file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
 
-This will compile your `app_src/` into a new file in `app/App.js.uncompressed.js`.
+This will compile the `app_src/` files into a new file in `app/App.js.uncompressed.js`.
 
 > Please be advised that the generated file is in an uncompressed state, and the minified version of App.js has been omitted due to potential compatibility issues with certain modern browsers arising from Dojo's minimization process compounded by the inclusion of jQuery syntax. Should you desire a minified version, you have the option to employ a minification tool of your choosing.
 
@@ -113,11 +113,11 @@ Within Adobe Animate, the library consolidates UI-related elements within a desi
 
 ---
 
-To ensure proper preparation of custom scenes in Adobe Animate, it is imperative to maintain consistent nomenclature across three key components:
+To ensure proper preparation of custom scenes in Adobe Animate, it is imperative to maintain consistent nomenclature across three key components for the scenes MovieClips:
 
-1. The name of the clip
-2. The name of the clip instance
-3. The label of the main scene in which it is positioned
+1. Name of the MovieClip in the library 
+2. Instance name in properties once positioned on the timeline
+3. Label of the frame at the MovieClip position
 
 When incorporating characters, adhere to the specific integration guidelines outlined in the project. Characters are consolidated within a primary MovieClip named _PERSOS. It is crucial to assign identical names to both their instance and corresponding label. Additionally, essential JavaScript variables should be positioned at the root of the scene, specifying the character names and scene coordinates when the character is zoomed in during dialogue. See screenshot below:
 
@@ -270,7 +270,7 @@ In the case of multi-language (__Langs size > 1), several Excel files must be in
 
 ## Use for lms / production
 
-Instructions for preparing your production files are documented in file names beginning with underscore (`_lorem ipsum`) in the source and assets folders. These files should of course be excluded for production as well as the assets/app_src/ folder.
+Instructions for preparing the production files are documented in file names beginning with underscore (`_lorem ipsum`) in the source and assets folders. These files should of course be excluded for production as well as the assets/app_src/ folder.
 
 **The `SOURCE/` folder is the web root (or zip root in case of a LMS package).**
 

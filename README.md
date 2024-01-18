@@ -4,43 +4,43 @@ Version 4.2 // 11/2023
 
 # About
 
-## Streamlining Digital Learning: Use Adobe Animate with a Comprehensive Toolbox and Ready-to-Use Template for Stories* in Full JavaScript
+## Toolbox and Ready-to-Use Template for Stories* in Full JavaScript with Adobe Animate
 
-### [[Click here to launch the repository source sample]](https://realjck.github.io/elearning-engine/SOURCE/index.html)
+### [[Click here to launch repository source sample]](https://realjck.github.io/elearning-engine/SOURCE/index.html)
 
-_* A story presented in a linear format with chapters, featuring animated characters with voice-overs. Each chapter includes scenes, informative content screens, quizzes, and other interactive activities. The content is seamlessly integrated with bookmarks and tracking functionality for Learning Management Systems, such as Moodle._
+_* A story presented in a linear format with chapters, featuring animated characters with voice-overs. Each chapter includes scenes, informative content screens, quizzes, and other interactive activities. The content is integrated with bookmarks and tracking functionality for Learning Management Systems, such as Moodle._
 
 ## Features:
 
 - **Cross-Platform:**
-   Ensures compatibility on Chrome/Safari, and major web browsers with responsive and full-screen modes, incorporating mobile detection capabilities.
+   Compatibility on Chrome/Safari, and other web browsers with responsive and full-screen modes, mobile detection handling.
 
-- **Enhanced Interactivity:**
-   Provides diverse interactive elements such as multiple-choice quizzes, classification exercises, click interactions, and drag-and-drop features. Additionally, allows the creation of custom interactive screens using external JS files and JSON content.
+- **Interactivity:**
+   Digital-learning activities such as multiple-choice quizzes, classification exercises, click interactions, and drag-and-drop features. Additionally, allows the creation of custom interactive activities using external JS files and JSON content.
 
-- **Automated Module Content Management:**
+- **Content Management:**
    Implements content handling through XLS parsing, integrated within an Excel file included in the package and parsed at launch.
 
 - **LMS Compatibility:**
    Supports both SCORM 1.2 and 2004 standards for Learning Management Systems, with automatic detection of connection modes for standard web usage.
 
 - **Integrated Video Content:**
-   Facilitates video integration in mp4 directly from the Excel Storyboard.
+   Video integration with media-element.js.
 
 - **Packaged JS Libraries and Resources:**
-   Eliminates reliance on CDNs or external dependencies, ensuring all assets libraries are statically copied for simpler maintenance and use on extranets.
+   No CDNs or external dependencies. All libraries are statically copied for packaging (assets/libs/).
 
 - **Resource Preloading:**
-   Enhances user experience by preloading all module content, including voiceover and images, upon launch.
+   Sounds and image assets are preloaded upon launch.
 
-- **Robust Error Handling:**
+- **Error Handling:**
    In the event of a JavaScript error, generates a detailed PDF report and prompts the user to download it through a modal interface.
 
 - **Multilingual Storyboards Management:**
    Offers language selection at launch, providing users with a multi-language experience.
 
 - **Auto-Generated Certificates and PDFs:**
-    Enables learners to download personalized final quiz reviews and school-branded certificates, featuring their name, score, and other relevant details.
+    Enables learners to download personalized final quiz reviews and school-branded certificates, featuring their name, score, and other details.
 
 - **Customizable:**
     Includes the source code in the repository, feel free to clone or fork this project to customize it according to your needs.
@@ -86,7 +86,7 @@ Package folder in `app_src/` | Description
 
 ---
 
-### Comment/Uncomment these lines in `index.html` to switch between developement and production mode:
+### Comment/Uncomment these lines in `index.html` to switch between development and production mode:
 
 ~~~~
 !-- to modify for prod -->

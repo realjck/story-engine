@@ -4,7 +4,7 @@ Version 4.2 // 11/2023
 
 # About
 
-## Toolbox and Ready-to-Use Template for Stories* in Full JavaScript with Adobe Animate
+## Toolbox and Ready-to-Use Template for Stories* in JavaScript with Adobe Animate
 
 ### [[Click here to launch repository source sample]](https://realjck.github.io/elearning-engine/SOURCE/index.html)
 

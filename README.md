@@ -82,9 +82,7 @@ File `SOURCE/Animate.fla`
 
 Within Adobe Animate, the library consolidates UI-related elements within a designated __elements subdirectory. Characters and scene elements are situated both at the root level and in their respective directories. For optimal project organization when utilizing custom graphics, it is advisable to streamline the library by removing all root-level elements, with the exception of the __elements directory.
 
-<img src="./presentation-version-history/screenshot1.jpg" alt="screenshot"/> 
-
----
+![screenshot](./presentation-version-history/screenshot1.jpg "screenshot"){width=100} 
 
 To ensure proper preparation of custom scenes in Adobe Animate, it is imperative to maintain consistent nomenclature across three key components for the scenes MovieClips:
 
@@ -94,9 +92,7 @@ To ensure proper preparation of custom scenes in Adobe Animate, it is imperative
 
 When incorporating characters, adhere to the specific integration guidelines outlined in the project. Characters are consolidated within a primary MovieClip named _PERSOS. It is crucial to assign identical names to both their instance and corresponding label. Additionally, essential JavaScript variables should be positioned at the root of the scene, specifying the character names and scene coordinates when the character is zoomed in during dialogue. See screenshot below:
 
-<img src="./presentation-version-history/screenshot2.jpg" alt="screenshot"/>
-
----
+![screenshot](./presentation-version-history/screenshot2.jpg "screenshot")
 
 # Integration Instructions
 
@@ -104,7 +100,7 @@ When incorporating characters, adhere to the specific integration guidelines out
 
 ### Launch `XLS_CONSTRUCTION/CONSTRUCTION WORD IMPORTER.xlsm` and run the VBA script included inside.
 
-<img src="./presentation-version-history/screenshot3.jpg" alt="screenshot"/>
+![screenshot](./presentation-version-history/screenshot3.jpg "screenshot")
 
 ### Select the Word document for conversion to Excel
 
@@ -114,7 +110,7 @@ When incorporating characters, adhere to the specific integration guidelines out
 
 # Possible Modifications in the Excel workbook:
 
-<img src="./presentation-version-history/screenshot4.jpg" alt="screenshot"/>
+![screenshot](./presentation-version-history/screenshot4.jpg "screenshot")
 
 ## Story sheet:
 
@@ -257,9 +253,9 @@ Package.zip/
 
 ### Execution in Browser / LMS Environment (Moodle, etc.):
 
-<img src="./presentation-version-history/screenshot5.jpg" alt="screenshot"/>
+![screenshot](./presentation-version-history/screenshot5.jpg "screenshot")
 
-<img src="./presentation-version-history/screenshot6.jpg" alt="screenshot"/>
+![screenshot](./presentation-version-history/screenshot6.jpg "screenshot")
 
 ---
 
@@ -284,7 +280,7 @@ Package folder in `app_src/` | Description
 <script data-dojo-config="async: true" src="assets/app/App.js.uncompressed.js"></script>
 ~~~~
 
-A Windows batch file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildsripts/`)
+A Windows batch file is ready to use to recompile the source: open a cmd console and launch `SOURCE/assets/app_src/COMPILE.BAT` (For Linux / Mac users you can find .sh scripts as well in `app_src/dojo/util/buildscripts/`)
 
 This will compile the `app_src/` files into a new file in `app/App.js.uncompressed.js`.
 

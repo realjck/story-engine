@@ -132,7 +132,7 @@ define(['engine/Player',
 			
 			var is_swaping;
 			
-			var activities = ["titre:", "decor:", "quiz_", "contenu_", "clickpictos_", "classement_", "surmesure_", "video_"];
+			var activities = ["titre:", "decor:", "quiz_", "contenu_", "clickpictos_", "classement_", "surmesure_", "surmesureonscene_", "video_"];
 			
 			function execScript(){
 				//execution scripts:
@@ -501,9 +501,18 @@ define(['engine/Player',
 											
 										case "surmesure_" :
 											is_swaping = false;
-											var surmesure_file = deroule.substr(deroule.indexOf("_")+1);
-											loadJs("assets/app/"+surmesure_file+".js", function(){
-												eval(surmesure_file+"(activityCallback)");
+											var surMesureFile = deroule.substr(deroule.indexOf("_")+1);
+											loadJs("assets/app/"+surMesureFile+".js", function(){
+												eval(surMesureFile+"(activityCallback)");
+											});
+											break;
+											
+										case "surmesureonscene_" :
+											is_swaping = false;
+											s.visible = true;
+											var surMesureOnSceneFile = deroule.substr(deroule.indexOf("_")+1);
+											loadJs("assets/app/"+surMesureOnSceneFile+".js", function(){
+												eval(surMesureOnSceneFile+"(activityCallback)");
 											});
 											break;
 											

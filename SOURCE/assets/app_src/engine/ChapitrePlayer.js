@@ -400,22 +400,29 @@ define(['engine/Player',
 								if (perso == "marcillac"){
 									simple_anim = anim;
 								} else {
-									// check if anim in perso
-									var got_anim = 0;
-									if (s[screen]["scene"][persos[perso]] != undefined){
-										var labels_perso = s[screen]["scene"][persos[perso]][perso].labels;
-										for (var i=0; i<labels_perso.length; i++){
-											if (labels_perso[i].label.substr(0,4) == "anim"){
-												got_anim ++;
+									// Perso animation
+									if (!Player.getStoryHasAnim) {
+										// if no 'anim' column in story, then random anim :
+										var got_anim = 0;
+										if (s[screen]["scene"][persos[perso]] != undefined){
+											var labels_perso = s[screen]["scene"][persos[perso]][perso].labels;
+											for (var i=0; i<labels_perso.length; i++){
+												if (labels_perso[i].label.substr(0,4) == "anim"){
+													got_anim ++;
+												}
 											}
 										}
+										if ((Math.random() < 0.6) && (deroule.length > 30) && (!Player.isMobile()) && got_anim){
+											simple_anim = "anim"+Math.floor(Math.random() * got_anim + 1);
+											is_previous_anim = true;
+										} else if (is_previous_anim){
+											is_previous_anim = false;
+										}
+									} else {
+										// else, got animation from column 'anim'
+										simple_anim = JsonHandler.getLine("STORY", index).anim;
 									}
-									if ((Math.random() < 0.6) && (deroule.length > 30) && (!Player.isMobile()) && got_anim){
-										simple_anim = "anim"+Math.floor(Math.random() * got_anim + 1);
-										is_previous_anim = true;
-									} else if (is_previous_anim){
-										is_previous_anim = false;
-									}
+									
 								}
 								
 								if (perso_value != "{all}") {

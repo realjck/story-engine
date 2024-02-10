@@ -50,10 +50,16 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 	
 	var _excelStory;
 	
+	var _storyHasAnim = false;
+	
 	var _learnerName;
 	
 	exports.getExcelStory = function(){
 		return _excelStory;
+	}
+	
+	exports.getStoryHasAnim = function(){
+		return _storyHasAnim;
 	}
 	
 	exports.getLearnerName = function(){
@@ -470,8 +476,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 			_self.getLearnerName();
 			
 			// chapitres list
+			// also check if anim
 			var counter = 0;
 			while(isValid(JsonHandler.getLine("STORY", counter))){
+				// check titles
 				if (JsonHandler.getLine("STORY", counter).deroule.substr(0,6) == "TITRE:"){
 					var text = JsonHandler.getLine("STORY", counter).deroule;
 					var chapitre = {};
@@ -479,6 +487,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 					chapitre.decor = text.substr(text.lastIndexOf(":")+1).trim();
 					chapitre.index = counter + 1;
 					_chapitres.push(chapitre);
+				}
+				// check anim
+				if (JsonHandler.getLine("STORY", counter).anim){
+					_storyHasAnim = true;
 				}
 				counter++;
 			}

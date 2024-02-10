@@ -123,6 +123,8 @@ Syntax	| Description
 `VIDEO_myvideo` | plays the video assets/videos/myvideo.mp4 (recommended format: 1280x640, .mp4 (h264), around 700kbs)
 `DECOR:______` | allows a transition of the background within a chapter
 `DECOR:______,FADE:true` | same as above but with a fade-in effect to black
+`SURMESURE_myactivity` | Go to frame labelled 'myactivity' on main timeline and play app/myactivity.js — cf. 'SURMESURE' examples in app/ fodler
+`SURMESUREONSCENE_myactivity` | Allows activity on current scene with playing app/myactivity.js — cf. 'SURMESUREonSCENE' example in app/ fodler
 
 ### 'perso' column:
 
@@ -132,7 +134,11 @@ Syntax	| Description
 `{all}`	|	lip synchronization of the sound on all characters in the scene (chorus)
 `{none}`	|	no lip synchronization (e.g., sound effect)
 
-### 'script' column:
+### 'anim' column (optionnal):
+
+You can specify here the label in Adobe Animate that corresponds to the character animation to play during the dialogue. If no animation is specified in this column (i.e. in the whole story), all animations will be played randomly.
+
+### 'script' column (optionnal):
 
 Possibility to add JS script in the 4th column of the STORY sheet. Example: `Tween.init(scene.pot_de_fleur, {pop:true})` - the keyword 'scene' corresponds to the MovieClip of the current scene
 

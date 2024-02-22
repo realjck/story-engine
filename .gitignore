@@ -1,5 +1,9 @@
-# ignore Idea config files
+# jetbrains
 .idea
-SOURCE/assets/app_src/dojo/util/buildscripts/buildscripts.iml
-SOURCE/assets/app_src/dojo/util/doh/doh.iml
-SOURCE/assets/app_src/dojo/util/shrinksafe/shrinksafe.iml
+*.iml
+
+# dev's todo
+TODO.md
+
+# dojo build assembly
+app_build

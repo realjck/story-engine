@@ -22173,10 +22173,16 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 	
 	var _excelStory;
 	
+	var _storyHasAnim = false;
+	
 	var _learnerName;
 	
 	exports.getExcelStory = function(){
 		return _excelStory;
+	}
+	
+	exports.getStoryHasAnim = function(){
+		return _storyHasAnim;
 	}
 	
 	exports.getLearnerName = function(){
@@ -22405,7 +22411,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 					if(!__disableAjax){
 						$.ajax({
 							url:'assets/sounds/voice/'+son+".mp3",
-							type:'HEAD',
+							type:'GET',
 							error: function() {
 								console.log("NO VOICE FILES DETECTED");
 								_no_voice = true;
@@ -22593,8 +22599,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 			_self.getLearnerName();
 			
 			// chapitres list
+			// also check if anim
 			var counter = 0;
 			while(isValid(JsonHandler.getLine("STORY", counter))){
+				// check titles
 				if (JsonHandler.getLine("STORY", counter).deroule.substr(0,6) == "TITRE:"){
 					var text = JsonHandler.getLine("STORY", counter).deroule;
 					var chapitre = {};
@@ -22602,6 +22610,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 					chapitre.decor = text.substr(text.lastIndexOf(":")+1).trim();
 					chapitre.index = counter + 1;
 					_chapitres.push(chapitre);
+				}
+				// check anim
+				if (JsonHandler.getLine("STORY", counter).anim){
+					_storyHasAnim = true;
 				}
 				counter++;
 			}
@@ -25008,7 +25020,7 @@ define(['engine/Player',
 			
 			var is_swaping;
 			
-			var activities = ["titre:", "decor:", "quiz_", "contenu_", "clickpictos_", "classement_", "surmesure_", "video_"];
+			var activities = ["titre:", "decor:", "quiz_", "contenu_", "clickpictos_", "classement_", "surmesure_", "surmesureonscene_", "video_"];
 			
 			function execScript(){
 				//execution scripts:
@@ -25276,22 +25288,29 @@ define(['engine/Player',
 								if (perso == "marcillac"){
 									simple_anim = anim;
 								} else {
-									// check if anim in perso
-									var got_anim = 0;
-									if (s[screen]["scene"][persos[perso]] != undefined){
-										var labels_perso = s[screen]["scene"][persos[perso]][perso].labels;
-										for (var i=0; i<labels_perso.length; i++){
-											if (labels_perso[i].label.substr(0,4) == "anim"){
-												got_anim ++;
+									// Perso animation
+									if (!Player.getStoryHasAnim) {
+										// if no 'anim' column in story, then random anim :
+										var got_anim = 0;
+										if (s[screen]["scene"][persos[perso]] != undefined){
+											var labels_perso = s[screen]["scene"][persos[perso]][perso].labels;
+											for (var i=0; i<labels_perso.length; i++){
+												if (labels_perso[i].label.substr(0,4) == "anim"){
+													got_anim ++;
+												}
 											}
 										}
+										if ((Math.random() < 0.6) && (deroule.length > 30) && (!Player.isMobile()) && got_anim){
+											simple_anim = "anim"+Math.floor(Math.random() * got_anim + 1);
+											is_previous_anim = true;
+										} else if (is_previous_anim){
+											is_previous_anim = false;
+										}
+									} else {
+										// else, got animation from column 'anim'
+										simple_anim = JsonHandler.getLine("STORY", index).anim;
 									}
-									if ((Math.random() < 0.6) && (deroule.length > 30) && (!Player.isMobile()) && got_anim){
-										simple_anim = "anim"+Math.floor(Math.random() * got_anim + 1);
-										is_previous_anim = true;
-									} else if (is_previous_anim){
-										is_previous_anim = false;
-									}
+									
 								}
 								
 								if (perso_value != "{all}") {
@@ -25370,9 +25389,18 @@ define(['engine/Player',
 											
 										case "surmesure_" :
 											is_swaping = false;
-											var surmesure_file = deroule.substr(deroule.indexOf("_")+1);
-											loadJs("assets/app/"+surmesure_file+".js", function(){
-												eval(surmesure_file+"(activityCallback)");
+											var surMesureFile = deroule.substr(deroule.indexOf("_")+1);
+											loadJs("assets/app/"+surMesureFile+".js", function(){
+												eval(surMesureFile+"(activityCallback)");
+											});
+											break;
+											
+										case "surmesureonscene_" :
+											is_swaping = false;
+											s.visible = true;
+											var surMesureOnSceneFile = deroule.substr(deroule.indexOf("_")+1);
+											loadJs("assets/app/"+surMesureOnSceneFile+".js", function(){
+												eval(surMesureOnSceneFile+"(activityCallback)");
 											});
 											break;
 											

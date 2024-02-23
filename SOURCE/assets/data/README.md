@@ -1,0 +1,1 @@
+- Folder `_story_examples/` contains full Excel stories workbooks. Remove it for production.

@@ -1,3 +1,9 @@
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /**
  * This file is referenced by the `dojoBuild` key in `package.json` and provides extra hinting specific to the Dojo
  * build system about how certain files in the package need to be handled at build time. Build profiles for the

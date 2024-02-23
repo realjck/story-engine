@@ -1,4 +1,10 @@
-﻿//E-LEARNING PLAYER ENGINE ACCORDIA
+﻿/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+//E-LEARNING PLAYER ENGINE ACCORDIA
 // v4.2
 //author: JCK
 define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/Voice', 'util/CanvasTransition', 'util/ModalDialog', 'dojox/timing', 'dojo/dom', 'dojo/_base/fx', 'dojo/on', 'dojo/dom-style', 'dojox/timing', 'animator/RemoveEvents', 'util/UniqueTimer', 'util/Sequencer', 'util/UniqueTimerForVoice', 'animator/TimerClip', 'animator/ResponsiveStage', 'animator/Button', 'animator/SoundJS', 'animator/VerticalTextCenterer', 'animator/MaskObjects', 'animator/Mascotte', 'animator/SceneManager', 'engine/ChapitrePlayer', 'engine/SlideIntro', 'util/LinesBreaker', 'pdf/pdf_report', 'util/SoundJS_NoQueue', 'animator/Voice', 'animator/WaitClipEnd', 'exports', 'dojo/domReady!'], function(ResponsiveScale, JsonHandler, Tween, Voice, CanvasTransition, ModalDialog, timing,dom, fx, on, style, timing, RemoveEvents, UniqueTimer, Sequencer, UniqueTimerForVoice, TimerClip, ResponsiveStage, Button, SoundJS, VerticalTextCenterer, MaskObjects, Mascotte, SceneManager, ChapitrePlayer, SlideIntro, LinesBreaker, pdf_report, SoundJS_NoQueue, Voice, WaitClipEnd, exports) {

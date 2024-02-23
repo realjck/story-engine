@@ -1,3 +1,7 @@
+' story-engine with Animate and Create.js
+' Copyright © 2024 devjck
+' Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+
 Sub Word_Importer()
 
     Dim objWord As New Word.Application

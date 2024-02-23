@@ -15592,6 +15592,12 @@ return declare("dojo.store.Memory", base, {
 },
 'animator/SceneManager':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 Scene Manager
 =>init
@@ -15704,8 +15710,15 @@ define(function() {
 		}
 	};
 });
+
 },
 'util/Sequencer':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Sequencer
@@ -15787,8 +15800,15 @@ define(['util/OptionGetter', 'util/UniqueTimer'], function(OptionGetter, UniqueT
 		}
 	};
 });
+
 },
 'animator/TweenValue':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 TWEEN VALUE (new version)
@@ -15868,6 +15888,12 @@ define(['dojox/timing', 'util/OptionGetter'], function (timing, OptionGetter) {
 
 },
 'pdf/ReponsesPartielles':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 pdf_recap
@@ -15975,8 +16001,15 @@ define(['pdf/EasyPDF', 'util/JsonHandler', 'engine/Player'], function(EasyPDF, J
 		}
 	};
 });
+
 },
 'animator/LoadImage':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 LoadImage
@@ -16045,8 +16078,15 @@ define(['util/OptionGetter'], function (OptionGetter) {
 		}
 	};
 });
+
 },
 'pdf/Backgrounds':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 PDF BACKGROUNDS
@@ -16068,8 +16108,15 @@ define(function () {
 		}
 	};
 });
+
 },
 'animator/TimerClip':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 TimerClip
@@ -16128,8 +16175,15 @@ define(['dojox/timing'], function (timing) {
 		}
 	};
 });
+
 },
 'animator/VerticalSpacer':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Vertical Spacer
@@ -16168,8 +16222,15 @@ define(function() {
 		}
 	};
 });
+
 },
 'util/LinesBreaker':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 LinesBreaker
@@ -16311,8 +16372,15 @@ define(['util/OptionGetter'], function(OptionGetter) {
 	};
 
 });
+
 },
 'util/OptionGetter':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Option Getter
@@ -16473,6 +16541,12 @@ define(["./timing/_base"], function(timing){
 },
 'animator/Boxify':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 Boxify
 author: JCK
@@ -16529,8 +16603,15 @@ define(['util/OptionGetter', 'util/LinesBreaker'], function(OptionGetter, LinesB
 
 	};
 });
+
 },
 'animator/Tween':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 READY-TO-USE TWEENS
@@ -16789,8 +16870,15 @@ define(["util/OptionGetter", "util/UniqueTimerForTweens", "animator/StorePositio
 
 	};
 });
+
 },
 'animator/ScrollPane':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 ScrollPane
@@ -16922,8 +17010,15 @@ define(['util/OptionGetter'], function(OptionGetter) {
 		}
 	};
 });
+
 },
 'pdf/ReponsesCompletes':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 pdf_recap
@@ -17042,8 +17137,15 @@ define(['pdf/EasyPDF', 'util/JsonHandler', 'engine/Player'], function(EasyPDF, J
 		}
 	};
 });
+
 },
 'animator/MaskObjects':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Animator Module
@@ -17084,8 +17186,15 @@ define(["util/OptionGetter"], function(OptionGetter) {
 		}
 	};
 });
+
 },
 'animator/ClassementBuilder':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Quiz Builder
@@ -17377,8 +17486,15 @@ define([
 		}
 	}
 });
+
 },
 'pdf/Attestation':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Attestation
@@ -17502,6 +17618,12 @@ define(["dojo/_base/kernel", "dojo/_base/lang"], function(dojo){
 },
 'animator/StorePosition':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 Store Position
 
@@ -17560,8 +17682,15 @@ define(function() {
 		}
 	};
 });
+
 },
 'animator/SoundJS':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 SoundJS implementation
@@ -17660,8 +17789,15 @@ define(['engine/Player'], function(Player) {
 		}
 	}
 });
+
 },
 'animator/QuizDragDrop':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 QUIZ DRAG / DROP
@@ -18032,6 +18168,12 @@ define(["animator/Collisions", "util/OptionGetter", "animator/Button", "animator
 },
 'util/UniqueTimerForVoice':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 Unique Timer
 app static timer
@@ -18132,6 +18274,12 @@ define(['dojox/timing'], function (timing) {
 
 },
 'util/JsonHandler':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Json Handler
@@ -18235,8 +18383,15 @@ define(["dojo/request/xhr", "dojo/store/Memory", "engine/Player"], function(xhr,
 		}
 	}
 });
+
 },
 'animator/SwitchVisible':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 SwitchVisible
@@ -18257,8 +18412,15 @@ define(function () {
 		}
 	};
 });
+
 },
 'animator/ResponsiveStage':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 ResponsiveStage
@@ -18530,8 +18692,15 @@ define(["animator/StorePosition", "util/OptionGetter"], function(StorePosition, 
 		return object;
 	}
 });
+
 },
 'animator/VerticalTextCenterer':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Vertical Text Centerer
@@ -18577,8 +18746,15 @@ define(['dojox/timing'], function (timing) {
 			}
 	}
 });
+
 },
 'animator/Button':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Button
@@ -18711,8 +18887,15 @@ define(['util/OptionGetter', 'animator/Tween'], function(OptionGetter, Tween) {
 		}
 	};
 });
+
 },
 'engine/QuizFinal':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 QuizFinal
@@ -18971,8 +19154,15 @@ define(['engine/Player',
         }
     };
 });
+
 },
 'util/ModalDialog':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 BOOTSTRAP DIALOG
@@ -19186,8 +19376,15 @@ define(['util/OptionGetter', 'animator/SoundJS'], function(OptionGetter, SoundJS
 		});
 	}
 });
+
 },
 'util/ExternalText':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 External Text
@@ -19266,8 +19463,15 @@ define(["dojo/request/xhr", "dojo/store/Memory"], function(xhr, Memory) {
 		});
 	}
 });
+
 },
 'util/SoundJS_NoQueue':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 SoundJS implementation
@@ -19330,8 +19534,15 @@ define(function() {
 		}
 	}
 });
+
 },
 'animator/DynamicGraph':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Dynamic Graph
@@ -19379,12 +19590,19 @@ define(['util/OptionGetter', 'animator/Tween'], function(OptionGetter, Tween) {
 		}
 	};
 });
+
 },
 'app/App':function(){
 define([], 1);
 
 },
 'animator/Voice':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Voice
@@ -19574,8 +19792,15 @@ define(['animator/SoundJS', 'util/ExternalText', 'util/UniqueTimerForVoice', 'ut
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 });
+
 },
 'animator/Mascotte':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Mascotte
@@ -19698,8 +19923,15 @@ define(['animator/Voice', 'util/OptionGetter', 'util/UniqueTimerForMascotte'], f
 		}
 	};
 });
+
 },
 'util/ResponsiveScale':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 ResponsiveScale
@@ -19866,8 +20098,15 @@ define(function() {
 		}
 	};
 });
+
 },
 'animator/QuizBuilder':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Quiz Builder
@@ -20206,8 +20445,15 @@ define([
 		}
 	};
 });
+
 },
 'animator/WaitNextTick':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Wait Next Tick
@@ -20232,6 +20478,12 @@ define(function () {
 
 },
 'util/UniqueTimer':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Unique Timer
@@ -20333,6 +20585,12 @@ define(['dojox/timing'], function (timing) {
 
 },
 'pdf/pdf_report':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 pdf_report
@@ -20442,6 +20700,12 @@ define(['pdf/EasyPDF', 'engine/Player'], function(EasyPDF, Player) {
 },
 'util/UniqueTimerForMascotte':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 Unique Timer
 app static timer
@@ -20542,6 +20806,12 @@ define(['dojox/timing'], function (timing) {
 
 },
 'animator/QuizDragDropOneByOne':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 QUIZ DRAG / DROP *ONE BY ONE*
@@ -20890,6 +21160,12 @@ define(["animator/Collisions", "util/OptionGetter", "animator/Tween"], function 
 },
 'engine/SlideIntro':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 SlideIntro
 author: JCK
@@ -21068,6 +21344,7 @@ define(['engine/Player',
 		}
 	};
 });
+
 },
 'dojo/store/util/QueryResults':function(){
 define(["../../_base/array", "../../_base/lang", "../../when"
@@ -21145,6 +21422,12 @@ return QueryResults;
 },
 'util/CanvasTransition':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 Canvas Transition (to change slides)
 author: JCK
@@ -21205,8 +21488,15 @@ define(["dojo/dom", "dojo/dom-construct", "dojo/_base/fx"], function(dom, domCon
 		}
 	};
 });
+
 },
 'animator/Collisions':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Collisions of Animate movieclips
@@ -21240,8 +21530,15 @@ define(function() {
 		}
 	};
 });
+
 },
 'animator/ContenuBuilder':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Contenu Builder
@@ -21807,8 +22104,15 @@ define([
 		}
 	};
 });
+
 },
 'util/UniqueTimerForTweens':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Unique Timer
@@ -21910,6 +22214,12 @@ define(['dojox/timing'], function (timing) {
 
 },
 'animator/ClickPictosBuilder':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 ClickPictos Builder
@@ -22119,8 +22429,15 @@ define([
 		}
 	};
 });
+
 },
 'engine/Player':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 //E-LEARNING PLAYER ENGINE ACCORDIA
 // v4.2
 //author: JCK
@@ -24177,8 +24494,15 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 	}
 	
 });
+
 },
 'animator/QuizQcmQcu':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 QUIZ QCM / QCU
@@ -24603,6 +24927,12 @@ define(['util/OptionGetter', 'util/UniqueTimer', 'animator/StorePosition', 'anim
 },
 'animator/WaitClipEnd':function(){
 /*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
+/*
 
 WaitClipEnd
 author: JCK
@@ -24636,8 +24966,15 @@ define(['dojox/timing'], function (timing) {
 		}
 	};
 });
+
 },
 'animator/RemoveEvents':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 RemoveEvents
@@ -24689,8 +25026,15 @@ define(function() {
 		}
 	}
 });
+
 },
 'util/UniqueTimerForElements':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 Unique Timer
@@ -24737,6 +25081,12 @@ define(['dojox/timing'], function (timing) {
 
 },
 'pdf/EasyPDF':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 class EasyPDF v1.5
@@ -24886,6 +25236,12 @@ define(["dojo/_base/declare", "util/OptionGetter", "pdf/Backgrounds"], function 
 
 },
 'engine/ChapitrePlayer':function(){
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
+
 /*
 
 CHAPITRE PLAYER
@@ -25531,6 +25887,7 @@ define(['engine/Player',
 		}
 	};
 });
+
 }}});
 (function(){
 	// must use this.require to make this work in node.js

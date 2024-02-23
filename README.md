@@ -294,26 +294,4 @@ This will compile the `app_src/` files into a new file in `app/App.js.uncompress
 
 ---
 
-# License
-
-## Software source code
-
-**MIT License**
-
-Copyright 2023 JCK
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-## Graphic Assets
-
-**This content is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) license.**
-
-In summary, you are free to:
-
-Share - Copy and redistribute the material in any medium or format for any non-commercial purpose.
-Attribute - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-NoDerivatives - You may not make derivative works.
-
-For more information, please see the full license text at https://creativecommons.org/licenses/by-nc-nd/4.0/
+# 📎 [License](COPYING.md) 

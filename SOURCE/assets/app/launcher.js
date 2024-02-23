@@ -1,5 +1,8 @@
-////// AUTHOR JCK
-/////  v03/03/2023
+/*
+	Story-engine with Animate and Create.js
+	Copyright © 2024 devjck
+	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+ */
 
 if(!__nofs){
 	__nofs = !sameOrigin();

@@ -1,6 +1,6 @@
 # story-engine-animate-js
 
-Version 4.2 // 11/2023
+v4.3
 
 # About
 

@@ -1,0 +1,1 @@
+This folder contains the main `App.js`, the `launcher.js`, and the application startup `CONFIG.js`. The other files are scenario sample scripts read and executed when playing the Excel story sheet following the custom code you need.

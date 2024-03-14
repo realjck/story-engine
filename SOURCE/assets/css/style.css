@@ -13,7 +13,7 @@ MAIN STYLE
 body {
 	font-family: "Raleway";
 	position: static;
-	background-color : #383838;
+	background-color : #202020;
 	color: #bdc3c7;
 }
 #animation_container{
@@ -245,36 +245,14 @@ VIDEO OVERLAY
 LOADER
 */
 
-#loader {
-	position: absolute;
-	left: 50vw;
-	top: 50vh;
-	margin-left : -190px;
-	margin-top: -50px;
-	z-index: 10;
-}
-
-#loader > #logo {
-	position: absolute;
-	background-image: url("../images/loader.png");
-	background-clip: content-box;
-	padding-top:100px;/*between 0px to 100px to show loading*/
-	width: 379px;
-	height: 100px;
-}
-
-#loader > #logo_gs {
-	position: absolute;
-	background-image: url("../images/loader_gs.png");
-	width: 379px;
-	height: 100px;
-}
 
 #loader > #loader_text {
-	position: absolute;
-	text-align: center;
-	width: 379px;
-	margin-top: 120px;
+    font-family: "Quicksand Medium", sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    width: 500px;
+    margin-left: -175px;
+	color: #e0e0e0;
 }
 
 /*

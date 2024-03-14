@@ -184,7 +184,6 @@ function launchModule(){
 		var loading_timer;
 		loading_timer = setInterval(showPercent, 50);
 	} else {
-		$("#logo").css("padding-top", "0px");
 		document.getElementById("loader_text").innerHTML = __gtexts[__lang].loading1+"...";
 	}
 
@@ -192,10 +191,8 @@ function launchModule(){
 		var nb_items_loaded = window.performance.getEntries().length;
 		var percent = Math.round(nb_items_loaded/nb_items*100);
 		document.getElementById("loader_text").innerHTML = __gtexts[__lang].loading1+" "+percent+"%";
-		$("#logo").css("padding-top", (100-percent)+"px");
 		if (nb_items_loaded >= nb_items){
 			clearInterval(loading_timer);
-			$("#logo").css("padding-top", "0px");
 			document.getElementById("loader_text").innerHTML = __gtexts[__lang].loading2+"...";
 			__imagesLoaded = true;
 		}

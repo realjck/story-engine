@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This is a Reload version 2.5.6 SCORM 2004 Content Package document-->
+<!--Spawned from the Reload Content Package Generator - http://www.reload.ac.uk-->
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:imsmd="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:imsss="http://www.imsglobal.org/xsd/imsss" xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3" xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3" identifier="MANIFEST-0423B6E26220343A4D25106289110E99" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd http://ltsc.ieee.org/xsd/LOM lom.xsd http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 3rd Edition</schemaversion>
+    <imsmd:lom xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1">
+      <imsmd:general>
+        <imsmd:description>
+          <imsmd:langstring xml:lang="en">XXXXXXXXXXXXXXXXX</imsmd:langstring>
+        </imsmd:description>
+      </imsmd:general>
+      <imsmd:lifecycle>
+        <imsmd:version>
+          <imsmd:langstring xml:lang="en">30.XX.XX</imsmd:langstring>
+        </imsmd:version>
+        <imsmd:contribute>
+          <imsmd:role>
+            <imsmd:source>
+              <imsmd:langstring xml:lang="en">LOMv1.0</imsmd:langstring>
+            </imsmd:source>
+            <imsmd:value>
+              <imsmd:langstring xml:lang="en">Author</imsmd:langstring>
+            </imsmd:value>
+          </imsmd:role>
+          <imsmd:centity>
+            <imsmd:vcard>begin:vcard
+fn:Accordia
+end:vcard</imsmd:vcard>
+          </imsmd:centity>
+        </imsmd:contribute>
+      </imsmd:lifecycle>
+      <imsmd:educational>
+        <imsmd:typicallearningtime>
+          <imsmd:datetime>00:XX:00</imsmd:datetime>
+        </imsmd:typicallearningtime>
+      </imsmd:educational>
+    </imsmd:lom>
+  </metadata>
+  <organizations default="ORG-B9D45D556642C191B05991EEE99E48B8">
+    <organization identifier="ORG-B9D45D556642C191B05991EEE99E48B8" structure="hierarchical">
+      <title>XXXXXXXXXXXXXXXXX</title>
+      <item identifier="ITEM-DF11B884C0FDFE46166345520EC9F36D" isvisible="true" identifierref="RES-47CCE31C08B17CF9E776CF56B7E0C3D1">
+        <title>XXXXXXXXXXXXXXXXX</title>
+        <metadata>
+          <imsmd:lom xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1">
+            <imsmd:general>
+              <imsmd:description>
+                <imsmd:langstring xml:lang="en">XXXXXXXXXXXXXXXXX</imsmd:langstring>
+              </imsmd:description>
+            </imsmd:general>
+            <imsmd:lifecycle>
+              <imsmd:version>
+                <imsmd:langstring xml:lang="en">30.XX.XX</imsmd:langstring>
+              </imsmd:version>
+              <imsmd:contribute>
+                <imsmd:role>
+                  <imsmd:source>
+                    <imsmd:langstring xml:lang="en">LOMv1.0</imsmd:langstring>
+                  </imsmd:source>
+                  <imsmd:value>
+                    <imsmd:langstring xml:lang="en">Author</imsmd:langstring>
+                  </imsmd:value>
+                </imsmd:role>
+                <imsmd:centity>
+                  <imsmd:vcard>begin:vcard
+fn:Accordia
+end:vcard</imsmd:vcard>
+                </imsmd:centity>
+              </imsmd:contribute>
+            </imsmd:lifecycle>
+            <imsmd:educational>
+              <imsmd:typicallearningtime>
+                <imsmd:datetime>00:XX:00</imsmd:datetime>
+              </imsmd:typicallearningtime>
+            </imsmd:educational>
+          </imsmd:lom>
+        </metadata>
+      </item>
+      <metadata>
+        <imsmd:lom xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1">
+          <imsmd:general>
+            <imsmd:description>
+              <imsmd:langstring xml:lang="en">XXXXXXXXXXXXXXXXX</imsmd:langstring>
+            </imsmd:description>
+          </imsmd:general>
+          <imsmd:lifecycle>
+            <imsmd:version>
+              <imsmd:langstring xml:lang="en">1.25nxs</imsmd:langstring>
+            </imsmd:version>
+            <imsmd:contribute>
+              <imsmd:role>
+                <imsmd:source>
+                  <imsmd:langstring xml:lang="en">LOMv1.0</imsmd:langstring>
+                </imsmd:source>
+                <imsmd:value>
+                  <imsmd:langstring xml:lang="en">Author</imsmd:langstring>
+                </imsmd:value>
+              </imsmd:role>
+              <imsmd:centity>
+                <imsmd:vcard>begin:vcard
+fn:Accordia
+end:vcard</imsmd:vcard>
+              </imsmd:centity>
+            </imsmd:contribute>
+          </imsmd:lifecycle>
+          <imsmd:educational>
+            <imsmd:typicallearningtime>
+              <imsmd:datetime>00:XX:00</imsmd:datetime>
+            </imsmd:typicallearningtime>
+          </imsmd:educational>
+        </imsmd:lom>
+      </metadata>
+      <imsss:sequencing>
+        <imsss:controlMode flow="true" />
+      </imsss:sequencing>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-47CCE31C08B17CF9E776CF56B7E0C3D1" adlcp:scormType="sco" type="webcontent" href="index.html">
+      <file href="index.html" />
+    </resource>
+  </resources>
+</manifest>
+

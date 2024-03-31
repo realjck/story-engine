@@ -25769,7 +25769,7 @@ define(['engine/Player',
 											
 											WaitNextTick.init(function() {
 												$("#video").css('display', 'inline');
-												
+												$("#video").css('opacity', '1');
 												// Player.getMediaInstance().setPoster("assets/images/videoposter.png"); // ** option **
 												Player.getMediaInstance().setSrc("assets/videos/"+deroule.substr(deroule.indexOf("_")+1)+".mp4");
 												Player.getMediaInstance().play();

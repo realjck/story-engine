@@ -1,7 +1,5 @@
 # story-engine-animate-js
 
-v4.3
-
 # About
 
 ## Toolbox and Ready-to-Use Template for Stories* in JavaScript with Adobe Animate

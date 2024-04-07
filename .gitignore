@@ -2,8 +2,9 @@
 .idea
 *.iml
 
-# dev's todo
+# dev's
 TODO.md
+HELP.md
 
 # dojo build assembly
 app_build

@@ -43,7 +43,7 @@ __gtexts.fr = {
 	"sr_results5"	: "Cliquez pour valider le module",
 	"sr_choice"		: "Cliquez pour valider votre choix",
 	"aide"			: "Comment utiliser l'interface ?",
-	"aide_voix_01"	: "Bonjour, vous allez suivre une formation e-learning. Avant de commencer, je vous propose de découvrir comment utiliser l'interface.",
+	"aide_voix_01"	: "Bonjour, avant de commencer, je vous propose de découvrir comment utiliser l'interface.",
 	"aide_voix_02"	: "Pour démarrer, cliquez sur le bouton \"Chapitre suivant\".",
 	"quizfin_start"	: "Vous devez obtenir XXX% de bonnes réponses pour valider vos connaissances.",
 	"quizfin_cert1"	: "Renseignements pour l'attestation de formation",

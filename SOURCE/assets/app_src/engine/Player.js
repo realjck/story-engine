@@ -4,9 +4,8 @@
 	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
  */
 
-//E-LEARNING PLAYER ENGINE ACCORDIA
-// v4.2
-//author: JCK
+// STORY PLAYER ENGINE v4
+// author: JCK
 define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/Voice', 'util/CanvasTransition', 'util/ModalDialog', 'dojox/timing', 'dojo/dom', 'dojo/_base/fx', 'dojo/on', 'dojo/dom-style', 'dojox/timing', 'animator/RemoveEvents', 'util/UniqueTimer', 'util/Sequencer', 'util/UniqueTimerForVoice', 'animator/TimerClip', 'animator/ResponsiveStage', 'animator/Button', 'animator/SoundJS', 'animator/VerticalTextCenterer', 'animator/MaskObjects', 'animator/Mascotte', 'animator/SceneManager', 'engine/ChapitrePlayer', 'engine/SlideIntro', 'util/LinesBreaker', 'pdf/pdf_report', 'util/SoundJS_NoQueue', 'animator/Voice', 'animator/WaitClipEnd', 'exports', 'dojo/domReady!'], function(ResponsiveScale, JsonHandler, Tween, Voice, CanvasTransition, ModalDialog, timing,dom, fx, on, style, timing, RemoveEvents, UniqueTimer, Sequencer, UniqueTimerForVoice, TimerClip, ResponsiveStage, Button, SoundJS, VerticalTextCenterer, MaskObjects, Mascotte, SceneManager, ChapitrePlayer, SlideIntro, LinesBreaker, pdf_report, SoundJS_NoQueue, Voice, WaitClipEnd, exports) {
 
 	var _slides = [];
@@ -505,19 +504,19 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 			if (__nofs){
 				s.aide.textes.part3.visible = false;
 				s.nav.bt_fullscreen.visible = false;
-				s.nav.infobulle_fullscreen.visible = false;
+				s.navinfo.infobulle_fullscreen.visible = false;
 				
-				s.nav.infobulle_next.gotoAndStop("nofs");
+				s.navinfo.infobulle_next.gotoAndStop("nofs");
 				
 				var decalage = 114;
 				
 				s.aide.textes.part2.x += decalage;
 				s.nav.bt_pause.x += decalage;
 				s.nav.bt_next.x += decalage;
-				s.nav.infobulle_pause.x += decalage;
-				s.nav.infobulle_next.x += decalage;
+				s.navinfo.infobulle_pause.x += decalage;
+				s.navinfo.infobulle_next.x += decalage;
 				s.nav.bt_restart.x += decalage;
-				s.nav.infobulle_restart.x += decalage;
+				s.navinfo.infobulle_restart.x += decalage;
 				
 			}
 			
@@ -557,6 +556,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
 			// interface responsive
 			ResponsiveStage.storeClip("nav", {horizontal:"fixed", vertical:"fixed"});
+			ResponsiveStage.storeClip("navinfo", {horizontal:"fixed", vertical:"fixed"});
 			ResponsiveStage.storeClip("aide", {horizontal:"fixed", vertical:"fixed"});
 			ResponsiveStage.storeClip("mc_subtitles", {horizontal:"center", vertical:"fixed"});
 			ResponsiveStage.storeClip("mc_pause", {maximize:"height", horizontal:"center"});
@@ -619,13 +619,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 					}
 				});
 			}
-			addInfobulle(s.nav.bt_home, s.nav.infobulle_home);
-			addInfobulle(s.nav.bt_subtitles, s.nav.infobulle_subtitles);
-			addInfobulle(s.nav.bt_pause, s.nav.infobulle_pause);
-			addInfobulle(s.nav.bt_next, s.nav.infobulle_next);
-			addInfobulle(s.nav.bt_fullscreen, s.nav.infobulle_fullscreen);
-			addInfobulle(s.nav.bt_menu_off, s.nav.infobulle_menu);
-			addInfobulle(s.nav.bt_restart, s.nav.infobulle_restart);
+			addInfobulle(s.nav.bt_home, s.navinfo.infobulle_home);
+			addInfobulle(s.nav.bt_subtitles, s.navinfo.infobulle_subtitles);
+			addInfobulle(s.nav.bt_pause, s.navinfo.infobulle_pause);
+			addInfobulle(s.nav.bt_next, s.navinfo.infobulle_next);
+			addInfobulle(s.nav.bt_fullscreen, s.navinfo.infobulle_fullscreen);
+			addInfobulle(s.nav.bt_menu_off, s.navinfo.infobulle_menu);
+			addInfobulle(s.nav.bt_restart, s.navinfo.infobulle_restart);
 			
 			// pause
 			s.mc_pause.visible = false;
@@ -1080,7 +1080,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 			Tween.abort();
 			
 			// mask infobulles
-			MaskObjects.init(s.nav, ["infobulle_home", "infobulle_subtitles", "infobulle_pause", "infobulle_next", "infobulle_fullscreen", "infobulle_menu"], {noInit:true});
+			MaskObjects.init(s.navinfo, ["infobulle_home", "infobulle_subtitles", "infobulle_pause", "infobulle_next", "infobulle_fullscreen", "infobulle_menu"], {noInit:true});
 			
 			// mask menu
 			s.nav.menu.visible = false;

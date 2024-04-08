@@ -156,7 +156,8 @@ define([
 					if (JsonHandler.getLine(json, line_counter).id == "consigne"){
 						// consigne auto ?
 						if (_consigneauto){
-							_screen.consigne.text = __gtexts[__lang].quiz_consigne_auto.replace("[num]", _question_counter).replace("[total]", _total_questions);
+							_screen.consigne.text = __gtexts[__lang].quiz_consigne_auto.replace("[num]", _question_counter).replace("[total]", _total_questions) + " ";
+							// test qcm/qcu below
 						} else {
 							_screen.consigne.text = JsonHandler.getLine(json, line_counter).value;
 						}
@@ -225,6 +226,14 @@ define([
 						}
 						feedback = JsonHandler.getLine(json, line_counter).value;
 						line_counter++;
+						
+						// finalize consigne
+						if (answer.length > 1 || forceMulti) {
+								_screen.consigne.text += __gtexts[__lang].quizfin_qcm;
+						} else {
+							_screen.consigne.text += __gtexts[__lang].quizfin_qcu;
+						}
+						
 						
 						// do the quiz
 						UniqueTimer.wait(200, function(){

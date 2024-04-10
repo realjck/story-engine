@@ -20331,12 +20331,13 @@ define([
 						line_counter++;
 						
 						// finalize consigne
-						if (answer.length > 1 || forceMulti) {
-								_screen.consigne.text += __gtexts[__lang].quizfin_qcm;
-						} else {
-							_screen.consigne.text += __gtexts[__lang].quizfin_qcu;
+						if (_consigneauto){
+							if (answer.length > 1 || forceMulti) {
+									_screen.consigne.text += __gtexts[__lang].quizfin_qcm;
+							} else {
+								_screen.consigne.text += __gtexts[__lang].quizfin_qcu;
+							}
 						}
-						
 						
 						// do the quiz
 						UniqueTimer.wait(200, function(){

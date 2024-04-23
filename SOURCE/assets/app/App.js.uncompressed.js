@@ -23467,6 +23467,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 			s.nav.bt_next.gotoAndStop("off");
 			_self.disableNav();
 			_self.checkUnlock();
+			
+			if ($("#video").css('display') != "none"){
+				if (_mediaElement_instance != undefined) {
+					_mediaElement_instance.pause();
+				}
+				$("#video").finish();
+			}
 
 			_self.goCurrentSlideNumber();
 		},

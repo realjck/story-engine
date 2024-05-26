@@ -407,7 +407,7 @@ define(['engine/Player',
 									simple_anim = anim;
 								} else {
 									// Perso animation
-									if (!Player.getStoryHasAnim) {
+									if (!Player.getStoryHasAnim()) {
 										// if no 'anim' column in story, then random anim :
 										var got_anim = 0;
 										if (s[screen]["scene"][persos[perso]] != undefined){
@@ -418,8 +418,12 @@ define(['engine/Player',
 												}
 											}
 										}
-										if ((Math.random() < 0.6) && (deroule.length > 30) && (!Player.isMobile()) && got_anim){
-											simple_anim = "anim"+Math.floor(Math.random() * got_anim + 1);
+										if ((Math.random() < 0.6) && (deroule.length > 30) && (!Player.isMobile()) && (got_anim > 0)){
+											if (got_anim == 1){
+												simple_anim = "anim";
+											} else {
+												simple_anim = "anim"+Math.floor(Math.random() * got_anim + 1);
+											}
 											is_previous_anim = true;
 										} else if (is_previous_anim){
 											is_previous_anim = false;
@@ -508,7 +512,7 @@ define(['engine/Player',
 										case "surmesure_" :
 											is_swaping = false;
 											var surMesureFile = deroule.substr(deroule.indexOf("_")+1);
-											loadJs("assets/app/"+surMesureFile+".js", function(){
+											loadJs(surMesureFile, function(){
 												eval(surMesureFile+"(activityCallback)");
 											});
 											break;
@@ -517,7 +521,7 @@ define(['engine/Player',
 											is_swaping = false;
 											s.visible = true;
 											var surMesureOnSceneFile = deroule.substr(deroule.indexOf("_")+1);
-											loadJs("assets/app/"+surMesureOnSceneFile+".js", function(){
+											loadJs(urMesureOnSceneFile, function(){
 												eval(surMesureOnSceneFile+"(activityCallback)");
 											});
 											break;
@@ -621,30 +625,30 @@ define(['engine/Player',
 
 				}
 				
-				function loadJs(url, callback) {
-					var head = document.getElementsByTagName('head')[0];
-					var el;
-
-					el = document.createElement('script');
-					el.type = 'text/javascript';
-					if (el.readyState) {
-						el.onreadystatechange = function () {
-							if (el.readyState == "loaded" ||
-								el.readyState == "complete") {
-								el.onreadystatechange = null;
-								callback();
-							}
-						};
+				function loadJs(file, callback) {
+					if (eval("typeof "+file) === "undefined") {
+						var head = document.getElementsByTagName('head')[0];
+						var el;
+						el = document.createElement('script');
+						el.type = 'text/javascript';
+						if (el.readyState) {
+							el.onreadystatechange = function () {
+								if (el.readyState == "loaded" ||
+									el.readyState == "complete") {
+									el.onreadystatechange = null;
+									callback();
+								}
+							};
+						} else {
+							el.onreadystatechange = callback;
+							el.onload = callback;
+						}
+						el.src = "assets/app/"+file+".js";
+						head.appendChild(el);
 					} else {
-						el.onreadystatechange = callback;
-						el.onload = callback;
+						callback();
 					}
-					el.src = url;
-
-					head.appendChild(el);
 				}
-				
-				
 			});
 		}
 	};

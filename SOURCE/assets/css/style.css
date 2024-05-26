@@ -1,7 +1,7 @@
 ﻿/*
-	Story-engine with Animate and Create.js
-	Copyright © 2024 devjck
-	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+  Story-engine with Animate and Create.js
+  Copyright © 2024 devjck
+  Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
  */
 
 /*
@@ -11,21 +11,21 @@ MAIN STYLE
   margin: 0;
 }
 body {
-	font-family: "Raleway";
-	position: static;
-	background-color : #202020;
-	color: #bdc3c7;
+  font-family: "Raleway";
+  position: static;
+  background-color : #202020;
+  color: #bdc3c7;
 }
 #animation_container{
-	top: 0px;
+  top: 0px;
 }
 canvas {
-	alpha: 0;
+  alpha: 0;
 }
 
 #launch_sr, #launch_classique {
-	margin-top: 0.5em;
-	margin-right: 0.5em;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
 }
 
 
@@ -33,22 +33,22 @@ canvas {
 SR SPECIFIC
 */
 #module_sr {
-	color: #ecf0f1;
+  color: #ecf0f1;
 }
 
 #module_sr #sr-title {
-	font-family: "Raleway ExtraBold";
-	letter-spacing: 0.15em;
-	background-color: #202020;
+  font-family: "Raleway ExtraBold";
+  letter-spacing: 0.15em;
+  background-color: #202020;
 }
 
 #module_sr .btn-primary, #module_sr .btn-primary:focus {
-	background-color: #202020;
-	border-color: #202020;
+  background-color: #202020;
+  border-color: #202020;
 }
 
 h2, h3, h4, h5, h6 {
-	font-family: "Raleway ExtraBold";
+  font-family: "Raleway ExtraBold";
 }
 
 em {
@@ -60,37 +60,37 @@ em {
 }
 
 #spacer {
-	height: 1em;
+  height: 1em;
 }
 
 #sr-quiz-question {
-	margin-bottom: 1.2em;
+  margin-bottom: 1.2em;
 }
 
 #sr-quiz {
-	margin-top: 1em;
-	font-size: 2em;
+  margin-top: 1em;
+  font-size: 2em;
 }
 
 #sr-text {
-	font-size: 2em;
+  font-size: 2em;
 }
 
 #sr-image, #sr-btnext, #sr-btprev, #sr-quiz, #sr-text {
-	display: none;
+  display: none;
 }
 
 label{
-	display: block;
+  display: block;
 }
 
 .btn{
-	max-width: 100%;
-	white-space: inherit;
+  max-width: 100%;
+  white-space: inherit;
 }
 
 .btn > img {
-	height: 2em;
+  height: 2em;
     margin-left: 1em;
 }
 
@@ -98,31 +98,31 @@ label{
 BOOTSTRAP OVERRIDES
 */
 .bootstrap-dialog.type-primary .modal-header {
-	background-color: #383838;
-	color: #ecf0f1;
+  background-color: #383838;
+  color: #ecf0f1;
 }
 
 .modal-footer {
-	text-align: right;
-	border-top: 0px;
-	margin-top: -20px;
-	margin-left: 25px;
+  text-align: right;
+  border-top: 0px;
+  margin-top: -20px;
+  margin-left: 25px;
 }
 
 .modal-content {
-	background-color: #fff;
-	color: #383838;
+  background-color: #fff;
+  color: #383838;
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary:active {
-	background-color: #383838;
-	border-color: #383838;
+  background-color: #383838;
+  border-color: #383838;
 }
 
 .btn:hover, .btn:active:focus, .btn-primary:hover, .btn-primary:active:focus {
-	background-color: #c0392b;
-	border-color: #c0392b;
-	color: #ecf0f1;
+  background-color: #c0392b;
+  border-color: #c0392b;
+  color: #ecf0f1;
 }
 
 .img-responsive {
@@ -130,71 +130,71 @@ BOOTSTRAP OVERRIDES
 }
 
 .jumbotron{
-	color: #383838;
-	margin-top: 2em;
+  color: #383838;
+  margin-top: 2em;
 }
 
 .jumbotron h2{
-	margin-top: -0.2em;
-	font-size: 40px;
+  margin-top: -0.2em;
+  font-size: 40px;
 }
 
 .jumbotron p, .jumbotron .btn{
-	font-family: "Raleway";
+  font-family: "Raleway";
 }
 /*Radio box*/
 
 label{
-	position: relative;
-	cursor: pointer;
-	font-weight: normal;
-	line-height: 1em;
-	margin-bottom: 0.5em;
+  position: relative;
+  cursor: pointer;
+  font-weight: normal;
+  line-height: 1em;
+  margin-bottom: 0.5em;
 }
 
 input[type="checkbox"], input[type="radio"]{
-	position: absolute;
-	right: 9000px;
-	margin-left: -20px;
+  position: absolute;
+  right: 9000px;
+  margin-left: -20px;
 }
 
 input[type="radio"] + .label-text:before{
-	content: "\f10c";
-	font-family: "FontAwesome";
-	speak: none;
-	line-height: 1.5;
-	-webkit-font-smoothing:antialiased;
-	width: 1em;
-	display: inline-block;
-	margin-right: 0.5em;
-	margin-left: -1.5em
+  content: "\f10c";
+  font-family: "FontAwesome";
+  speak: none;
+  line-height: 1.5;
+  -webkit-font-smoothing:antialiased;
+  width: 1em;
+  display: inline-block;
+  margin-right: 0.5em;
+  margin-left: -1.5em
 }
 
 #sr-quiz form {
-	margin-left: 1.5em;
-	margin-bottom: 1.5em;
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
 }
 
 input[type="radio"]:checked + .label-text:before{
-	content: "\f192";
-	color: #c0392b;
-	animation: effect 250ms ease-in;
+  content: "\f192";
+  color: #c0392b;
+  animation: effect 250ms ease-in;
 }
 
 input[type="radio"]:disabled + .label-text{
-	color: #aaa;
+  color: #aaa;
 }
 
 input[type="radio"]:disabled + .label-text:before{
-	content: "\f111";
-	color: #ccc;
+  content: "\f111";
+  color: #ccc;
 }
 
 @keyframes effect{
-	0%{transform: scale(0);}
-	25%{transform: scale(1.3);}
-	75%{transform: scale(1.4);}
-	100%{transform: scale(1);}
+  0%{transform: scale(0);}
+  25%{transform: scale(1.3);}
+  75%{transform: scale(1.4);}
+  100%{transform: scale(1);}
 }
 
 /* modal form */
@@ -204,15 +204,15 @@ input[type="radio"]:disabled + .label-text:before{
 }
 
 .in-modal{
-	width: auto;
+  width: auto;
 }
 
 .inputGroupContainer {
-	margin-right: -1.5em;
+  margin-right: -1.5em;
 }
 
 label {
-	margin-top: 0.7em;
+  margin-top: 0.7em;
     font-weight: 700;
 }
 
@@ -233,11 +233,11 @@ input.form-control {
 VIDEO OVERLAY
 */
 #video {
-	background-color: #FFF;
-	position: absolute;
-	width: 250px;
-	height: 250px;
-	display: none;
+  background-color: #FFF;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  display: none;
 }
 
 
@@ -252,11 +252,11 @@ LOADER
     font-size: 1.5em;
     width: 500px;
     margin-left: -175px;
-	color: #e0e0e0;
+  color: #e0e0e0;
 }
 
 /*
-	LANGS BUTTONS
+  LANGS BUTTONS
 */
 #select_lang{
     display: flex;
@@ -265,19 +265,19 @@ LOADER
     left: calc(50% - 12em);
 }
 .lang_button{
-	width: 8em;
-	height: 8em;
-	margin: 2em;
-	background-image: url("../images/langs/fr.png");
+  width: 8em;
+  height: 8em;
+  margin: 2em;
+  background-image: url("../images/langs/fr.png");
     background-size: 90%;
     background-repeat: no-repeat;
     background-position: center;
-	border-radius: 2em;
-	cursor: pointer;
-	border: 5px solid rgba(0,0,0,0);
+  border-radius: 2em;
+  cursor: pointer;
+  border: 5px solid rgba(0,0,0,0);
 }
 .lang_button:hover{
-	border: 5px solid white;
+  border: 5px solid white;
 }
 
 div#select_lang_text {
@@ -294,27 +294,27 @@ div#select_lang_text {
 FONTS
 */
 @font-face {
-	font-family: "Raleway";
-	src: url("../fonts/Raleway/Raleway-Regular.ttf") format("truetype");
-	font-style: normal;
+  font-family: "Raleway";
+  src: url("../fonts/Raleway/Raleway-Regular.ttf") format("truetype");
+  font-style: normal;
 }
 @font-face {
-	font-family: "Raleway";
-	src: url("../fonts/Raleway/Raleway-Italic.ttf") format("truetype");
-	font-style: italic;
+  font-family: "Raleway";
+  src: url("../fonts/Raleway/Raleway-Italic.ttf") format("truetype");
+  font-style: italic;
 }
 @font-face {
-	font-family: "Raleway ExtraBold";
-	src: url("../fonts/Raleway/Raleway-ExtraBold.ttf") format("truetype");
-	font-style: normal;
+  font-family: "Raleway ExtraBold";
+  src: url("../fonts/Raleway/Raleway-ExtraBold.ttf") format("truetype");
+  font-style: normal;
 }
 @font-face {
-	font-family: "Raleway ExtraBold";
-	src: url("../fonts/Raleway/Raleway-ExtraBoldItalic.ttf") format("truetype");
-	font-style: italic;
+  font-family: "Raleway ExtraBold";
+  src: url("../fonts/Raleway/Raleway-ExtraBoldItalic.ttf") format("truetype");
+  font-style: italic;
 }
 @font-face {
-	font-family: "Quicksand Medium";
-	src: url("../fonts/Quicksand/Quicksand-Medium.ttf") format("truetype");
-	font-style: normal;
+  font-family: "Quicksand Medium";
+  src: url("../fonts/Quicksand/Quicksand-Medium.ttf") format("truetype");
+  font-style: normal;
 }

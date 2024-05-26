@@ -1,7 +1,7 @@
 /*
-	Story-engine with Animate and Create.js
-	Copyright © 2024 devjck
-	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+  Story-engine with Animate and Create.js
+  Copyright © 2024 devjck
+  Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
  */
 
 /*
@@ -60,8 +60,8 @@ define(['engine/Player',
 
     return {
         init: function () {
-			
-			shortcut.remove("ctrl+alt+shift+right");
+      
+      shortcut.remove("ctrl+alt+shift+right");
 
             // init screen
             s.gotoAndStop(_screen);
@@ -69,33 +69,33 @@ define(['engine/Player',
             MaskObjects.init(s[_screen], ["part3", "part4"]);
             ResponsiveStage.storeClip(_screen, {horizontal:"fixed", vertical:"fixed"});
             
-			var has_perso = true;
-			
+      var has_perso = true;
+      
             part1();
             // part1
             function part1() {
-				
+        
                 s[_screen]["part1"].visible = true;
-				if (s[_screen]["part1"]["marcillac"] != undefined){
-					s[_screen]["part1"]["marcillac"].gotoAndStop(0);
-				} else {
-					has_perso = false;
-				}
-				
-				// animate texts localization:
+        if (s[_screen]["part1"]["marcillac"] != undefined){
+          s[_screen]["part1"]["marcillac"].gotoAndStop(0);
+        } else {
+          has_perso = false;
+        }
+        
+        // animate texts localization:
                 s[_screen]["part1"]["consigne"].text = __gtexts[__lang].quizfin_start.replace("XXX", JsonHandler.get("CONFIG", "succes"));
-				
-				s[_screen]["part3"].champ_yourscore.text = __gtexts[__lang].animate_quizfinal_yourscore;
-				s[_screen]["part3"]["feedbackright"].champ.text = __gtexts[__lang].animate_quizfinal_succes;
-				s[_screen]["part3"]["reponses"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_answers;
-				s[_screen]["part3"]["livret"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_memo;
-				s[_screen]["part3"]["attestation"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_attestation;
-				s[_screen]["part3"]["valider"].consigne.text = __gtexts[__lang].animate_quizfinal_submit;
-				
-				s[_screen]["part4"].champ_yourscore.text = __gtexts[__lang].animate_quizfinal_yourscore;
-				s[_screen]["part4"]["feedbackwrong"].champ.text = __gtexts[__lang].animate_quizfinal_fail;
-				s[_screen]["part4"]["telecharger"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_answers;
-				s[_screen]["part4"]["retenter"].consigne.text = __gtexts[__lang].animate_quizfinal_retry;
+        
+        s[_screen]["part3"].champ_yourscore.text = __gtexts[__lang].animate_quizfinal_yourscore;
+        s[_screen]["part3"]["feedbackright"].champ.text = __gtexts[__lang].animate_quizfinal_succes;
+        s[_screen]["part3"]["reponses"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_answers;
+        s[_screen]["part3"]["livret"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_memo;
+        s[_screen]["part3"]["attestation"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_attestation;
+        s[_screen]["part3"]["valider"].consigne.text = __gtexts[__lang].animate_quizfinal_submit;
+        
+        s[_screen]["part4"].champ_yourscore.text = __gtexts[__lang].animate_quizfinal_yourscore;
+        s[_screen]["part4"]["feedbackwrong"].champ.text = __gtexts[__lang].animate_quizfinal_fail;
+        s[_screen]["part4"]["telecharger"].consigne.text = __gtexts[__lang].animate_quizfinal_dl_answers;
+        s[_screen]["part4"]["retenter"].consigne.text = __gtexts[__lang].animate_quizfinal_retry;
 
                 Tween.init(s[_screen]["part1"]["bt_continue"], {pop:true});
                 
@@ -113,11 +113,11 @@ define(['engine/Player',
                     }
                     
                     Button.enableZoom(s[_screen]["part1"]["bt_continue"], function(){
-						if (has_perso){
-							QuizBuilder.init(s, "QUIZ_FINAL", {prologue:true, perso:perso, consigneauto:true}, end);
-						} else {
-							QuizBuilder.init(s, "QUIZ_FINAL", {prologue:true, consigneauto:true}, end);
-						}
+            if (has_perso){
+              QuizBuilder.init(s, "QUIZ_FINAL", {prologue:true, perso:perso, consigneauto:true}, end);
+            } else {
+              QuizBuilder.init(s, "QUIZ_FINAL", {prologue:true, consigneauto:true}, end);
+            }
                     });
                     
                 }
@@ -155,9 +155,9 @@ define(['engine/Player',
                             });
                         }
                         });
-						
-						Player.scormRecordScore();
-						
+            
+            Player.scormRecordScore();
+            
                     }
                 }
                 
@@ -166,18 +166,18 @@ define(['engine/Player',
                     MaskObjects.init(s[_screen]["part3"], ["feedbackright", "reponses", "attestation", "livret", "valider"]);
                     TweenValue.init(s[_screen]["part3"]["score"], 0, _score, 20, {callback:next, append_string:"%"});
                     function next(){
-						if (has_perso){
-							Mascotte.play(s[_screen]["part3"]["marcillac"], JsonHandler.getLine("STORY", ChapitrePlayer.getIndex()+1).son, {text:JsonHandler.getLine("STORY", ChapitrePlayer.getIndex()+1).deroule, start:"pose", end:"unpose"},
-								function(){
-									SoundJS.init("assets/sounds/fx/applause.mp3");
-								}
-							);
-						} else {
-							SoundJS.init("assets/sounds/fx/applause.mp3");
-						}
-						
-						var height_pointer = 550;
-						
+            if (has_perso){
+              Mascotte.play(s[_screen]["part3"]["marcillac"], JsonHandler.getLine("STORY", ChapitrePlayer.getIndex()+1).son, {text:JsonHandler.getLine("STORY", ChapitrePlayer.getIndex()+1).deroule, start:"pose", end:"unpose"},
+                function(){
+                  SoundJS.init("assets/sounds/fx/applause.mp3");
+                }
+              );
+            } else {
+              SoundJS.init("assets/sounds/fx/applause.mp3");
+            }
+            
+            var height_pointer = 550;
+            
                         Sequencer.launch([
                             function(next) {
                                 Tween.init(s[_screen]["part3"]["feedbackright"], {callback:next});
@@ -188,8 +188,8 @@ define(['engine/Player',
                             // },
                             function(next) {
                                 if (JsonHandler.get("CONFIG", "attestation") == "yes"){
-									
-									s[_screen]["part3"]["attestation"].y = height_pointer;
+                  
+                  s[_screen]["part3"]["attestation"].y = height_pointer;
                                     Tween.init(s[_screen]["part3"]["attestation"], {callback:next, noInit:true});
                                     Button.enableZoom(s[_screen]["part3"]["attestation"]["bt"],
                                         function(){
@@ -206,9 +206,9 @@ define(['engine/Player',
                                             }
                                         }
                                     , null, null, {noDisable:true});
-									
-									height_pointer += 170;
-									
+                  
+                  height_pointer += 170;
+                  
                                 } else {
                                     next();
                                 }
@@ -216,8 +216,8 @@ define(['engine/Player',
                             function(next) {
 
                                 if (JsonHandler.get("CONFIG", "synthese") != undefined){
-									
-									s[_screen]["part3"]["livret"].y = height_pointer;
+                  
+                  s[_screen]["part3"]["livret"].y = height_pointer;
 
                                     Tween.init(s[_screen]["part3"]["livret"], {callback:next, noInit:true});
                                     
@@ -225,8 +225,8 @@ define(['engine/Player',
                                         var fileurl = "assets/pdf/"+JsonHandler.get("CONFIG", "synthese");
                                         download(fileurl);
                                     }, null, null, {noDisable:true});
-									
-									height_pointer += 170;
+                  
+                  height_pointer += 170;
                                     
                                 } else {
                                     next();
@@ -236,23 +236,23 @@ define(['engine/Player',
                             function(next) {
                                 Player.unlockCurrent();
                                 if (Player.isScorm()){
-									
-									if (JsonHandler.get("CONFIG", "bouton_validation_module").trim().toLowerCase() == "yes") {
-									
-										s[_screen]["part3"]["valider"].y = height_pointer;
-										Tween.init(s[_screen]["part3"]["valider"], {noInit:true});
-										Button.enableZoom(s[_screen]["part3"]["valider"]["bt"], finishAndClose);
-										
-									} else {
-										Player.scormFinish();
-									}
-									
-									function finishAndClose(){
-										Player.scormFinish();
-										ModalDialog.alert(__gtexts[__lang].quizfin_close);
-									}
-									
-									
+                  
+                  if (JsonHandler.get("CONFIG", "bouton_validation_module").trim().toLowerCase() == "yes") {
+                  
+                    s[_screen]["part3"]["valider"].y = height_pointer;
+                    Tween.init(s[_screen]["part3"]["valider"], {noInit:true});
+                    Button.enableZoom(s[_screen]["part3"]["valider"]["bt"], finishAndClose);
+                    
+                  } else {
+                    Player.scormFinish();
+                  }
+                  
+                  function finishAndClose(){
+                    Player.scormFinish();
+                    ModalDialog.alert(__gtexts[__lang].quizfin_close);
+                  }
+                  
+                  
                                 }
                             }
                         ]);

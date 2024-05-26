@@ -1,7 +1,7 @@
 /*
-	Story-engine with Animate and Create.js
-	Copyright © 2024 devjck
-	Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
+  Story-engine with Animate and Create.js
+  Copyright © 2024 devjck
+  Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
  */
 
 /*
@@ -16,24 +16,24 @@ author: JCK
 
 define(['animator/MaskObjects', 'animator/Tween', 'util/UniqueTimer'], function(MaskObjects, Tween, UniqueTimer) {
 
-	var _delta = 250;
+  var _delta = 250;
 
-	return {
-		init: function (stage, instanceAr, callback) {
+  return {
+    init: function (stage, instanceAr, callback) {
 
-			MaskObjects.init(stage, instanceAr);
+      MaskObjects.init(stage, instanceAr);
 
-			i = 0;
-			UniqueTimer.init(function(){
-				Tween.init(stage[instanceAr[i]], {duration:500});
-				i++;
-				if(i == instanceAr.length) {
-					UniqueTimer.stop();
-					if (callback != undefined) {
-						callback();
-					}
-				}
-			}, _delta);
-		}
-	};
+      i = 0;
+      UniqueTimer.init(function(){
+        Tween.init(stage[instanceAr[i]], {duration:500});
+        i++;
+        if(i == instanceAr.length) {
+          UniqueTimer.stop();
+          if (callback != undefined) {
+            callback();
+          }
+        }
+      }, _delta);
+    }
+  };
 });

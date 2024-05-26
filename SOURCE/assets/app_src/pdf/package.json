@@ -1,6 +1,6 @@
 {
-	"name": "pdf",
-	"description": "pdf",
-	"version": "1.0.0",
-	"dojoBuild": "package.js"
+  "name": "pdf",
+  "description": "pdf",
+  "version": "1.0.0",
+  "dojoBuild": "package.js"
 }

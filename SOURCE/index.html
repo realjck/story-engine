@@ -6,145 +6,145 @@ Copyright © 2024 devjck
 Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations, consultez le fichier COPYING à la racine de ce projet.
 -->
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no">
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/libs/mediaelement/mediaelementplayer.css" />
-	<link rel="stylesheet" type="text/css" href="assets/libs/fontawesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
-	<style>
-	
-		#loader {
-			position: absolute;
-			width: 150px;
-			left: calc(50vw - 75px);
-			top: calc(50vh - 75px);
-		}
-	
-		@keyframes spin {
-		  to {
-			transform: rotate(360deg);
-		  }
-		}
-		
-		@keyframes spin2 {
-		  0% {
-			stroke-dasharray: 1, 800;
-			stroke-dashoffset: 0;
-		  }
-		  50% {
-			stroke-dasharray: 400, 400;
-			stroke-dashoffset: -200px;
-		  }
-		  100% {
-			stroke-dasharray: 800, 1;
-			stroke-dashoffset: -800px;
-		  }
-		}
-		
-		.spin2 {
-		  transform-origin: center;
-		  animation: spin2 1.5s ease-in-out infinite,
-			spin 2s linear infinite;
-		  animation-direction: alternate;
-		}
-	</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/libs/mediaelement/mediaelementplayer.css" />
+  <link rel="stylesheet" type="text/css" href="assets/libs/fontawesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+  <style>
+  
+    #loader {
+      position: absolute;
+      width: 150px;
+      left: calc(50vw - 75px);
+      top: calc(50vh - 75px);
+    }
+  
+    @keyframes spin {
+      to {
+      transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes spin2 {
+      0% {
+      stroke-dasharray: 1, 800;
+      stroke-dashoffset: 0;
+      }
+      50% {
+      stroke-dasharray: 400, 400;
+      stroke-dashoffset: -200px;
+      }
+      100% {
+      stroke-dasharray: 800, 1;
+      stroke-dashoffset: -800px;
+      }
+    }
+    
+    .spin2 {
+      transform-origin: center;
+      animation: spin2 1.5s ease-in-out infinite,
+      spin 2s linear infinite;
+      animation-direction: alternate;
+    }
+  </style>
 </head>
 <body>
-	<div id="loader">
-		<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-			<circle class="spin2" cx="400" cy="400" fill="none"
-			r="247" stroke-width="55" stroke="#e0e0e0"
-			stroke-dasharray="933 1400"
-			stroke-linecap="round" />
-		</svg>
-		<div id="loader_text"></div>
-	</div>
-	<!-- LANDING PAGE -->
-	<div id="landing_page" class="container-fluid" style="display: none;">
-		<div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
-			<div class="row">
-				<div class="jumbotron">
-					<p id="launch1" tabindex="0"></p>
-					<h1 id="titre" tabindex="0"></h1>
-					<p id="launch2" tabindex="0"></p>
-					<p id="launch3" tabindex="0"></p>
-					<div class="btn btn-primary btn-lg" id="launch_sr" role="button" tabindex="0"><span></span><img src="assets/images/access_sr_icon.png"></div>
-					<div class="btn btn-primary btn-lg" id="launch_classique" role="button" tabindex="0"><span></span><img src="assets/images/access_classic_icon.png"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div id="select_lang" class="container_fluid" style="display:none">
-		<div id="select_lang_text">
-			<p>Ce programme e-Learning vous est proposé en deux versions&nbsp;:</p>
-			<ul>
-				<li>Version française (Voix française et texte et sous titre français)</li>
-				<li>Version originale sous titré anglais (voix française mais texte et sous titre en anglais)</li>
-			</ul>
-			<br>
-			<p>This e-Learning program is offered in two versions:</p>
-			<ul>
-				<li>French version (French voice and French text and subtitle)</li>
-				<li>Original version with English subtitles (French voice but text and subtitle in English)</li>
-			</ul>
-		</div>
-	</div>
-	<!-- MODULE CLASSIQUE -->
-	<div id="module_classique" style="display: none;">
-		<div id="animation_container" style="display: none;">
-			<canvas id="canvas"></canvas>
-			<div id="dom_overlay_container">
-			</div>
-		</div>
-	<div id="video">
-		<video id="videoplayer" playsinline webkit-playsinline autoplay></video>
-	</div>
-	</div>
-	<!-- MODULE SR -->
-	<div id="module_sr" class="container-fluid" style="display: none;">
-		<div id="focusguard-1" tabindex="0"></div>
-		<div id="sr-title" tabindex="0" class="row">
-			<div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-				<h1></h1>
-			</div>
-		</div>
-		<div id="sr-image" class="row">
-			<div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-				<img class="img-responsive">
-			</div>
-		</div>
-		<div id="spacer" class="row"></div>
-		<div class="row">
-			<div id="sr-quiz" class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-				<p id="sr-quiz-question" tabindex="0"></p>
-				<form>
-					<label id="radio1" tabindex="0">
-						<input type="radio" name="radio"><span class="label-text"></span></input>
-					</label>
-					<label id="radio2" tabindex="0">
-						<input type="radio" name="radio"><span class="label-text"></span></input>
-					</label>
-					<label id="radio3" tabindex="0">
-						<input type="radio" name="radio"><span class="label-text"></span></input>
-					</label>
-				</form>
-			</div>
-			<div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-				<p id="sr-text" tabindex="0" aria-live="assertive"></p>
-			</div>
-			<div class="col-xs-6 text-right">
-				<button id="sr-btprev" class="btn btn-primary btn-lg" tabindex="0"></button>
-			</div>
-			<div id="focusguard-next" tabindex="0" aria-hidden="true"></div>
-			<div class="col-xs-6 text-left">
-				<button id="sr-btnext" class="btn btn-primary btn-lg" tabindex="0"></button>
-			</div>
-		</div>
-		<div id="focusguard-2" tabindex="0"></div>
-	</div>
+  <div id="loader">
+    <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+      <circle class="spin2" cx="400" cy="400" fill="none"
+      r="247" stroke-width="55" stroke="#e0e0e0"
+      stroke-dasharray="933 1400"
+      stroke-linecap="round" />
+    </svg>
+    <div id="loader_text"></div>
+  </div>
+  <!-- LANDING PAGE -->
+  <div id="landing_page" class="container-fluid" style="display: none;">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
+      <div class="row">
+        <div class="jumbotron">
+          <p id="launch1" tabindex="0"></p>
+          <h1 id="titre" tabindex="0"></h1>
+          <p id="launch2" tabindex="0"></p>
+          <p id="launch3" tabindex="0"></p>
+          <div class="btn btn-primary btn-lg" id="launch_sr" role="button" tabindex="0"><span></span><img src="assets/images/access_sr_icon.png"></div>
+          <div class="btn btn-primary btn-lg" id="launch_classique" role="button" tabindex="0"><span></span><img src="assets/images/access_classic_icon.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="select_lang" class="container_fluid" style="display:none">
+    <div id="select_lang_text">
+      <p>Ce programme e-Learning vous est proposé en deux versions&nbsp;:</p>
+      <ul>
+        <li>Version française (Voix française et texte et sous titre français)</li>
+        <li>Version originale sous titré anglais (voix française mais texte et sous titre en anglais)</li>
+      </ul>
+      <br>
+      <p>This e-Learning program is offered in two versions:</p>
+      <ul>
+        <li>French version (French voice and French text and subtitle)</li>
+        <li>Original version with English subtitles (French voice but text and subtitle in English)</li>
+      </ul>
+    </div>
+  </div>
+  <!-- MODULE CLASSIQUE -->
+  <div id="module_classique" style="display: none;">
+    <div id="animation_container" style="display: none;">
+      <canvas id="canvas"></canvas>
+      <div id="dom_overlay_container">
+      </div>
+    </div>
+  <div id="video">
+    <video id="videoplayer" playsinline webkit-playsinline autoplay></video>
+  </div>
+  </div>
+  <!-- MODULE SR -->
+  <div id="module_sr" class="container-fluid" style="display: none;">
+    <div id="focusguard-1" tabindex="0"></div>
+    <div id="sr-title" tabindex="0" class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+        <h1></h1>
+      </div>
+    </div>
+    <div id="sr-image" class="row">
+      <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+        <img class="img-responsive">
+      </div>
+    </div>
+    <div id="spacer" class="row"></div>
+    <div class="row">
+      <div id="sr-quiz" class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+        <p id="sr-quiz-question" tabindex="0"></p>
+        <form>
+          <label id="radio1" tabindex="0">
+            <input type="radio" name="radio"><span class="label-text"></span></input>
+          </label>
+          <label id="radio2" tabindex="0">
+            <input type="radio" name="radio"><span class="label-text"></span></input>
+          </label>
+          <label id="radio3" tabindex="0">
+            <input type="radio" name="radio"><span class="label-text"></span></input>
+          </label>
+        </form>
+      </div>
+      <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+        <p id="sr-text" tabindex="0" aria-live="assertive"></p>
+      </div>
+      <div class="col-xs-6 text-right">
+        <button id="sr-btprev" class="btn btn-primary btn-lg" tabindex="0"></button>
+      </div>
+      <div id="focusguard-next" tabindex="0" aria-hidden="true"></div>
+      <div class="col-xs-6 text-left">
+        <button id="sr-btnext" class="btn btn-primary btn-lg" tabindex="0"></button>
+      </div>
+    </div>
+    <div id="focusguard-2" tabindex="0"></div>
+  </div>
 </body>
 <script src="assets/data/player_texts.js"></script>
 <script src="assets/data/ExcelName.js"></script>
@@ -171,7 +171,7 @@ Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations,
 <script>
     PleaseRotateOptions = {
         message: "Veuillez tourner votre appareil // Please rotate your device",
-		subMessage: ""
+    subMessage: ""
     };
 </script>
 <script src="assets/libs/pleaserotate/pleaserotate.min.js"></script>

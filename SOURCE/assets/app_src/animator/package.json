@@ -1,6 +1,6 @@
 {
-	"name": "animator",
-	"description": "Adobe Animate Modules by JCK",
-	"version": "1.0.0",
-	"dojoBuild": "package.js"
+  "name": "animator",
+  "description": "Adobe Animate Modules by JCK",
+  "version": "1.0.0",
+  "dojoBuild": "package.js"
 }

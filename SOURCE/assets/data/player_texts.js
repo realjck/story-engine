@@ -47,7 +47,7 @@ __gtexts.fr = {
   "aide_voix_02"  : "Pour démarrer, cliquez sur le bouton \"Chapitre suivant\".",
   "quizfin_start" : "Vous devez obtenir XXX% de bonnes réponses pour valider vos connaissances.",
   "quizfin_qcm" : "(plusieurs réponses possibles)",
-  "quizfin_qcu" : "(une seule réponse possible)",
+  "quizfin_qcu" : "",
   "quizfin_cert1" : "Renseignements pour l'attestation de formation",
   "quizfin_cert2" : "Veuillez entrer les informations suivantes afin de générer votre attestation de formation.",
   "quizfin_cert3" : "Nom",

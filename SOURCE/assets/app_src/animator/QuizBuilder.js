@@ -75,6 +75,8 @@ define([
       
       var _consigneauto = OptionGetter.get(options, "consigneauto", false);
       
+      var _no_feedback = OptionGetter.get(options, "no_feedback", false);
+      
       var _question_counter = 0;
       var _correct_answers = 0;
       
@@ -250,16 +252,24 @@ define([
               if (_perso){
                 Voice.stopTalk();
               }
-              SoundJS.init("assets/sounds/fx/right.mp3");
-              win = true;
               _correct_answers ++;
-              goFeedback();
+              
+              if (_no_feedback) {
+                goNext();
+              } else {
+                SoundJS.init("assets/sounds/fx/right.mp3");
+                win = true;
+                goFeedback();
+              }
             }
             
             function wrong(){
-
-              SoundJS.init("assets/sounds/fx/wrong.mp3");
-              goFeedback();
+              if (_no_feedback) {
+                goNext();
+              } else {
+                SoundJS.init("assets/sounds/fx/wrong.mp3");
+                goFeedback();
+              }
             }
             
             function goFeedback(){

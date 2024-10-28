@@ -158,6 +158,7 @@ function launch(){
           launchModule();
         });
       }
+      $("#loader").hide();
       $("#select_lang").fadeIn(1000);
     } else {
       launchModule();
@@ -170,6 +171,7 @@ function launch(){
 var __imagesLoaded;
 
 function launchModule(){
+  $("#loader").show();
   $("#landing_page").hide();
   $("#module_classique").show();
   $("body").css("overflow", "hidden");

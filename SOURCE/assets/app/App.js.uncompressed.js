@@ -25829,7 +25829,7 @@ define(['engine/Player',
                       is_swaping = false;
                       s.visible = true;
                       var surMesureOnSceneFile = deroule.substr(deroule.indexOf("_")+1);
-                      loadJs(urMesureOnSceneFile, function(){
+                      loadJs(surMesureOnSceneFile, function(){
                         eval(surMesureOnSceneFile+"(activityCallback)");
                       });
                       break;

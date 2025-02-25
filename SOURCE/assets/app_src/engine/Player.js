@@ -1510,6 +1510,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           pipwerks.SCORM.set("cmi.completion_status", "completed");
           // pipwerks.SCORM.set("cmi.exit", "normal");
         }
+        if (__scorm == "2004") {
+          pipwerks.SCORM.set("adl.nav.request", "exitAll");
+        }
         pipwerks.SCORM.save();
         pipwerks.SCORM.quit();
         _isScorm = false;

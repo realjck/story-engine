@@ -22915,22 +22915,27 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
       }
       function launchBookmark() {
-        if (isValid(suspend)) {
-          loadSuspendData(suspend);
-          if (JsonHandler.get("CONFIG", "reprise_automatique").trim().toLowerCase() != "yes"){
-            ModalDialog.ask(__gtexts[__lang].sr_reprise2, __gtexts[__lang].non, __gtexts[__lang].oui, function(){
-              _self.initSuspend();
-              _self.launch();
-            },
-            function() {
-              _self.launch();
-            });
-          } else {
-            console.log("- autoload bookmark -");
-          }
+        if (_isScorm && pipwerks.SCORM.get("cmi.completion_status") == "completed") {
+          _self.setSuspend("aide_vue", "1");
+          _self.launch(true);
         } else {
-          _self.launch();
-        }       
+          if (isValid(suspend)) {
+            loadSuspendData(suspend);
+            if (JsonHandler.get("CONFIG", "reprise_automatique").trim().toLowerCase() != "yes"){
+              ModalDialog.ask(__gtexts[__lang].sr_reprise2, __gtexts[__lang].non, __gtexts[__lang].oui, function(){
+                _self.initSuspend();
+                _self.launch();
+              },
+              function() {
+                _self.launch();
+              });
+            } else {
+              console.log("- autoload bookmark -");
+            }
+          } else {
+            _self.launch();
+          }
+        }          
       }
       if (__gm == "lms") {
         //SCORM
@@ -22972,7 +22977,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       }
     },
 
-    launch: function() {
+    launch: function(unlock) {
       
       // get learner name asap
       _self.getLearnerName();
@@ -23262,7 +23267,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           ModalDialog.alert("Navigation déverrouillée");
         }
       }
-      if (JsonHandler.get("CONFIG", "unlock") == "yes"){
+      if ((JsonHandler.get("CONFIG", "unlock") == "yes") || unlock) {
         _isUnlocked = true;
         _self.activeBtNext();
         _self.checkUnlock();

@@ -155,14 +155,47 @@ function launch(){
           
           __ExcelName = __ExcelName.substr(0,__ExcelName.length-4) + "-" + l + ".xls";
           $("#select_lang").hide();
-          launchModule();
+          checkSR();
         });
       }
       $("#loader").hide();
       $("#select_lang").fadeIn(1000);
     } else {
-      launchModule();
+      checkSR();
     }
+  } else {
+    checkSR();
+  }
+}
+
+function checkSR() {
+  if (__srVersion) {
+    // show SR texts
+    $("#titre").text(__gtexts[__lang].titre);
+    $("#launch1").text(__gtexts[__lang].launch1);
+    $("#launch2").text(__gtexts[__lang].launch2);
+    $("#launch3").text(__gtexts[__lang].launch3);
+    $("#launch_sr > span").text(__gtexts[__lang].launch_bt1);
+    $("#launch_classique > span").text(__gtexts[__lang].launch_bt2);
+
+    $("#loader").hide();
+    $("#landing_page").fadeIn(1000);
+    
+
+    $("#launch_sr").on("click", function(e){
+      $("#landing_page").hide();
+      $("#module_sr").show();
+      require(['engine/Player'], function (Player) {
+        Player.initSr();
+      });
+    });
+
+    $("#launch_classique").on("click", function(e){
+      $("#landing_page").hide();
+      $("#loader").show();
+      launchModule();
+    });
+
   } else {
     launchModule();
   }

@@ -12,3 +12,6 @@ var __nofs = false;//<-- SET TRUE TO HIDE/DISABLE FULLSCREEN BUTTON (needed when
 ////////////////////////////
 var __disableAjax = false;//<-- SET TRUE TO DISABLE AJAX CALLS AND FORCE SCORM (in this case, specify SCORM version in launcher.js)
 ////////////////////////////
+var __srVersion = "sample_sr.xls";//<-- FILENAME FOR SCREEN-READER VERSION (or FALSE to disable choice at launch)
+var __srVersionSuccess = 80;//<-- Completion score for screen reader version
+////////////////////////////

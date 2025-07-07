@@ -157,25 +157,6 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
 
   return {
-    //SR VERSION:
-    initSr: function () {
-      
-      if (location.search.split('e=')[1] != undefined){
-        _counter = Number(location.search.split('e=')[1]);
-      }
-      
-      //JsonHandler.load("assets/app/config.json", "config", loadStoryboard); todo
-      
-      $('#focusguard-2').on('focus', function () {
-        $('#sr-title').focus();
-      });
-      $('#focusguard-1').on('focus', function () {
-        $('#sr-btnext').focus();
-      });
-      $("#focusguard-next").focusout(function(){
-        $("#focusguard-next").hide();
-      });
-    },
       
     init: function () {
       _self = this;
@@ -231,9 +212,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
                 var sheets = workbook.SheetNames;
                 var result = {};
                 
-                $("#sheet-list").empty();
                 for (var i=0; i<sheets.length; i++){
-                  $("#sheet-list").append("<li>"+sheets[i]+"</li>");
                   result[sheets[i]] = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[i]]);
                 }
                 
@@ -1533,8 +1512,27 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
       }
       return _isIe;
+    },
+
+    //SR VERSION:
+    initSr: function () {
+      
+      if (location.search.split('e=')[1] != undefined){
+        _counter = Number(location.search.split('e=')[1]);
+      }
+      
+      loadStoryboard();
+      
+      $('#focusguard-2').on('focus', function () {
+        $('#sr-title').focus();
+      });
+      $('#focusguard-1').on('focus', function () {
+        $('#sr-btnext').focus();
+      });
+      $("#focusguard-next").focusout(function(){
+        $("#focusguard-next").hide();
+      });
     }
-    
     
   };
   
@@ -1544,12 +1542,43 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   
   
   function loadStoryboard() {
-    JsonHandler.load(JsonHandler.get("config", "sb"), "sb", launchScormSr);
+    
+    var url = "assets/data/" + __srVersion;
+
+    var req = new XMLHttpRequest();
+    req.open("GET", url, true);
+    req.responseType = "arraybuffer";
+
+    req.onreadystatechange  = function(e) {
+      
+      if (req.readyState == 4){
+        if (req.status == 200){
+          var data = new Uint8Array(req.response);
+          var workbook = XLSX.read(data, {type:"array"});
+
+          var sheets = workbook.SheetNames;
+          var result = {};
+          
+          for (var i=0; i<sheets.length; i++){
+            result[sheets[i]] = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[i]]);
+          }
+          
+          _excelStory = result;
+          
+          JsonHandler.loadExcel("sb", launchScormSr);
+
+        } else {
+          console.error("Can't load SR version");
+        }
+      }
+    }
+    
+    req.send();
   }
   
   function launchScormSr(){
-    
-    if (JsonHandler.get("config", "scorm") == "yes") {
+
+    if (__scorm) {
       //SCORM
       if (pipwerks.SCORM.init()) {
         
@@ -1657,7 +1686,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           
           $("#sr-btnext").show();
           $("#sr-text").show();
-          if (score < Number(JsonHandler.get("config", "success"))){
+          if (score < __srVersionSuccess){
             setTimeout(function(){
               $("#sr-text").html("Votre score est de "+score+"%. Nous vous invitons à retenter le quiz final.");
               $("#sr-text").attr("aria-hidden", false);

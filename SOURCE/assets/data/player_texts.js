@@ -7,7 +7,7 @@
 var __gtexts = {}
 
 __gtexts.fr = {
-  "titre"     : "Diversité",
+  "titre"     : "Titre du module",
   "launch1"   : "Bienvenue dans cette formation !",
   "launch2"   : "Ce e-learning a été développé afin d'être accessible au plus grand nombre.",
   "launch3"   : "Il inclut une version réservée aux personnes malvoyantes et non-voyantes étant équipées des outils de lecteur d’écran. Veuillez sélectionner la version de votre choix en cliquant sur l'un des boutons suivants :",

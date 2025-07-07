@@ -186,6 +186,29 @@ Will lead to this result :
 
 > Note that it is also possible to put voice-over sounds in the SON column of the content sheet (see table above), but these **do not display subtitles** because it is considered that they take up the audio reading of the displayed text.
 
+### Screen Reader Version (NVDA, Jaws, ...)
+
+You can add a specific version of the application tailored for screen readers. When enabled, a splash screen will appear at startup, prompting the user to choose their preferred version.
+
+To activate the "SR" (Screen Reader) version:
+
+In `assets/app/CONFIG.js`, set the `__srVersion` variable to the name of the Excel file located in `assets/data/`.
+
+Also in `assets/app/CONFIG.js`, set the `__srVersionSuccess` variable to your desired success score.
+
+Within this SR version, three modalities are available:
+
+- **text**: Text displayed on screen and read by the screen reader.
+
+- **scene**: A full-screen image (images should be placed in the `assets/images/sr/` folder). These images should be accompanied by voice-over audio files (audio files should be placed in `assets/sounds/voice`).
+
+- **qcu** and **qcu_final**: These modalities allow you to create quizzes with radio buttons, where only one answer can be selected.
+
+For more details on how to structure the SR Excel file, refer to `assets/data/sample_sr.xls`.
+
+
+
+
 ---
 
 # Finalization / SCORM Export / Online Publishing:

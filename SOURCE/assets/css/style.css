@@ -39,12 +39,17 @@ SR SPECIFIC
 #module_sr #sr-title {
   font-family: "Raleway ExtraBold";
   letter-spacing: 0.15em;
-  background-color: #202020;
+  background-color: #000;
 }
 
-#module_sr .btn-primary, #module_sr .btn-primary:focus {
-  background-color: #202020;
-  border-color: #202020;
+#module_sr .btn-primary {
+  background-color: #000;
+  border-color: #000;
+}
+
+#module_sr .btn-primary:focus, #module_sr .btn-primary:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
 }
 
 h2, h3, h4, h5, h6 {

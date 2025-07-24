@@ -1853,25 +1853,28 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     var not_counted = 0;
     for (var i=1; i<=3; i++){
       
-      $("#radio"+i+" input").prop('checked', false);
+      $("#input"+i).prop('checked', false);
       
       if (quiz[i].substr(0,1) == "1"){
         answer = i;
       }
 
       if ((quiz[i].substr(0,2) == "0)") || (quiz[i].substr(0,2) == "1)")){
-        $("#radio"+i).show();
-        $("#radio"+i+" span").html(backTrim(quiz[i]).substr(2, backTrim(quiz[i]).length));
-        $("#radio"+i+" input").change(function(){
+        $("#input"+i).show();
+        $("#lt"+i).show();
+        $("#label"+i).show();
+        $("#label"+i).html(backTrim(quiz[i]).substr(2, backTrim(quiz[i]).length));
+        $("#input"+i).change(function(){
           setTimeout(function(){
             $("#sr-btnext").show();
           }, 50);
         });
       } else {
-        $("#radio"+i).hide();
+        $("#input"+i).hide();
+        $("#lt"+i).hide();
+        $("#label"+i).hide();
         not_counted++;
       }
-
     }
     
     $("#sr-quiz").show();
@@ -1880,7 +1883,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     $("#sr-btnext").click(function(){
       $("#sr-quiz").hide();
       $("#sr-btnext").hide();
-      if ($("#radio"+answer+" input").is(':checked')){
+      if ($("#input"+answer).is(':checked')){
         $("#sr-text").html(backTrim(quiz[4-not_counted]));
         if (is_final){
           _qcufinal_right++;

@@ -119,18 +119,15 @@ Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations,
     <div id="spacer" class="row"></div>
     <div class="row">
       <div id="sr-quiz" class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-        <p id="sr-quiz-question" tabindex="0"></p>
-        <form>
-          <label id="radio1" tabindex="0">
-            <input type="radio" name="radio"><span class="label-text"></span></input>
-          </label>
-          <label id="radio2" tabindex="0">
-            <input type="radio" name="radio"><span class="label-text"></span></input>
-          </label>
-          <label id="radio3" tabindex="0">
-            <input type="radio" name="radio"><span class="label-text"></span></input>
-          </label>
-        </form>
+        <fieldset role="radiogroup">
+          <legend id="sr-quiz-question" tabindex="0"></legend>
+          <input id="input1" type="radio" name="radio"><span id="lt1" class="label-text"><span>
+          <label for="input1" id="label1" tabindex="0"></label>
+          <input id="input2" type="radio" name="radio"><span id="lt2" class="label-text"><span>
+          <label for="input2" id="label2" tabindex="0"></label>
+          <input id="input3" type="radio" name="radio"><span id="lt3" class="label-text"><span>
+          <label for="input3" id="label3" tabindex="0"></label>
+        </fieldset>
       </div>
       <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
         <p id="sr-text" tabindex="0" aria-live="assertive"></p>

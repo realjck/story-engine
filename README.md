@@ -256,7 +256,7 @@ In the case of multi-language (__Langs size > 1), several Excel files must be in
 
 ### Clean and prepares the solution
 
-Instructions for preparing the production files are documented in file names beginning with underscore (`_lorem ipsum`) in the source and assets folders. These files should of course be excluded for production as well as the assets/app_src/ folder.
+Preparation instructions for production files are provided in the README files located in the source and assets directories. These files, along with the assets/app_src/ directory, must be excluded from the production build.
 
 **The `SOURCE/` folder is the web root (or zip root in case of a LMS package).**
 

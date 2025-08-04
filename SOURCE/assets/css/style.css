@@ -127,7 +127,7 @@ BOOTSTRAP OVERRIDES
   border-color: #383838;
 }
 
-.btn:hover, .btn:active:focus, .btn-primary:hover, .btn-primary:active:focus {
+.btn:hover, .btn:active:focus, .btn-primary:hover, .btn-primary:focus {
   background-color: #c0392b;
   border-color: #c0392b;
   color: #ecf0f1;

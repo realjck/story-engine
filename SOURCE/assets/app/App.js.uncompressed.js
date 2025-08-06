@@ -21339,7 +21339,7 @@ define(['engine/Player',
             if (!s.aide.visible){
 
               s.aide.visible = true;
-              MaskObjects.init(s.aide, ["bt_previous", "bt_menu_off", "progression", "textes"]);
+              MaskObjects.init(s.aide, ["bt_menu_off", "progression", "textes"]);
               s[_screen]["version"].visible = false;
               
               Tween.init(s.aide.marcillac, {from:"left", distance:1000, duration:1000, fade:false});
@@ -21351,7 +21351,7 @@ define(['engine/Player',
                       VerticalTextCenterer.init(s.nav.titre, 85, "middle");
                       s.nav.progression.visible = false;
                       
-                      MaskObjects.unmask(s.aide, ["bt_previous", "bt_menu_off", "progression"]);
+                      MaskObjects.unmask(s.aide, ["bt_menu_off", "progression"]);
                       s.nav.visible = true;
                       
                       Tween.init(s.aide.textes, {noInit:true, callback:
@@ -21378,7 +21378,7 @@ define(['engine/Player',
             if (!s.aide.visible){
 
               s.aide.visible = true;
-              MaskObjects.init(s.aide, ["bt_previous", "bt_menu_off", "progression", "textes"]);
+              MaskObjects.init(s.aide, ["bt_menu_off", "progression", "textes"]);
               s[_screen]["version"].visible = false;
               
               
@@ -21386,7 +21386,7 @@ define(['engine/Player',
               VerticalTextCenterer.init(s.nav.titre, 85, "middle");
               s.nav.progression.visible = false;
               
-              MaskObjects.unmask(s.aide, ["bt_previous", "bt_menu_off", "progression"]);
+              MaskObjects.unmask(s.aide, ["bt_menu_off", "progression"]);
               s.nav.visible = true;
               
               Tween.init(s.aide.textes, {noInit:true});

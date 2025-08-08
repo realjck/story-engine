@@ -33,6 +33,7 @@ define(['engine/Player',
     'engine/QuizFinal',
     'util/CanvasTransition',
     'animator/Voice',
+    'animator/Button',
     'exports'
   ], function (
     Player,
@@ -57,6 +58,7 @@ define(['engine/Player',
     QuizFinal,
     CanvasTransition,
     Voice,
+    Button,
     exports
     ) {
       

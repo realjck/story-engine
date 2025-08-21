@@ -548,7 +548,10 @@ define(['engine/Player',
                           CanvasTransition.init(null, "fadein");
                         });
                         
-                        Player.getMediaElementAddEndEvent(activityCallback);
+                        Player.getMediaElementAddEndEvent(function(){
+                          $("#video").hide();
+                          activityCallback();
+                        });
                       });
                       break;
                       

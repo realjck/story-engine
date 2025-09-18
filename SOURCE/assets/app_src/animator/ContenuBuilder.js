@@ -90,7 +90,7 @@ define([
           _screen.prologue_bg_zoom.visible = true;
         }
         
-        s.visible = true;
+        //s.visible = true;
         // canvas.style.opacity = '0';
         
       });
@@ -398,6 +398,8 @@ define([
             }
             
             function finishBuild(){
+              
+              s.visible = true;
               
               var bg = new createjs.Shape();
               

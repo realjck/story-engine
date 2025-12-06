@@ -4,7 +4,7 @@
 
 ## Toolbox and Ready-to-Use Template for Stories* in JavaScript with Adobe Animate
 
-### [[Click here to launch repository source sample]](https://realjck.github.io/story-engine/SOURCE/index.html)
+### [[Click here to launch demo]](https://realjck.github.io/story-engine/SOURCE/index.html)
 
 _* A story presented in a linear format with chapters, featuring animated characters with voice-overs. Each chapter includes scenes, informative content screens, quizzes, and other interactive activities. The content is integrated with bookmarks and tracking functionality for Learning Management Systems, such as Moodle._
 

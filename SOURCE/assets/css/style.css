@@ -15,13 +15,9 @@ body {
   position: static;
   background-color : #202020;
   color: #bdc3c7;
-  letter-spacing: 0.05em;
 }
 #animation_container{
   top: 0px;
-}
-canvas {
-  alpha: 0;
 }
 
 #launch_sr, #launch_classique {

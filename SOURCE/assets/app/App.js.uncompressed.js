@@ -24269,6 +24269,8 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
     $("#sr-subtitles").hide();
     $("#sr-subtitle-text").html("");
+    $("#iconPlay").show();
+    $("#iconPause").hide();
 
     if (isValid(_screen.btsuivant_texte)){
       

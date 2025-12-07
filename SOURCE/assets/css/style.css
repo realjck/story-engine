@@ -15,6 +15,7 @@ body {
   position: static;
   background-color : #202020;
   color: #bdc3c7;
+  letter-spacing: 0.05em;
 }
 #animation_container{
   top: 0px;
@@ -124,8 +125,8 @@ BOOTSTRAP OVERRIDES
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary:active {
-  background-color: #383838;
-  border-color: #383838;
+  background-color: #222;
+  border-color: #222;
 }
 
 .btn:hover, .btn:active:focus, .btn-primary:hover, .btn-primary:focus {
@@ -139,8 +140,14 @@ BOOTSTRAP OVERRIDES
 }
 
 .jumbotron{
-  color: #383838;
+  background-color: black;
+  color: white;
   margin-top: 2em;
+}
+
+#titre, #launch2 {
+  font-family: "Raleway ExtraBold";
+
 }
 
 .jumbotron h2{
@@ -229,7 +236,7 @@ input[type="radio"]:disabled + .label-text:before{
 legend#sr-quiz-question {
   margin-left: -1.8em;
   font-size: 0.8em;
-  font-weight: bold;
+  font-family: 'Raleway ExtraBold';
 }
 
 /* Bouton personnalisé lecture SR */

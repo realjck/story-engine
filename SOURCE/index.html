@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <!--
 story-engine with Animate and Create.js
 Copyright © 2024 devjck
@@ -8,7 +8,7 @@ Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations,
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no">
-  <title></title>
+  <title>Module e-learning</title>
   <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="assets/libs/bootstrap3-dialog/css/bootstrap-dialog.min.css" />
   <link rel="stylesheet" type="text/css" href="assets/libs/mediaelement/mediaelementplayer.css" />
@@ -67,12 +67,12 @@ Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations,
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-lg-8 col-lg-offset-2">
       <div class="row">
         <div class="jumbotron">
-          <p id="launch1" tabindex="0"></p>
-          <h1 id="titre" tabindex="0"></h1>
-          <p id="launch2" tabindex="0"></p>
-          <p id="launch3" tabindex="0"></p>
-          <button class="btn btn-primary btn-lg" id="launch_sr" role="button" tabindex="0"><span></span><img src="assets/images/access_sr_icon.png"></button>
-          <button class="btn btn-primary btn-lg" id="launch_classique" role="button" tabindex="0"><span></span><img src="assets/images/access_classic_icon.png"></button>
+          <p id="launch1"></p>
+          <h1 id="titre"></h1>
+          <p id="launch2"></p>
+          <p id="launch3"></p>
+          <button class="btn btn-primary btn-lg" id="launch_sr" role="button"><span></span><img src="assets/images/access_sr_icon.png"></button>
+          <button class="btn btn-primary btn-lg" id="launch_classique" role="button"><span></span><img src="assets/images/access_classic_icon.png"></button>
         </div>
       </div>
     </div>
@@ -105,42 +105,74 @@ Ce logiciel est distribué sous la licence GNU GPL v3. Pour plus d'informations,
   </div>
   <!-- MODULE SR -->
   <div id="module_sr" class="container-fluid" style="display: none;">
-    <div id="focusguard-1" tabindex="0"></div>
-    <div id="sr-title" tabindex="0" class="row">
+    <div id="focusguard-1"></div>
+    <div id="sr-title" class="row">
       <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
         <h1></h1>
       </div>
     </div>
+    <div class="progress row">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+    </div>
     <div id="sr-image" class="row">
-      <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-        <img class="img-responsive">
+      <div class="col-xs-8 col-xs-offset-2 col-lg-6 col-lg-offset-3">
+        <img class="img-responsive img-sr">
       </div>
     </div>
+
+    <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2" id="sr-player-controls">
+      <div class="btn-group btn-group-custom" role="group" aria-label="Player controls">
+        <button type="button" class="btn btn-custom" id="btnReplay" title="Rejouer">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+          </svg>
+        </button>
+        <button type="button" class="btn btn-custom" id="btnPlayPause" title="Lecture">
+          <svg id="iconPlay" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg id="iconPause" class="icon-hidden" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg> 
+        </button>
+        <button type="button" class="btn btn-custom" id="btnNext" title="Passer à la suite">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
     <div id="spacer" class="row"></div>
     <div class="row">
       <div id="sr-quiz" class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-        <fieldset role="radiogroup">
-          <legend id="sr-quiz-question" tabindex="0"></legend>
-          <input id="input1" type="radio" name="radio"><span id="lt1" class="label-text"><span>
-          <label for="input1" id="label1" tabindex="0"></label>
-          <input id="input2" type="radio" name="radio"><span id="lt2" class="label-text"><span>
-          <label for="input2" id="label2" tabindex="0"></label>
-          <input id="input3" type="radio" name="radio"><span id="lt3" class="label-text"><span>
-          <label for="input3" id="label3" tabindex="0"></label>
-        </fieldset>
+        <div class="question-block">
+          <fieldset role="radiogroup">
+            <legend id="sr-quiz-question"></legend>
+            <input id="input1" type="radio" name="radio"><span id="lt1" class="label-text"><span>
+            <label for="input1" id="label1"></label>
+            <input id="input2" type="radio" name="radio"><span id="lt2" class="label-text"><span>
+            <label for="input2" id="label2"></label>
+            <input id="input3" type="radio" name="radio"><span id="lt3" class="label-text"><span>
+            <label for="input3" id="label3"></label>
+          </fieldset>
+        </div>
       </div>
       <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
-        <p id="sr-text" tabindex="0" aria-live="assertive"></p>
+        <p id="sr-text"></p>
       </div>
-      <div class="col-xs-6 text-right">
-        <button id="sr-btprev" class="btn btn-primary btn-lg" tabindex="0"></button>
+      <div class="row" id="sr-subtitles" style="display: none;">
+        <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+          <p id="sr-subtitle-text"></p>
+        </div>
       </div>
-      <div id="focusguard-next" tabindex="0" aria-hidden="true"></div>
-      <div class="col-xs-6 text-left">
-        <button id="sr-btnext" class="btn btn-primary btn-lg" tabindex="0"></button>
+      <div class="col-xs-4 col-xs-offset-2 text-center">
+        <button id="sr-btprev" class="btn btn-primary btn-lg"></button>
+      </div>
+      <div class="col-xs-4 text-center">
+        <button id="sr-btnext" class="btn btn-primary btn-lg"></button>
       </div>
     </div>
-    <div id="focusguard-2" tabindex="0"></div>
   </div>
 </body>
 <script src="assets/data/player_texts.js"></script>

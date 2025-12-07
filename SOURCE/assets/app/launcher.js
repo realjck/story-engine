@@ -184,7 +184,7 @@ function checkSR() {
 
     $("#launch_sr").on("click", function(e){
       $("#landing_page").hide();
-      $("#module_sr").show();
+      $("#loader").show();
       require(['engine/Player'], function (Player) {
         Player.initSr();
       });

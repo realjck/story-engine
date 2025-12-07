@@ -39,6 +39,7 @@ SR SPECIFIC
 #module_sr #sr-title {
   font-family: "Raleway ExtraBold";
   letter-spacing: 0.15em;
+  padding-bottom: 0.8em;
   background-color: #000;
 }
 
@@ -150,7 +151,12 @@ BOOTSTRAP OVERRIDES
 .jumbotron p, .jumbotron .btn{
   font-family: "Raleway";
 }
+
 /*Radio box*/
+
+fieldset {
+  padding-left: 1.2em;
+}
 
 label {
   position: relative;
@@ -205,6 +211,95 @@ input[type="radio"]:disabled + .label-text:before{
   100%{transform: scale(1);}
 }
 
+/* Question Block Focus */
+
+.question-block {
+  position: relative; 
+  padding: 16px 20px 16px 32px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: border-color .18s, box-shadow .18s;
+}
+
+.question-block:focus-within {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 4px rgba(192,57,43,0.14);
+}
+
+legend#sr-quiz-question {
+  margin-left: -1.8em;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+/* Bouton personnalisé lecture SR */
+
+#sr-player-controls {
+  text-align: center;
+  margin-top: 1.5em;
+  display: none;
+}
+
+.btn-group-custom {
+  scale: 1.5;
+}
+
+.btn-custom {
+  background-color: black;
+  color: white;
+}
+.btn-custom:hover, .btn-custom:focus-within {
+  background-color: #c0392b;
+  color: white;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.icon-hidden {
+  display: none;
+}
+
+/* SR radio buttons fix */
+#module_sr label {
+  font-family: "Raleway";
+  font-size: 21px;
+  margin-top: -1.5em;
+}
+
+/* image SR */
+.img-sr {
+  border-radius: 25px;
+  border: 12px solid black;
+}
+
+/* Subtitles SR */
+#sr-subtitles {
+  margin: 0;
+}
+#sr-subtitle-text {
+  text-align: center;
+  margin-top: 0.5em;
+  font-size: 2em;
+}
+
+/* Progress bar SR */
+.progress {
+  background-color: #333;
+}
+.progress-bar {
+  background-color:#606060;
+}
+
+/* SR Blockquote */
+blockquote {
+  font-size: 0.8em;
+}
+
 /* modal form */
 
 .row-m-t{
@@ -219,12 +314,6 @@ input[type="radio"]:disabled + .label-text:before{
   margin-right: -1.5em;
 }
 
-label {
-  font-family: "Raleway";
-  font-size: 21px;
-  margin-top: -1.5em;
-}
-
 .form-control:focus {
     border-color: #555;
     outline: 0;
@@ -235,6 +324,11 @@ label {
 input.form-control {
     color: #000;
     font-weight: 700;
+}
+
+label.control-label {
+    margin-top: 0.5em;
+    font-size: 15px;
 }
 
 

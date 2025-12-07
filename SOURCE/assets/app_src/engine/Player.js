@@ -154,6 +154,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   var _screen;
   var _qcufinal_count = 0;
   var _qcufinal_right = 0;
+  var _storyboardLength = 0;
 
 
   return {
@@ -1522,16 +1523,6 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       }
       
       loadStoryboard();
-      
-      $('#focusguard-2').on('focus', function () {
-        $('#sr-title').focus();
-      });
-      $('#focusguard-1').on('focus', function () {
-        $('#sr-btnext').focus();
-      });
-      $("#focusguard-next").focusout(function(){
-        $("#focusguard-next").hide();
-      });
     }
     
   };
@@ -1565,7 +1556,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           
           _excelStory = result;
           
-          JsonHandler.loadExcel("sb", launchScormSr);
+          // Load & launch
+          $("#loader").hide();
+          $("#module_sr").show();
+          JsonHandler.loadExcel("sb", function(){
+            JsonHandler.loadExcel("subs", launchScormSr);
+          });
 
         } else {
           console.error("Can't load SR version");
@@ -1577,6 +1573,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   }
   
   function launchScormSr(){
+
+    // store storyboard length
+    _storyboardLength = JsonHandler.getLength("sb");
 
     if (__scorm) {
       //SCORM
@@ -1605,13 +1604,11 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           $("#sr-btnext").show();
           $("#sr-btprev").show();
           $("#sr-text").show();
-          $("#sr-btprev").html("Cliquez pour reprendre depuis le début");
-          $("#sr-btnext").html("Cliquez pour continuer");
-          $("#focusguard-next").show();
+          $("#sr-btprev").html("Reprendre depuis le début");
+          $("#sr-btnext").html("Continuer");
           
           $("#sr-title h1").html("Reprise du marque-page");
           $("#sr-text").html("Voulez-vous continuer depuis votre précédente sauvegarde ?");
-          $("#sr-text").attr("tabindex", "0");
           $("#sr-text").focus();
           
           $("#sr-btnext").click(function(){
@@ -1640,8 +1637,15 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     
     scormSaveStateSr();
     _screen = JsonHandler.get("sb", "e"+paddy(_counter, 3));
+
+    // update progress bar
+    var progress = Math.round(_counter / _storyboardLength * 100);
+    $(".progress-bar").attr('aria-valuenow', progress);
+    $(".progress-bar").css('width', progress+'%');
     
-    $("#sr-btprev").html("Cliquez ici pour revenir à l'écran précédent");
+    SoundJS_NoQueue.abort();
+
+    $("#sr-btprev").html("Retour");
     $("#sr-btprev").off();
     $("#sr-btnext").off();
     $("#sr-image").hide();
@@ -1649,10 +1653,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     $("#sr-btprev").hide();
     $("#sr-quiz").hide();
     $("#sr-text").hide();
+    $("#sr-player-controls").hide();
     $("sr-btnext").html("");
     $("sr-text").html("");
     $("#sr-quiz-question").html("");
-    $("#focusguard-next").show();
     $("#sr-btprev").click(function(){
       if (_counter > 1){
         _counter --;
@@ -1668,10 +1672,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     }
     $("#sr-title h1").html(titre);
     
-    $("#sr-title h1").attr("aria-hidden", false);
     switch (_screen.type){
       case "texte_nosr": launchTexteNosr(); break;
-      case "scene": $("#sr-title h1").attr("aria-hidden", true); launchScene(); break;
+      case "scene": launchScene(); break;
       case "qcu": launchQcu(); break;
       case "qcu_final":launchQcu(true);break;
       case "texte": launchTexte(); break;
@@ -1689,14 +1692,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           if (score < __srVersionSuccess){
             setTimeout(function(){
               $("#sr-text").html("Votre score est de "+score+"%. Nous vous invitons à retenter le quiz final.");
-              $("#sr-text").attr("aria-hidden", false);
-              $("#sr-text").attr("tabindex", "0");
               $("#sr-text").focus();
               $("#sr-text").focusout(function(){
                 $("#sr-text").off('focusout');
                 $("#sr-btnext").focus();
               });
-              $("#sr-btnext").html("Cliquez pour retenter le quiz");
+              $("#sr-btnext").html("Retenter le quiz");
             },50);
             $("#sr-btnext").click(function(){
               _qcufinal_count = 0;
@@ -1710,21 +1711,19 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           } else {
             setTimeout(function(){
             $("#sr-text").html("Félicitations ! Votre score au quiz est de "+score+"%. Vous pouvez à présent valider le module en cliquant sur le bouton suivant.");
-              $("#sr-text").attr("aria-hidden", false);
-              $("#sr-text").attr("tabindex", "0");
               $("#sr-text").focus();
               $("#sr-text").focusout(function(){
                 $("#sr-text").off('focusout');
                 $("#sr-btnext").focus();
               });
-              $("#sr-btnext").html("Cliquez pour valider le module");
+              $("#sr-btnext").html("Valider le module");
             },50);
             $("#sr-btnext").click(function(){
               scormScoreSr(score, true);
-              $("#module_sr").hide();
+              $("#sr-text").html("Merci et à bientôt !");
+              $("#sr-btnext").hide();
             });
           }
-          $("#sr-text").attr("tabindex", "0");
           $("#sr-text").focus();
           
         } else {
@@ -1747,7 +1746,11 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       function launchSound(){
         counter++;
         if (counter < sounds.length){
-          playSound(sounds[counter].trim(), launchSound);
+          var val = sounds[counter].trim();
+          // play sound and show subtitles
+          playSound(val, launchSound);
+          $("#sr-subtitles").show();
+          $("#sr-subtitle-text").html(backTrim(JsonHandler.get("subs", val)));
         } else {
           callback();
         }
@@ -1756,22 +1759,18 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   }
   
   function playSound(id, callback){
-    shortcut.remove("space");
     if (id.substr(0,3)=="fx/"){
       SoundJS_NoQueue.init("assets/sounds/fx/"+id.substr(3, id.length)+".mp3", null, callback);
     } else {
       SoundJS_NoQueue.init("assets/sounds/voice/"+id+".mp3", null, callback);
     }
-    shortcut.add("space", function(){
-      SoundJS_NoQueue.abort();
-      shortcut.remove("space");
-      if (callback != undefined) {
-        callback();
-      }
-    });
   }
   
   function showBt(is_final){
+
+    $("#sr-subtitles").hide();
+    $("#sr-subtitle-text").html("");
+
     if (isValid(_screen.btsuivant_texte)){
       
       $("#sr-btnext").show();
@@ -1780,9 +1779,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           $("#sr-btprev").show();
         }
         $("#sr-btnext").html(_screen.btsuivant_texte);
-        $("#focusguard-next").focus();
-      },50);
+         $("#sr-btnext").focus()
+      },0);// remove timeout
       
+      $("#sr-btnext").off();
       $("#sr-btnext").click(nextScreen);
       
       if (isValid(_screen.btsuivant_son)){
@@ -1801,8 +1801,6 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   function launchTexteNosr(){
     
     $("#sr-text").html(backTrim(_screen.contenu));
-    $("#sr-text").attr("aria-hidden", true);
-    $("#sr-text").attr("tabindex", false);
     $("#sr-text").show();
     
     playScreenSounds(showBt);
@@ -1816,8 +1814,6 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     
     setTimeout(function(){
       $("#sr-text").html(backTrim(_screen.contenu));
-      $("#sr-text").attr("aria-hidden", false);
-      $("#sr-text").attr("tabindex", "0");
       $("#sr-text").focus();
       $("#sr-text").focusout(function(){
         $("#sr-text").off('focusout');
@@ -1827,11 +1823,58 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   }
   
   function launchScene(){
-    $("#sr-image img").attr("src", "assets/images/sr/"+_screen.contenu);
+    var contenu = _screen.contenu.split("|");
+    $("#sr-image img").attr("src", "assets/images/sr/"+contenu[0]);
+    $("#sr-image img").attr("alt", contenu[1] == undefined ? "" : contenu[1]);
+    $("#sr-image img").attr("title", contenu[1] == undefined ? "" : contenu[1]);
     $("#sr-image").show();
+    $("#sr-player-controls").show();
     
-    playScreenSounds(showBt);
-    
+    $("#btnReplay").off();
+    $("#btnNext").off();
+
+    function play(){
+      $("#iconPlay").hide();
+      $("#iconPause").show();
+      $("#btnPlayPause").off();
+      $("#btnPlayPause").click(function(){
+        SoundJS_NoQueue.pause();
+        $("#iconPlay").show();
+        $("#iconPause").hide();
+        $("#btnPlayPause").off();
+        $("#btnPlayPause").click(function(){
+          SoundJS_NoQueue.resume();
+          play()
+        });
+      });
+    }
+
+    $("#btnReplay").click(function(){
+      $("#sr-btnext").hide();
+      $("#sr-btprev").hide();
+      playScreenSounds(showBt);
+      play();
+    });
+
+    function initBtnPlayPause(){
+      $("#iconPlay").show();
+      $("#iconPause").hide();
+      $("#btnPlayPause").off();
+      $("#btnPlayPause").click(function(){
+        $("#sr-btnext").hide();
+        $("#sr-btprev").hide();
+        playScreenSounds(showBt);
+        play();
+      });
+    }
+    initBtnPlayPause();
+    $("#btnPlayPause").focus();
+
+    $("#btnNext").click(function(){
+      SoundJS_NoQueue.abort();
+      initBtnPlayPause();
+      showBt();
+    });
   }
   
   function launchQcu(is_final){
@@ -1842,7 +1885,6 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     
     var quiz = _screen.contenu.split("--");
     $("#sr-quiz").show();
-    $("#focusguard-next").hide();
     setTimeout(function(){
       $("#sr-quiz-question").html(backTrim(quiz[0]));
       $("#sr-quiz-question").focus();
@@ -1878,7 +1920,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     }
     
     $("#sr-quiz").show();
-    $("#sr-btnext").html("Cliquez pour valider votre choix");
+    $("#sr-btnext").html("Valider");
       
     $("#sr-btnext").click(function(){
       $("#sr-quiz").hide();
@@ -1891,8 +1933,6 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       } else {
         $("#sr-text").html(backTrim(quiz[5-not_counted]));
       }
-      $("#sr-text").attr("aria-hidden", false);
-      $("#sr-text").attr("tabindex", "0");
       $("#sr-text").show();
       $("#sr-text").focus();
       

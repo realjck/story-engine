@@ -254,6 +254,7 @@ legend#sr-quiz-question {
 /* Bouton personnalisé lecture SR */
 
 #sr-player-controls {
+  z-index: 99;
   text-align: center;
   margin-top: 1.5em;
   margin-bottom: -1em;

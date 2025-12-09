@@ -40,6 +40,22 @@ SR SPECIFIC
   background-color: #000;
 }
 
+#sr-text br {
+  display: contents;
+}
+
+#sr-text p {
+  margin-bottom: 1em;
+}
+
+#sr-text li {
+  margin-bottom: 0.5em;
+}
+
+#sr-btnext {
+  margin-bottom: 2em; /*add space at end of page*/
+}
+
 #module_sr .btn-primary {
   background-color: #000;
   border-color: #000;
@@ -240,6 +256,7 @@ legend#sr-quiz-question {
 #sr-player-controls {
   text-align: center;
   margin-top: 1.5em;
+  margin-bottom: -1em;
   display: none;
 }
 
@@ -286,7 +303,7 @@ legend#sr-quiz-question {
 }
 #sr-subtitle-text {
   text-align: center;
-  margin-top: 0.5em;
+  margin-top: 1em;
   font-size: 2em;
 }
 

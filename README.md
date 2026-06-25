@@ -129,6 +129,7 @@ Syntax	| Description
 Syntax	| Description
 --- | ---
 `perso{turn}` or `perso{turnstay}`	|	turns the character to the other side at the time of the line, either once or permanently
+`perso{zoom}`	|	Forces the camera to zoom in on the character during their dialogue
 `{all}`	|	lip synchronization of the sound on all characters in the scene (chorus)
 `{none}`	|	no lip synchronization (e.g., sound effect)
 
@@ -315,4 +316,4 @@ This will compile the `app_src/` files into a new file in `app/App.js.uncompress
 
 ---
 
-# 📎 [License](COPYING.md) 
+# 📎 [License](COPYING.md)

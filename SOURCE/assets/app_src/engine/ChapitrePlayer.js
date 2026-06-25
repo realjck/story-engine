@@ -61,36 +61,36 @@ define(['engine/Player',
     Button,
     exports
     ) {
-      
+
   var _self;
   var index;
-  
+
   exports.getIndex = function() {
     return _self.getIndex();
   }
-  
+
   exports.incrementIndex = function(val) {
     _self.incrementIndex(val);
   }
 
   return {
-    
+
     getIndex: function() {
       return index;
     },
-    
+
     incrementIndex: function(val){
       index += val;
     },
-    
+
     init: function (decor, fade) {
-      
+
       _self = this;
-      
+
       s.nav.visible = true;
-      
+
       var show_persos; //set to 'true' in STORY to show personnages on prologue
-      
+
       var screen;
       if (decor == undefined){
         screen = Player.getCurrentChapter().decor;
@@ -104,23 +104,23 @@ define(['engine/Player',
       }
       s.gotoAndStop(screen);
       execScript();
-      
+
       if (screen == "prologue"){
         s[screen]["scene"].personnages.visible = false;
         s[screen]["scene"].chrono.visible = false;
         LoadImage.init(s[screen]["scene"].personnages, "assets/images/medias/prologue_personnages.png", null, {clear:true, resize:[427,281]})
       }
-      
+
       ResponsiveStage.storeClip(screen, {horizontal:"fixed", vertical:"fixed"});
-      
+
       var counter_persos_dial = 0;
       var current_perso_parle;
-      
+
       var persos = {};
-      
+
       var persos_array = [];
       var perso_first;
-      
+
       var replicas;
       var letter_count;
       var is_zoomed;
@@ -137,11 +137,11 @@ define(['engine/Player',
       var next_perso_to_look_at;
       var zoom_on_look_at;
       var perso_turned;
-      
+
       var is_swaping;
-      
+
       var activities = ["titre:", "decor:", "quiz_", "contenu_", "clickpictos_", "classement_", "surmesure_", "surmesureonscene_", "video_"];
-      
+
       function execScript(){
         //execution scripts:
         var sc = JsonHandler.getLine("STORY", index).script;
@@ -150,27 +150,27 @@ define(['engine/Player',
           eval(sc);
         }
       }
-      
+
       WaitNextTick.init(function(){
-        
+
         switchVue("large");
-        
+
         // SETUP CHARACTERS
         for (var i=0; i<s[screen].config.persos.length; i++){
           s[screen]["scene"]["perso"+(i+1)].scaleX = Math.abs(s[screen]["scene"]["perso"+(i+1)].scaleX);
           s[screen]["scene"]["perso"+(i+1)].gotoAndStop(s[screen].config.persos[i]);
           persos[s[screen].config.persos[i]] = "perso"+(i+1);
-          
+
           if (i > 0){
             persos_array.push(s[screen]["scene"]["perso"+(i+1)][s[screen].config.persos[i]]);
           } else {
             perso_first = s[screen]["scene"]["perso"+(i+1)][s[screen].config.persos[i]];
           }
-          
+
         }
-        
+
           // directions
-        
+
         if (s[screen].config.dir_init != undefined){
           for (i=0; i<s[screen].config.dir_init.length; i++){
             if (s[screen].config.dir_init[i].substr(0,1) == "D"){
@@ -190,22 +190,22 @@ define(['engine/Player',
 
         // LAUNCH
         launchIndex();
-        
+
         function launchIndex(){
-          
+
           shortcut.remove("ctrl+alt+shift+right");
           shortcut.add("ctrl+alt+shift+right", function(){
             Voice.stopTalk();
             is_swaping = true;
             launchIndex();
           });
-          
+
           s.visible = false;
-          
+
           s.gotoAndStop(screen);
-          
+
           index++;
-          
+
           if ((index >= Player.getCurrentChapter().index + 3) && (orientable_perso.name != undefined)){
             if (JsonHandler.getLine("STORY", index) != undefined){
               if (getActualPerso(JsonHandler.getLine("STORY", index).perso) != orientable_perso.name){
@@ -213,9 +213,9 @@ define(['engine/Player',
               }
             }
           }
-          
+
           if ((screen == "prologue") && (index==2) && (!is_swaping) && (JsonHandler.get("CONFIG", "no_applause") != "yes")){
-            
+
             s.visible = true;
             SoundJS.init("assets/sounds/fx/applause.mp3",
               function(){
@@ -225,12 +225,12 @@ define(['engine/Player',
                 playIndex("unpose");
               }
             )
-            
+
           } else {
             playIndex();
           }
-          
-          
+
+
           function playIndex(anim){
             if (JsonHandler.getLine("STORY", index+1) != undefined){
               if (JsonHandler.getLine("STORY", index+1).deroule.substr(0,6).toLowerCase() == "decor:"){
@@ -269,20 +269,20 @@ define(['engine/Player',
                   break;
                 }
               }
-              
+
               var perso_value = JsonHandler.getLine("STORY", index).perso;
               if ((perso_value != "{all}")&&(perso_value != "{none}")){
                 var perso = getActualPerso(perso_value);
               }
-              
+
               if (perso_turned){
                 if (perso != perso_turned){
                   s[screen]["scene"][persos[perso_turned]].scaleX = s[screen]["scene"][persos[perso_turned]].scaleX * -1;
                   perso_turned = false;
                 }
               }
-              
-              
+
+
               var is_turning = false;
               if (perso_value){
                 if (perso_value.substr(perso_value.length - 6).toLowerCase() == "{turn}"){
@@ -292,23 +292,25 @@ define(['engine/Player',
                 } else if (perso_value.substr(perso_value.length - 10).toLowerCase() == "{turnstay}"){
                   s[screen]["scene"][persos[perso]].scaleX = s[screen]["scene"][persos[perso]].scaleX * -1;
                   is_turning = true;
+                } else if (perso_value.substr(perso_value.length - 6).toLowerCase() == "{zoom}") {
+                  zoom_on_look_at = true;
                 }
               }
-              
+
               var son = JsonHandler.getLine("STORY", index).son;
               var deroule = JsonHandler.getLine("STORY", index).deroule;
-              
 
-              
+
+
               // voice case
               if ((!activity) && (!is_swaping)){
                 s.visible = true;
                 is_previous_activity = false;
-                
+
                 execScript();
-                
+
                 if ((perso_value != "{all}")&&(perso_value != "{none}")) {
-                
+
                   if (perso != current_perso_parle){
                     is_previous_anim = false;
                     current_perso_parle = perso;
@@ -324,61 +326,61 @@ define(['engine/Player',
                     perso_zoom_changed_in_monolog = false;
                   }
                   letter_count += deroule.length;
-                
+
                 }
-                
+
                 // Zoom persos managment
                 if (is_prologue && (show_persos != "done") && ((deroule.substr(0,10).toLowerCase()=="retrouvons") || (show_persos == true))){
-                  
+
                   show_persos = "done";
-                  
+
                   switchVue("zoom_perso1");
                   Tween.init(s[screen]["scene"].personnages);
                   anim = "pose";
                   is_prologue_presentation_persos = index;
-                  
+
                 } else if (perso_value == "{all}") {
-                  
+
                   switchVue("large");
-                  
+
                 }  else if (perso_value == "{none}") {
-                  
+
                   // do nothing
-                  
+
                 } else if (decor || next_is_decor) {
-                  
+
                   switchVue("zoom_"+persos[perso]);
                   decor = undefined;
                   zoom_on_look_at = true;
-                
+
                 } else if ((is_prologue_presentation_persos) && (is_prologue_presentation_persos == index - 1)){
-                  
+
                   anim = "unpose";
-                  
+
                 } else if (zoom_on_look_at){
-                  
+
                   switchVue("zoom_"+persos[perso]);
                   zoom_on_look_at = false;
-                  
+
                 } else if (!is_prologue_presentation_persos) {
-                  
+
                   if (JsonHandler.getLine("STORY", index+1) == undefined){
-                    
+
                     switchVue("large");
-                    
+
                   } else if ((JsonHandler.getLine("STORY", index+1).deroule.trim() == "") || (JsonHandler.getLine("STORY", index+1).deroule.substr(0,6).toLowerCase() == "titre:")){
                     switchVue("large");
-                    
+
                   } else {
-                    
+
                     if (counter_persos_dial == 3){
                       switchVue("zoom_"+persos[perso]);
                       is_zoomed = true;
                     } else if (counter_persos_dial > 3) {
-                      
-                      
+
+
                       if (is_turning){
-                        
+
                         if (is_zoomed){
                           switchVue("zoom_persos");
                         } else {
@@ -434,9 +436,9 @@ define(['engine/Player',
                     // else, got animation from column 'anim'
                     simple_anim = JsonHandler.getLine("STORY", index).anim;
                   }
-                  
+
                 }
-                
+
                 if (perso_value != "{all}") {
                   var perso_talking;
                   if (perso_value != "{none}"){
@@ -454,8 +456,8 @@ define(['engine/Player',
                     });
                   });
                 }
-                
-                
+
+
               // other cases
               } else {
                 if (deroule.toLowerCase() == "quiz_final"){
@@ -465,9 +467,9 @@ define(['engine/Player',
                   if (is_previous_activity){
                     t = 0;
                   }
-                  
+
                   switch(activity){
-                    
+
                     case "decor:" :
                       Mascotte.initAll();
                       var fade = false;
@@ -480,25 +482,25 @@ define(['engine/Player',
                       }
                       _self.init(decor, fade);
                       break;
-                    
+
                     case "quiz_" :
                       is_swaping = false;
                       UniqueTimer.wait(t, function(){QuizBuilder.init(s, deroule, {perso:perso, prologue:is_prologue}, activityCallback);});
                       break;
-                    
-                    
+
+
                     case "clickpictos_" :
                       is_swaping = false;
                       UniqueTimer.wait(t, function(){ClickPictosBuilder.init(s, deroule, activityCallback);});
                       break;
-                    
-                    
+
+
                     case "classement_" :
                       is_swaping = false;
                       UniqueTimer.wait(t, function(){ClassementBuilder.init(s, deroule, activityCallback);});
                       break;
-                    
-                    
+
+
                     case "contenu_" :
                       is_swaping = false;
                       var deroule_activity, deroule_persotalk;
@@ -510,7 +512,7 @@ define(['engine/Player',
                       }
                       UniqueTimer.wait(t, function(){ContenuBuilder.init(s, deroule_activity, {perso:perso, persotalk:deroule_persotalk, prologue:is_prologue}, activityCallback);});
                       break;
-                      
+
                     case "surmesure_" :
                       is_swaping = false;
                       var surMesureFile = deroule.substr(deroule.indexOf("_")+1);
@@ -518,7 +520,7 @@ define(['engine/Player',
                         eval(surMesureFile+"(activityCallback)");
                       });
                       break;
-                      
+
                     case "surmesureonscene_" :
                       is_swaping = false;
                       s.visible = true;
@@ -527,14 +529,14 @@ define(['engine/Player',
                         eval(surMesureOnSceneFile+"(activityCallback)");
                       });
                       break;
-                      
+
                     case "video_" :
                       // init screen
                       s.visible = false;
                       s.gotoAndStop("VIDEO");
-                      
+
                       ResponsiveStage.storeClip("VIDEO", {horizontal:"fixed", vertical:"fixed", html_overlay_id:"video", html_overlay_ref_mc:"video"});
-                      
+
                       WaitNextTick.init(function() {
                         $("#video").css('display', 'inline');
                         $("#video").css('opacity', '1');
@@ -547,24 +549,24 @@ define(['engine/Player',
                           canvas.style.opacity = '0';
                           CanvasTransition.init(null, "fadein");
                         });
-                        
+
                         Player.getMediaElementAddEndEvent(function(){
                           $("#video").hide();
                           activityCallback();
                         });
                       });
                       break;
-                      
+
                     default: launchIndex(); break;
                   }
-                  
+
                   is_previous_activity = true;
                 }
-              }           
+              }
             }
           }
         }
-        
+
         function activityCallback(){
           if (JsonHandler.getLine("STORY", index+1).deroule.substr(0,6).toLowerCase() == "titre:"){
             Player.goNext();
@@ -572,7 +574,7 @@ define(['engine/Player',
             launchIndex();
           }
         }
-          
+
         function switchVue(vue){
           s[screen]["scene"].x = s[screen].config[vue][0];
           s[screen]["scene"].y = s[screen].config[vue][1];
@@ -583,7 +585,7 @@ define(['engine/Player',
             is_zoomed = true;
           }
         }
-        
+
         function getActualPerso(val){
           if (val == undefined){
             val = "";
@@ -594,7 +596,7 @@ define(['engine/Player',
             return val.substr(0, val.indexOf("{")).toLowerCase();
           }
         }
-        
+
         function orientOrientablePerso(){
           var found_next_orient = false;
           var c = 0;
@@ -629,7 +631,7 @@ define(['engine/Player',
           }
 
         }
-        
+
         function loadJs(file, callback) {
           if (eval("typeof "+file) === "undefined") {
             var head = document.getElementsByTagName('head')[0];

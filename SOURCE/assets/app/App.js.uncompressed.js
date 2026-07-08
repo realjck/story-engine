@@ -21440,14 +21440,16 @@ define(['engine/Player',
 
                     case "contenu_" :
                       is_swaping = false;
-                      var deroule_activity, deroule_persotalk;
+                      var deroule_activity;
+                      var deroule_persotalk = 0;
                       if (deroule.indexOf(",") != -1){
                         deroule_activity = deroule.substr(0, deroule.indexOf(",")).trim();
                         deroule_persotalk = parseInt(deroule.substr(deroule.indexOf(",")+1));
                       } else {
                         deroule_activity = deroule;
                       }
-                      UniqueTimer.wait(t, function(){ContenuBuilder.init(s, deroule_activity, {perso:perso, persotalk:deroule_persotalk, prologue:is_prologue}, activityCallback);});
+                      var is_last = JsonHandler.getLine("STORY", index + 1 + deroule_persotalk).deroule.substr(0, 6).toLowerCase() == "titre:";
+                      UniqueTimer.wait(t, function(){ContenuBuilder.init(s, deroule_activity, {perso:perso, persotalk:deroule_persotalk, prologue:is_prologue, is_last:is_last}, activityCallback);});
                       break;
 
                     case "surmesure_" :
@@ -23175,39 +23177,40 @@ define([
   CanvasTransition,
   SoundJS
 ) {
-  
+
   var contenu;
 
   return {
     init: function(s, json, options, callback){
-      
+
       s.visible = false;
-      
+
       s.gotoAndStop("CONTENU");
-      
+
       var _screen = s.CONTENU;
-      
+
       _screen.perso.visible = false;
-      
+
       var _perso = OptionGetter.get(options, "perso", false);
       var _persotalk = OptionGetter.get(options, "persotalk", false);
-      
+      var _is_last = OptionGetter.get(options, "is_last", false);
+
       var _hassounds = false;
-      
+
       _screen.scrollbounds.visible = false;
       _screen.bt_continue.visible = false;
       if (_screen.personnalisable != undefined) {
         _screen.personnalisable.visible = false;
       }
       _screen.image.removeAllChildren();
-      
+
       if (contenu){
         _screen.removeChild(contenu);
       }
-      
+
       WaitNextTick.init(function(){
         ResponsiveStage.storeClip("CONTENU", {horizontal:"fixed", vertical:"fixed"});
-          
+
         if (_perso){
           _screen.perso.gotoAndStop(_perso);
           _screen.perso[_perso].gotoAndStop(0);
@@ -23218,31 +23221,31 @@ define([
         } else {
           _screen.prologue_bg_zoom.visible = true;
         }
-        
+
         //s.visible = true;
         // canvas.style.opacity = '0';
-        
+
       });
-      
+
       var height_pointer = 20;
-      
+
       JsonHandler.loadExcel(json, build);
-      
+
       function build(){
-        
+
         // CanvasTransition.init(null, "fadein");
-        
+
         var lines = [];
-        
+
         contenu = ScrollPane.init(_screen, "CONTENU_content", "scrollbounds", {
           scroll_bar_size:30,
           orientation:"vertical",
           constructor:function(content){
-            
+
             var counter = 0;
             var media_type_previous_lines;
             var media_url_previous_lines;
-            
+
             var image;
             var image_offset;
             var image_dimensions = {};
@@ -23250,38 +23253,38 @@ define([
             var offseted_lines = [];
             var image_loading;
             var media_type;
-            
+
             var images_to_add = [];
-            
+
             launchBuilder();
-            
+
             function launchBuilder(){
 
               if (!JsonHandler.getLine(json, counter)){
                 finishBuild();
               } else {
-                
+
                 var linetexte_full = JsonHandler.getLine(json, counter).texte;
                 if (linetexte_full == undefined){
                   linetexte_full = "";
                 }
-                
+
                 if (linetexte_full == "espace"){
-                  
+
                   if (media_type_previous_lines == "left"){
                     validLeftImage();
                   }
-                  
+
                   height_pointer += 40;
                   counter++;
                   launchBuilder();
-                  
+
                 } else {
                   linetexte_full = linetexte_full.replace("\t", "");
-                  
+
                   var linetexte;
                   var type;
-                  
+
                   if (linetexte_full.substr(0,1) == "-"){
                     linetexte = linetexte_full.substr(1);
                     type = "CONTENU_bullet";
@@ -23299,28 +23302,28 @@ define([
                     type = "CONTENU_paragraphe";
                   }
                   linetexte = linetexte.trim();
-                  
+
                   var mc = new lib[type]();
 
                   media_type = false;
                   var image_url;
-                  
-                  
+
+
                   if (JsonHandler.getLine(json, counter).medias){
                     if (JsonHandler.getLine(json, counter).medias.substr(0,4).toLowerCase() == "img:"){
-                      
+
                       image_url = "assets/images/medias/"+JsonHandler.getLine(json, counter).medias.substr(4).trim();
-                      
+
                       if (linetexte != ""){
                         media_type = "left";
                       } else {
                         media_type = "singleimg";
                       }
                     } else if (JsonHandler.getLine(json, counter).medias.substr(0,8).toLowerCase() == "imgline:"){
-                      
+
                       image_url = "assets/images/medias/"+JsonHandler.getLine(json, counter).medias.substr(8).trim();
                       media_type = "leftline";
-                      
+
                     } else if (JsonHandler.getLine(json, counter).medias.substr(0,10).toLowerCase() == "imgcorner:"){
                       image_url = "assets/images/medias/"+JsonHandler.getLine(json, counter).medias.substr(10).trim();
                       LoadImage.init(_screen.image, image_url, function(w,h){
@@ -23330,7 +23333,7 @@ define([
                       _hassounds = true;
                     }
                   }
-                  
+
                   if (media_type == "left"){
                     if (image_url != media_url_previous_lines){
                       if (media_type_previous_lines == "left"){
@@ -23353,7 +23356,7 @@ define([
                     }
                     media_type_previous_lines = media_type;
                     media_url_previous_lines = image_url;
-                    
+
                   } else if (media_type == "singleimg"){
                     if (image_url != media_url_previous_lines){
                       if (media_type_previous_lines == "left"){
@@ -23378,14 +23381,14 @@ define([
                     }
                     media_type_previous_lines = media_type;
                     media_url_previous_lines = image_url;
-                    
+
                   } else if (media_type == "leftline"){
-                    
+
                     var img_size = 50;
                     if (type == "CONTENU_small"){
                       img_size = 40;
                     }
-                    
+
                     LoadImage.init(mc, image_url,
                       function(w,h,img){
                         image = img;
@@ -23404,9 +23407,9 @@ define([
                     }
                     addTextLine();
                   }
-                  
+
                 }
-                  
+
                 function validLeftImage(){
                   if (image_dimensions.h > (height_pointer - image_height_start)){
                     var scale = (height_pointer - image_height_start - getSpaceAfter(type)) / image_dimensions.h;
@@ -23415,157 +23418,157 @@ define([
                   } else {
                     //todo : cas où image plus petite que la hauteur du texte
                   }
-                  
+
                   offseted_lines = [];
                   image_offset = false;
                   media_type_previous_lines = false;
                   media_url_previous_lines = false;
-                  
+
                 }
-                
+
                 function reworkOffsets(){
 
                   var decalage = Math.round(image_dimensions.w * image.scaleX) - image_dimensions.w;
-                  
+
                   if (__gm == "dev"){
                     console.log("Image resized from "+image_dimensions.w+"x"+image_dimensions.h+" to "+Math.round(image_dimensions.w * image.scaleX)+"x"+Math.round(image_dimensions.h * image.scaleX));
                   }
-                  
+
                   for (var i=0; i<offseted_lines.length; i++){
                     offseted_lines[i].champ.x += decalage;
                     offseted_lines[i].champ.lineWidth -= decalage;
                   }
-                  
+
                 }
-                
-                
-                
+
+
+
                 function addTextLine(height_of_single_image){
-                  
+
                   mc.champ.text = linetexte;
                   if (_perso){
                     mc.x += 300;
                   }
-                  
-                  
+
+
                   if (height_of_single_image) {
-                    
+
                     mc.y = height_pointer;
                     height_pointer += height_of_single_image;
-                    
+
                   } else {
                     if (image_offset){
                       mc.champ.x = 125+15+image_offset;
                       mc.champ.lineWidth = 1420-image_offset-15;
                       offseted_lines.push(mc);
                     }
-                    
+
                     if (_perso){
                       mc.champ.lineWidth -= 400;
                     }
 
                     height_pointer += getSpaceAfter(type);
-                    
+
                     switch (type){
                       case "CONTENU_titre":
                         LinesBreaker.init(mc.champ);
                         break;
-                        
+
                       case "CONTENU_gras":
                         LinesBreaker.init(mc.champ);
                         break;
-                        
+
                       case "CONTENU_bullet":
                         LinesBreaker.init(mc.champ);
                         break;
                     }
-                    
+
                     mc.y = height_pointer;
                     height_pointer += mc.champ.getMeasuredHeight();
                   }
-                  
+
                   content.addChild(mc);
                   lines.push(mc);
-                  
+
                   counter++;
-                  
+
                   if (media_type == "leftline"){
                     image_offset = 0;
                   }
-                  
+
                   launchBuilder();
                 }
-                
+
               }
-              
+
               function getSpaceAfter(type){
                 switch (type){
                   case "CONTENU_titre":
                     return 30;
                     break;
-                    
+
                   case "CONTENU_gras":
                     return 30;
                     break;
-                    
+
                   case "CONTENU_bullet":
                     return 20;
                     break;
-                    
+
                   case "CONTENU_small":
                     return 20;
                     break;
-                    
+
                   default:
                     return 30;
                     break;
                 }
 
               }
-              
+
 
             }
-            
+
             function finishBuild(){
-              
+
               s.visible = true;
-              
+
               var bg = new createjs.Shape();
-              
+
               bg.graphics.beginFill("#006666").drawRect(0, 0, _screen.scrollbounds.nominalBounds.width - 400, height_pointer);
               bg.alpha = 0.01;
               content.addChild(bg);
               content.setBounds(0,0,_screen.scrollbounds.nominalBounds.width, height_pointer);
-              
+
               if (height_pointer < _screen.scrollbounds.getBounds().height){
                 content.y = (_screen.scrollbounds.getBounds().height - height_pointer) / 2;
               } else {
                 content.y = 0;
               }
-              
+
               if (_hassounds){
                 for (var i=0; i<counter; i++){
                   lines[i].visible = false;
                 }
-                
+
                 counter = 0;
-                
+
                 launchLine();
-                
+
                 function launchLine(){
-                  
+
                   if (JsonHandler.getLine(json, counter) != undefined){
                     if (JsonHandler.getLine(json, counter).medias != undefined){
                       if (JsonHandler.getLine(json, counter).medias.substr(0,4).toLowerCase() == "son:"){
-                        
+
                         var son_url = "voice/"+JsonHandler.getLine(json, counter).medias.substr(4).trim()+".mp3";
                         var son = JsonHandler.getLine(json, counter).medias.substr(4).trim();
-                        
+
                         if (Player.noVoice()){
                           son_url = "fx/debug.mp3";
                           son = "debug"
                         }
-                        
+
                         if (!_perso){
                           var son_url = "assets/sounds/"+son+".mp3";
                           SoundJS.init(
@@ -23582,7 +23585,7 @@ define([
                           );
                         } else {
                           Tween.init(lines[counter]);
-                          
+
                           var fl = true;
                           if (Player.noVoice()){
                             fl = false;
@@ -23607,26 +23610,26 @@ define([
                   } else {
                     endContenu();
                   }
-                  
-                  
+
+
                 }
-                
+
               } else if (_persotalk){
-                
+
                 // if ((_persotalk == 1) || (_persotalk > counter)) {
                 if (_persotalk != counter) {//**NEW** > may produce incorrect voice sync on previous builds contents
-                  
+
                   var c = 0;
                   launchDial();
                   function launchDial(){
                     var line = ChapitrePlayer.getIndex() + 1;
-                    
+
                     var o = {text:JsonHandler.getLine("STORY", line+c).deroule};
-                    
+
                     if (Math.random() < 0.4){
                       o.start = "anim";
                     }
-                    
+
                     Mascotte.play(_screen.perso[_perso], JsonHandler.getLine("STORY", line+c).son, o, function(){
                       UniqueTimer.wait(100, function(){
                         c++;
@@ -23638,14 +23641,14 @@ define([
                       });
                     });
                   }
-                  
+
                 } else {
-                  
+
                   var i;
                   for (i=0; i<counter; i++){
                     lines[i].visible = false;
                   }
-                  
+
                   if (_persotalk != counter){
                     for (i=0; i<= (counter - _persotalk); i++){
                       lines[i].visible = true;
@@ -23654,7 +23657,7 @@ define([
 
                     i = 1;
                   }
-                  
+
                   var c = 0;
                   launchDialSync();
                   function launchDialSync(){
@@ -23673,7 +23676,7 @@ define([
                   }
                 }
               } else {
-                
+
                 if (JsonHandler.get("CONFIG", "logo_personnalisable").trim().toLowerCase() == "yes"){
                   _screen["personnalisable"].visible = true;
                 }
@@ -23683,18 +23686,20 @@ define([
             }
           }
         });
-        
-        function endContenu(){
-          
-          // _screen.setChildIndex(_screen.bt_continue, _screen.getNumChildren() - 1);
 
-          Tween.init(_screen.bt_continue, {pop:true});
-          Button.enableZoom(_screen.bt_continue, callback);
-          
+        function endContenu(){
+
+          if (_is_last) {
+            Player.waitClickNext();
+          } else {
+            Tween.init(_screen.bt_continue, {pop:true});
+            Button.enableZoom(_screen.bt_continue, callback);
+          }
+
           if (_persotalk){
             ChapitrePlayer.incrementIndex(_persotalk);
           }
-          
+
         }
       }
     }

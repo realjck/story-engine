@@ -503,14 +503,16 @@ define(['engine/Player',
 
                     case "contenu_" :
                       is_swaping = false;
-                      var deroule_activity, deroule_persotalk;
+                      var deroule_activity;
+                      var deroule_persotalk = 0;
                       if (deroule.indexOf(",") != -1){
                         deroule_activity = deroule.substr(0, deroule.indexOf(",")).trim();
                         deroule_persotalk = parseInt(deroule.substr(deroule.indexOf(",")+1));
                       } else {
                         deroule_activity = deroule;
                       }
-                      UniqueTimer.wait(t, function(){ContenuBuilder.init(s, deroule_activity, {perso:perso, persotalk:deroule_persotalk, prologue:is_prologue}, activityCallback);});
+                      var is_last = JsonHandler.getLine("STORY", index + 1 + deroule_persotalk).deroule.substr(0, 6).toLowerCase() == "titre:";
+                      UniqueTimer.wait(t, function(){ContenuBuilder.init(s, deroule_activity, {perso:perso, persotalk:deroule_persotalk, prologue:is_prologue, is_last:is_last}, activityCallback);});
                       break;
 
                     case "surmesure_" :

@@ -6,10 +6,10 @@
 
 // STORY PLAYER ENGINE v4
 // author: JCK
-define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/Voice', 'util/CanvasTransition', 'util/ModalDialog', 'dojox/timing', 'dojo/dom', 'dojo/_base/fx', 'dojo/on', 'dojo/dom-style', 'dojox/timing', 'animator/RemoveEvents', 'util/UniqueTimer', 'util/Sequencer', 'util/UniqueTimerForVoice', 'animator/TimerClip', 'animator/ResponsiveStage', 'animator/Button', 'animator/SoundJS', 'animator/VerticalTextCenterer', 'animator/MaskObjects', 'animator/Mascotte', 'animator/SceneManager', 'engine/ChapitrePlayer', 'engine/SlideIntro', 'util/LinesBreaker', 'pdf/pdf_report', 'util/SoundJS_NoQueue', 'animator/Voice', 'animator/WaitClipEnd', 'exports', 'dojo/domReady!'], function(ResponsiveScale, JsonHandler, Tween, Voice, CanvasTransition, ModalDialog, timing,dom, fx, on, style, timing, RemoveEvents, UniqueTimer, Sequencer, UniqueTimerForVoice, TimerClip, ResponsiveStage, Button, SoundJS, VerticalTextCenterer, MaskObjects, Mascotte, SceneManager, ChapitrePlayer, SlideIntro, LinesBreaker, pdf_report, SoundJS_NoQueue, Voice, WaitClipEnd, exports) {
+define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/Voice', 'util/CanvasTransition', 'util/ModalDialog', 'dojox/timing', 'dojo/dom', 'dojo/_base/fx', 'dojo/on', 'dojo/dom-style', 'dojox/timing', 'animator/RemoveEvents', 'util/UniqueTimer', 'util/Sequencer', 'util/UniqueTimerForVoice', 'animator/TimerClip', 'animator/ResponsiveStage', 'animator/Button', 'animator/SoundJS', 'animator/VerticalTextCenterer', 'animator/MaskObjects', 'animator/Mascotte', 'animator/SceneManager', 'animator/DragObject', 'engine/ChapitrePlayer', 'engine/SlideIntro', 'util/LinesBreaker', 'pdf/pdf_report', 'util/SoundJS_NoQueue', 'animator/Voice', 'animator/WaitClipEnd', 'exports', 'dojo/domReady!'], function(ResponsiveScale, JsonHandler, Tween, Voice, CanvasTransition, ModalDialog, timing,dom, fx, on, style, timing, RemoveEvents, UniqueTimer, Sequencer, UniqueTimerForVoice, TimerClip, ResponsiveStage, Button, SoundJS, VerticalTextCenterer, MaskObjects, Mascotte, SceneManager, DragObject, ChapitrePlayer, SlideIntro, LinesBreaker, pdf_report, SoundJS_NoQueue, Voice, WaitClipEnd, exports) {
 
   var _slides = [];
-  
+
   var _chapitres = [];
   var _contenus = [];
 
@@ -28,73 +28,73 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   var _inactivityTime;
   var _suspendToSave = ["slides_vus", "aide_vue", "resultats"];
   var _isScorm;
-  
+
   var _sessionStartTime;
   var _timeFormat;
-  
+
   var _suspend = new Object();
   var _prevEnabled;
   var _replayEnabled;
-  
+
   var _cookie_name = "animate_data ";
-  
+
   var _isUnlocked;
   var _slidesUnlocked = [];
-  
+
   var _isIe = undefined;
   var _isMobile = false;
-  
+
   var _mediaElement;
   var _mediaElement_instance;
   var _mediaElement_play_event;
   var _mediaElement_end_event;
-  
+
   var _no_voice;
-  
+
   var _is_disconnected;
-  
+
   var _excelStory;
-  
+
   var _storyHasAnim = false;
-  
+
   var _learnerName;
-  
+
   exports.getExcelStory = function(){
     return _excelStory;
   }
-  
+
   exports.getStoryHasAnim = function(){
     return _storyHasAnim;
   }
-  
+
   exports.getLearnerName = function(){
     return _self.getLearnerName();
   }
-  
+
   exports.getScore = function(){
     return _self.getScore();
   }
-  
+
   exports.getSuspendArrayOfStrings = function(parameter, position) {
     return _self.getSuspendArrayOfStrings(parameter, position);
   }
-  
+
   exports.isIe = function(){
     return _self.isIe();
   }
-  
+
   exports.isMobile = function(){
     return _isMobile;
   }
-  
+
   exports.waitClickNext = function(){
     return _self.waitClickNext();
   }
-  
+
   exports.goNext = function(){
     return _self.goNext();
   }
-  
+
   exports.getCurrentChapter = function(){
     var ret;
     if (_chapitres[_currentSlideNumber] == undefined){
@@ -104,51 +104,51 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     }
     return ret;
   }
-  
+
   exports.noVoice = function(){
     return _no_voice;
   }
-  
+
   exports.recordScore = function(index, value){
     return _self.recordScore(index, value);
   }
-  
+
   exports.scormFinish = function(){
     return _self.scormFinish();
   }
-  
+
   exports.isScorm = function(){
     return _isScorm;
   }
-  
+
   exports.unlockCurrent = function(){
     return _self.unlockCurrent();
   }
-  
+
   exports.getSuspend = function(parameter){
     return _self.getSuspend(parameter);
   }
-  
+
   exports.setSuspend = function(parameter, value){
     _self.setSuspend(parameter, value);
   }
-  
+
   exports.scormRecordScore = function(){
     _self.scormRecordScore();
   }
-  
+
   exports.getMediaInstance = function(){
     return _self.getMediaInstance();
   }
-  
+
   exports.getMediaElementAddPlayEvent = function(cb){
     return _self.getMediaElementAddPlayEvent(cb);
   }
-  
+
   exports.getMediaElementAddEndEvent = function(cb){
     return _self.getMediaElementAddEndEvent(cb);
   }
-  
+
   //SR VERSION :
   var _counter = 1;
   var _screen;
@@ -158,7 +158,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
 
   return {
-      
+
     init: function () {
       _self = this;
 
@@ -178,7 +178,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
       _self.loadExternal();
     },
-    
+
     initSuspend: function() {
       for (var i=0; i<_suspendToSave.length; i++) {
         _suspend[_suspendToSave[i]] = "";
@@ -187,16 +187,16 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       _scoreAr = [];
       _slidesUnlocked = [];
     },
-    
+
     initCurrentSlideNumber: function() {
       _currentSlideNumber = -1;
     },
-    
+
 
     loadExternal: function() {
       Sequencer.launch([
         function(next) {
-          
+
           var url = "assets/data/" + __ExcelName;
 
           var req = new XMLHttpRequest();
@@ -204,7 +204,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           req.responseType = "arraybuffer";
 
           req.onreadystatechange  = function(e) {
-            
+
             if (req.readyState == 4){
               if (req.status == 200){
                 var data = new Uint8Array(req.response);
@@ -212,11 +212,11 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
                 var sheets = workbook.SheetNames;
                 var result = {};
-                
+
                 for (var i=0; i<sheets.length; i++){
                   result[sheets[i]] = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[i]]);
                 }
-                
+
                 _excelStory = result;
                 next();
 
@@ -225,7 +225,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
               }
             }
           }
-          
+
           req.send();
         },
         function(next) {
@@ -259,14 +259,14 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
       ]);
     },
-    
+
     preloadSounds: function() {
-      
+
       var counter = 0;
       var son;
       getSoundNextLine();
-      
-      function getSoundNextLine(){  
+
+      function getSoundNextLine(){
         counter++;
         son = JsonHandler.getLine("STORY", counter).son;
         if (isValid(son)){
@@ -277,7 +277,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
               error: function() {
                 console.log("NO VOICE FILES DETECTED");
                 _no_voice = true;
-                _self.preloadFx(); 
+                _self.preloadFx();
               },
               success: preloadVoices
             });
@@ -286,7 +286,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           }
           function preloadVoices(){
             var manifest = [];
-            var nb_sounds = 0;            
+            var nb_sounds = 0;
             var counter = 0;
             while(isValid(JsonHandler.getLine("STORY", counter))){
               var son = JsonHandler.getLine("STORY", counter).son;
@@ -335,7 +335,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
       }
     },
-    
+
     preloadFx: function() {
       var queue = new createjs.LoadQueue(false, null, true);//new
       var manifest = [];
@@ -362,26 +362,26 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       }
       */
     },
-    
+
     preLaunch: function(){
-      
+
       _cookie_name += JsonHandler.get("CONFIG", "titre");
       __lang = JsonHandler.get("CONFIG", "langue");
-      
+
       $("#loader").hide();
       $("#animation_container").show();
-      
+
       _self.loadScorm();
     },
 
     loadScorm: function() {
-      
+
       // show nb entries (for visual loader)
       if (__gm == "dev") {
         console.log("nb elements chargés : "+performance.getEntries().length);
       }
 
-      
+
       function loadSuspendData(suspend) {
         // get current slide index
         _currentSlideNumber = parseInt(suspend.split(";")[0]);
@@ -392,7 +392,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         for (var i=0; i<suspend_loaded.length; i++) {
           _self.setSuspend(_suspendToSave[i], suspend_loaded[i]);
         }
-        
+
         if (JsonHandler.get("CONFIG", "reprise_automatique").trim().toLowerCase() == "yes"){
           _self.launch();
         }
@@ -418,7 +418,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           } else {
             _self.launch();
           }
-        }          
+        }
       }
       if (__gm == "lms") {
         //SCORM
@@ -433,7 +433,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           pipwerks.SCORM.save();
 
           var suspend = pipwerks.SCORM.get("cmi.suspend_data");
-          
+
           launchBookmark();
 
         } else {
@@ -443,11 +443,11 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       } else {
         _isScorm = false;
         var suspend = Cookies.get(_cookie_name);
-        
+
         launchBookmark();
       }
     },
-    
+
     disconnect: function(msg){
       if (!_is_disconnected) {
         _is_disconnected = true;
@@ -461,10 +461,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     },
 
     launch: function(unlock) {
-      
+
       // get learner name asap
       _self.getLearnerName();
-      
+
       // chapitres list
       // also check if anim
       var counter = 0;
@@ -484,17 +484,17 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
         counter++;
       }
-      
+
       // fullscreen possible ? // todo : à détecter automatiquement
       if (__nofs){
         s.aide.textes.part3.visible = false;
         s.nav.bt_fullscreen.visible = false;
         s.navinfo.infobulle_fullscreen.visible = false;
-        
+
         s.navinfo.infobulle_next.gotoAndStop("nofs");
-        
+
         var decalage = 114;
-        
+
         s.aide.textes.part2.x += decalage;
         s.nav.bt_pause.x += decalage;
         s.nav.bt_next.x += decalage;
@@ -502,9 +502,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         s.navinfo.infobulle_next.x += decalage;
         s.nav.bt_restart.x += decalage;
         s.navinfo.infobulle_restart.x += decalage;
-        
+
       }
-      
+
       // get success score from config
       if (isValid(JsonHandler.get("CONFIG", "succes"))) {
         _successScore = parseInt(JsonHandler.get("CONFIG", "succes"));
@@ -514,13 +514,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       fx.fadeOut({node:"loader", duration:200, onEnd:function(){
         document.getElementById("loader").style.display = 'none';
       }}).play();
-      
-      
+
+
       // inactivity timer
       if (isValid(JsonHandler.get("CONFIG", "inactivite"))) {
-        
+
         _inactivityTime = parseInt(JsonHandler.get("CONFIG", "inactivite"));
-        
+
         var inactivity_timer = new dojox.timing.Timer(1000*60);
         var idleTime = 0;
         $(this).mousemove(function (e) {
@@ -546,8 +546,8 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       ResponsiveStage.storeClip("mc_subtitles", {horizontal:"center", vertical:"fixed"});
       ResponsiveStage.storeClip("mc_pause", {maximize:"height", horizontal:"center"});
       ResponsiveStage.storeClip("mc_titre_slide", {horizontal:"center", vertical:"fixed"});
-      
-      
+
+
       /*
       s.nav.bt_quit.addEventListener("click", function() {
         ModalDialog.alert(ExternalText.getText("module", "fermeture"));
@@ -581,7 +581,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           e.currentTarget.gotoAndStop("off");
         }
       }
-      
+
       if (_isSubtitles) {
         s.mc_subtitles.visible = true;
         s.nav.bt_subtitles.gotoAndStop("on");
@@ -591,7 +591,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       function onBtFullScreenClick() {
         ResponsiveScale.toggleFS();
       }
-      
+
       // gestion infobulles
       function addInfobulle(bt, infobulle) {
         infobulle.visible = false;
@@ -611,7 +611,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       addInfobulle(s.nav.bt_fullscreen, s.navinfo.infobulle_fullscreen);
       addInfobulle(s.nav.bt_menu_off, s.navinfo.infobulle_menu);
       addInfobulle(s.nav.bt_restart, s.navinfo.infobulle_restart);
-      
+
       // pause
       s.mc_pause.visible = false;
       Button.enable(s.nav.bt_pause, function(){
@@ -624,19 +624,19 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           pause();
         }
       }, null, null, {noTrigger:true});
-      
+
       Button.enable(s.mc_pause, function(){
         s.mc_pause.visible = false;
         unpause();
       }, null, null, {forceVisible:false, noTrigger:true});
-      
+
       function pause(){
         Voice.pause();
         UniqueTimer.pause();
         UniqueTimerForVoice.pause();
         Tween.pause();
       }
-      
+
       function unpause(){
         Voice.unpause();
         UniqueTimer.resume();
@@ -663,15 +663,15 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         _self.goCurrentSlideNumber();
       }
       */
-      
+
       if (JsonHandler.get("CONFIG", "version").substr(JsonHandler.get("CONFIG", "version").length - 4).toLowerCase() == "demo"){
         _isUnlocked = true;
       }
-      
+
       // menu
       s.nav.menu.visible = false;
       s.nav.bt_menu_on.visible = false;
-      
+
       var counter = 1;
 
       for (var i=0; i<_chapitres.length; i++) {
@@ -679,16 +679,16 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         s.nav.menu["item"+counter].slide_num = i;
         counter++;
       }
-      
+
       var larg_prog = (20*i) + (5*(i-1));
       s.nav.progression.x = 480 + ((960 - larg_prog) / 2);
-      
+
       for (i=counter; i<=16; i++) {
         s.nav.menu["item"+i].visible = false;
         s.nav.progression["prog"+i].visible = false;
       }
       _self.checkUnlock(); //enable or disable items
-      
+
       s.nav.bt_menu_off.addEventListener("click", function(){
         Tween.init(s.nav.menu, {from:"left", distance:1920, duration:600, fade:false});
         s.nav.bt_menu_on.visible = true;
@@ -698,7 +698,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         UniqueTimer.pause();
         UniqueTimerForVoice.pause();
       });
-      
+
       s.nav.bt_menu_on.addEventListener("click", function(){
         Tween.init(s.nav.menu, {to:"left", distance:1920, duration:600, fade:false});
         s.nav.bt_menu_on.visible = false;
@@ -707,15 +707,15 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
         unpause();
       });
-      
+
       Button.enable(s.nav.bt_restart, function(){
         _self.goCurrentSlideNumber();
       }, null, null, {noTrigger: true});
-      
+
       // START
       _self.goCurrentSlideNumber();
       _self.activeNav();
-      
+
       // shortcut debride nav
       var shortcut_code;
       shortcut.add("U",function() {
@@ -770,7 +770,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }, _self.disconnect);
       };
     },
-    
+
     activeBtNext: function(){
       Button.enable(s.nav.bt_next,
         function(e){
@@ -779,7 +779,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         function(e){
           if (!_isBtNextFlashing) {
             e.currentTarget.gotoAndStop("on");
-          } 
+          }
         },
         function(e){
           if (!_isBtNextFlashing) {
@@ -788,9 +788,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
       );
     },
-    
+
     checkUnlock: function(){
-      
+
       for (var i=1; i<=_chapitres.length; i++) {
 
         if (_self.getSuspendCharAt("slides_vus", i) == "1"){
@@ -798,25 +798,25 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         } else {
           _slidesUnlocked[i-1] = false;
         }
-        
+
       }
 
       //menu items
-      
+
       var last_vu;
       for (i=1; i<=16; i++){
         if (s.nav.menu["item"+i].slide_num != undefined){
           if (_slidesUnlocked[i-1] || _isUnlocked){
-            
+
             if (i < _chapitres.length){
               last_vu = i;
             } else {
               last_vu = false;
             }
-            
+
             s.nav.menu["item"+i].gotoAndStop("vu");
             s.nav.progression["prog"+i].gotoAndStop("vu");
-            
+
             activeMenuItem(i);
 
           } else {
@@ -832,12 +832,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           }
         }
       }
-      
+
       if (_currentSlideNumber >= 0){
         activeMenuItem(_currentSlideNumber + 1);
         s.nav.progression["prog"+(_currentSlideNumber + 1)].gotoAndStop("on");
       }
-      
+
       function activeMenuItem(i){
         if (s.nav.menu["item"+i] != undefined){
           // s.nav.menu["item"+i].champ.color = "#EAEAEA";
@@ -846,12 +846,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
             function(e){
               s.nav.menu.visible = false;
               s.nav.bt_menu_on.visible = false;
-              
+
               // unpause (from openning menu)
               Voice.unpause();
               UniqueTimer.resume();
               UniqueTimerForVoice.resume();
-        
+
               _self.goSlide(e.currentTarget.slide_num+1);
               if (_isSubtitles){
                 s.mc_subtitles.visible = true;
@@ -866,9 +866,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           );
         }
       }
-      
+
     },
-    
+
     //video
     getMediaElement: function(){
       return _mediaElement;
@@ -876,12 +876,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     getMediaInstance: function(){
       return _mediaElement_instance;
     },
-    
+
     getMediaElementAddPlayEvent: function(callback){
       _mediaElement.addEventListener("playing", callback);
       _mediaElement_play_event = callback;
     },
-    
+
     getMediaElementAddEndEvent: function(callback){
       _mediaElement.addEventListener("ended", callback);
       _mediaElement_end_event = callback;
@@ -890,7 +890,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     waitClickNext: function() {
 
       _self.setVuCurrentSlide();
-      
+
       var bton = false;
 
       if (_isBtNextFlashing == false) {
@@ -917,12 +917,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       Button.disable(s.nav.bt_next);
       // s.nav.bt_previous.mouseEnabled = false;
     },
-    
+
     disablePrev: function() {
       // s.nav.bt_previous.mouseEnabled = false;
       _prevEnabled = false;
     },
-    
+
     disableReplay: function() {
       s.bt_replay.mouseEnabled = false;
       _replayEnabled = false;
@@ -954,7 +954,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         _self.goSlide(0);
       });
     },
-    
+
     setVuCurrentSlide: function() {
       if (_self.getSuspendCharAt("slides_vus", _currentSlideNumber+1) != "0") {
         _self.setSuspendCharAt("slides_vus", _currentSlideNumber+1, "1");
@@ -964,7 +964,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     goNext: function() {
 
       _self.setVuCurrentSlide();
-    
+
       if (_isBtNextFlashing) {
         _isBtNextFlashing = false;
         _btNextFlashTimer.stop();
@@ -980,9 +980,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         _self.scormFinish();
         ModalDialog.alert(__gtexts[__lang].quizfin_close);
       } else {
-      
+
         _self.checkUnlock();
-        
+
         // fadeout overlay video
         if ($("#video").css('display') != "none"){
           if (_mediaElement_instance != undefined) {
@@ -993,13 +993,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
             opacity: 0,
           }, 500, 'easeInSine');
         }
-        
-        _self.goCurrentSlideNumber();     
+
+        _self.goCurrentSlideNumber();
       }
     },
-    
+
     goSlide: function(num) {
-      
+
       _currentSlideNumber = num-1;
       if (_isBtNextFlashing) {
         _isBtNextFlashing = false;
@@ -1008,7 +1008,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       s.nav.bt_next.gotoAndStop("off");
       _self.disableNav();
       _self.checkUnlock();
-      
+
       if ($("#video").css('display') != "none"){
         if (_mediaElement_instance != undefined) {
           _mediaElement_instance.pause();
@@ -1018,9 +1018,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
       _self.goCurrentSlideNumber();
     },
-    
+
     goSlideName: function(name) {
-      
+
       var num = -1;
       for (var i=0; i<_slides.length; i++) {
         if (_slides[i] == name) {
@@ -1049,7 +1049,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       // reactive buttons
       _prevEnabled = true;
       _replayEnabled = true;
-      
+
       // video
       if (_mediaElement_play_event != undefined){
         _mediaElement.removeEventListener("playing", _mediaElement_play_event);
@@ -1070,13 +1070,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       // stop createjs things
       SoundJS.abort();
       Tween.abort();
-      
+
       // mask infobulles
       MaskObjects.init(s.navinfo, ["infobulle_home", "infobulle_subtitles", "infobulle_pause", "infobulle_next", "infobulle_fullscreen", "infobulle_menu"], {noInit:true});
-      
+
       // mask menu
       s.nav.menu.visible = false;
-      
+
       // abort sequencer
       Sequencer.abort();
 
@@ -1091,7 +1091,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
       // reposition mc interrupted tweens
       Tween.initOldPos();
-      
+
       // reset SceneManager character positions
       SceneManager.reset();
 
@@ -1101,10 +1101,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
       // reinitialize cursor (in this case for the game that changes it)
       s.cursor = "initial";
-      
+
       // remove stage events like stagemousemove, etc.
       stage.removeAllEventListeners();
-      
+
       // remove all tweens
       createjs.Tween.removeAllTweens();
 
@@ -1117,11 +1117,11 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         LinesBreaker.init(s.nav.titre, {equal:true});
         VerticalTextCenterer.init(s.mc_titre_slide.champ, 1080, "middle");
         VerticalTextCenterer.init(s.nav.titre, 85, "middle");
-        
+
         SoundJS.init("assets/sounds/fx/titre.mp3", function() {
           s.mc_titre_slide.visible = true;
           s.mc_titre_slide.alpha = 1;
-          
+
           Sequencer.launch([
             function(next) {
               $("#canvas").css('opacity', '1');
@@ -1139,17 +1139,17 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         SlideIntro.init();
         CanvasTransition.init(null, "fadein");
       }
-      
+
       s.nav.progression.visible = true;
-      
+
       _self.activeNav();
 
       // save state scorm
       _self.scormSaveState();
-      
+
       // remove shortcut space for skip dialogs
       shortcut.remove("space");
-      
+
     // });
     },
 
@@ -1174,7 +1174,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         return _scoreAr[index];
       }
     },
-    
+
     getLearnerName: function() {
       if (_learnerName == undefined){
         if (_isScorm) {
@@ -1185,7 +1185,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           }
         } else {
           _learnerName = false;
-        } 
+        }
       }
       return _learnerName;
     },
@@ -1267,57 +1267,57 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           if (!_self._timeFormat){
             if (try12(time_str_classic)){
               _self._timeFormat = "classic";
-              
+
             } else if (try12(time_str_iso)){
               _self._timeFormat = "iso";
-              
+
             } else if (try2004(time_str_classic)){
               wbtAlert();
               _self._timeFormat = "classic2004";
-              
+
             } else if (try2004(time_str_iso)){
               wbtAlert();
               _self._timeFormat = "iso2004";
-              
+
             } else {
               _self._timeFormat = "fail";
-              
+
             }
           } else {
             switch (_self._timeFormat){
-              
+
               case "classic":
                 try12(time_str_classic);
                 break;
-                
+
               case "iso":
                 try12(time_str_iso);
                 break;
-                
+
               case "classic2004":
                 try2004(time_str_classic);
                 break;
-                
+
               case "iso2004":
                 try2004(time_str_iso);
                 break;
-              
+
               case "fail":
                 break;
-              
+
             }
           }
         } else {
           if (!_self._timeFormat){
             if (try2004(time_str_classic)){
               _self._timeFormat = "classic2004";
-              
+
             } else if (try2004(time_str_iso)){
               _self._timeFormat = "iso2004";
-              
+
             } else {
               _self._timeFormat = "fail";
-              
+
             }
           } else {
             switch (_self._timeFormat){
@@ -1325,27 +1325,27 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
               case "classic2004":
                 try2004(time_str_classic);
                 break;
-                
+
               case "iso2004":
                 try2004(time_str_iso);
                 break;
-              
+
               case "fail":
                 break;
-              
+
             }
           }
         }
-        
-        
+
+
         function try12(val){
           return pipwerks.SCORM.set("cmi.core.session_time", val);
         }
-        
+
         function try2004(val){
           return pipwerks.SCORM.set("cmi.session_time", val);
         }
-        
+
         // FIX FOR WBT MANAGER
         function wbtAlert(){
           console.log("****Scorm 1.2 session time failed, using Scorm 2004 instead (WBT LMS fix)******");
@@ -1392,7 +1392,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         pipwerks.SCORM.save();
 
       } else {
-        
+
         var suspend = "";
         suspend += _currentSlideNumber;
         suspend += ";";
@@ -1413,16 +1413,16 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         console.log("*save suspend_data : '"+suspend+"'");
       }
     },
-    
+
     setSuccessScore: function(val) {
       _successScore = val;
     },
-    
+
     unlockCurrent: function() {
       _self.setVuCurrentSlide();
       _self.checkUnlock();
     },
-    
+
     scormRecordScore: function(){
       if (_isScorm) {
 
@@ -1438,13 +1438,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           pipwerks.SCORM.set("cmi.score.scaled", (score / 100).toString());
           pipwerks.SCORM.set("cmi.score.raw", (score).toString());
         }
-      
+
         _self.scormSaveState();
       }
     },
 
     scormFinish: function() {
-      
+
       if (_isScorm) {
 
         _self.scormSaveState();
@@ -1461,7 +1461,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           pipwerks.SCORM.set("cmi.score.scaled", (score / 100).toString());
           pipwerks.SCORM.set("cmi.score.raw", (score).toString());
         }
-        
+
         if (__scorm == "1.2") {
           if (_successScore) {
             if (score >= _successScore) {
@@ -1503,12 +1503,12 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         _isScorm = false;
       }
     },
-    
+
     // check if browser is IE
     isIe: function() {
       if (_isIe == undefined) {
         _isIe = false;
-        
+
         var ua = window.navigator.userAgent;
 
       }
@@ -1517,23 +1517,23 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
     //SR VERSION:
     initSr: function () {
-      
+
       if (location.search.split('e=')[1] != undefined){
         _counter = Number(location.search.split('e=')[1]);
       }
-      
+
       loadStoryboard();
     }
-    
+
   };
-  
+
   //
   //  SR VERSION
   //
-  
-  
+
+
   function loadStoryboard() {
-    
+
     var url = "assets/data/" + __srVersion;
 
     var req = new XMLHttpRequest();
@@ -1541,7 +1541,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     req.responseType = "arraybuffer";
 
     req.onreadystatechange  = function(e) {
-      
+
       if (req.readyState == 4){
         if (req.status == 200){
           var data = new Uint8Array(req.response);
@@ -1549,13 +1549,13 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
           var sheets = workbook.SheetNames;
           var result = {};
-          
+
           for (var i=0; i<sheets.length; i++){
             result[sheets[i]] = XLSX.utils.sheet_to_json(workbook.Sheets[sheets[i]]);
           }
-          
+
           _excelStory = result;
-          
+
           // Load & launch
           $("#loader").hide();
           $("#module_sr").show();
@@ -1568,10 +1568,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         }
       }
     }
-    
+
     req.send();
   }
-  
+
   function launchScormSr(){
 
     // store storyboard length
@@ -1580,9 +1580,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     if (__scorm) {
       //SCORM
       if (pipwerks.SCORM.init()) {
-        
+
         var location;
-        
+
         _isScorm = true;
         _sessionStartTime = new Date();
         if (__scorm == "1.2") {
@@ -1599,23 +1599,23 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           while((JsonHandler.get("sb", "e"+paddy(location, 3)).type == "qcu_final")||(JsonHandler.get("sb", "e"+paddy(location, 3)).type==undefined)){
             location--;
           }
-          
+
           $("#sr-image").hide();
           $("#sr-btnext").show();
           $("#sr-btprev").show();
           $("#sr-text").show();
           $("#sr-btprev").html("Reprendre depuis le début");
           $("#sr-btnext").html("Continuer");
-          
+
           $("#sr-title h1").html("Reprise du marque-page");
           $("#sr-text").html("Voulez-vous continuer depuis votre précédente sauvegarde ?");
           $("#sr-text").focus();
-          
+
           $("#sr-btnext").click(function(){
             _counter = location;
             launchStoryboard();
           });
-          
+
           $("#sr-btprev").click(function(){
             launchStoryboard();
           });
@@ -1632,9 +1632,9 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       launchStoryboard();
     }
   }
-    
+
   function launchStoryboard() {
-    
+
     scormSaveStateSr();
     _screen = JsonHandler.get("sb", "e"+paddy(_counter, 3));
 
@@ -1642,7 +1642,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     var progress = Math.round(_counter / _storyboardLength * 100);
     $(".progress-bar").attr('aria-valuenow', progress);
     $(".progress-bar").css('width', progress+'%');
-    
+
     SoundJS_NoQueue.abort();
 
     $("#sr-btprev").html("Retour");
@@ -1671,22 +1671,22 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       titre = _screen.titre;
     }
     $("#sr-title h1").html(titre);
-    
+
     switch (_screen.type){
       case "texte_nosr": launchTexteNosr(); break;
       case "scene": launchScene(); break;
       case "qcu": launchQcu(); break;
       case "qcu_final":launchQcu(true);break;
       case "texte": launchTexte(); break;
-      
+
       default:
         if (_qcufinal_count != 0){
-          
+
           $("#sr-title h1").html("Résultats");
           var score = Math.round(_qcufinal_right / _qcufinal_count *100);
-          
+
           scormScoreSr(score);
-          
+
           $("#sr-btnext").show();
           $("#sr-text").show();
           if (score < __srVersionSuccess){
@@ -1725,24 +1725,24 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
             });
           }
           $("#sr-text").focus();
-          
+
         } else {
           console.log("**ERROR** Screen type not defined :"+"e"+paddy(_counter, 3));
         }
       break;
-      
+
     }
   }
-  
+
   function playScreenSounds(callback){
     if (!isValid(_screen.sons)){
       callback();
     } else {
       var sounds = _screen.sons.split(",");
       var counter = -1;
-      
+
       launchSound();
-      
+
       function launchSound(){
         counter++;
         if (counter < sounds.length){
@@ -1757,7 +1757,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       }
     }
   }
-  
+
   function playSound(id, callback){
     if (id.substr(0,3)=="fx/"){
       SoundJS_NoQueue.init("assets/sounds/fx/"+id.substr(3, id.length)+".mp3", null, callback);
@@ -1765,7 +1765,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       SoundJS_NoQueue.init("assets/sounds/voice/"+id+".mp3", null, callback);
     }
   }
-  
+
   function showBt(is_final){
 
     $("#sr-subtitles").hide();
@@ -1774,7 +1774,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     $("#iconPause").hide();
 
     if (isValid(_screen.btsuivant_texte)){
-      
+
       $("#sr-btnext").show();
       setTimeout(function(){
         if ((_counter > 1)&&(!is_final)){
@@ -1783,10 +1783,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         $("#sr-btnext").html(_screen.btsuivant_texte);
          $("#sr-btnext").focus()
       },0);// remove timeout
-      
+
       $("#sr-btnext").off();
       $("#sr-btnext").click(nextScreen);
-      
+
       if (isValid(_screen.btsuivant_son)){
         playSound(_screen.btsuivant_son);
       }
@@ -1794,26 +1794,26 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       nextScreen();
     }
   }
-  
+
   function nextScreen(){
     _counter ++;
     launchStoryboard();
   }
-  
+
   function launchTexteNosr(){
-    
+
     $("#sr-text").html(backTrim(_screen.contenu));
     $("#sr-text").show();
-    
+
     playScreenSounds(showBt);
   }
-  
+
   function launchTexte(){
-    
+
     showBt();
-    
+
     $("#sr-text").show();
-    
+
     setTimeout(function(){
       $("#sr-text").html(backTrim(_screen.contenu));
       $("#sr-text").focus();
@@ -1823,7 +1823,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       });
     }, 50);
   }
-  
+
   function launchScene(){
     var contenu = _screen.contenu.split("|");
     $("#sr-image img").attr("src", "assets/images/sr/"+contenu[0]);
@@ -1831,7 +1831,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     $("#sr-image img").attr("title", contenu[1] == undefined ? "" : contenu[1]);
     $("#sr-image").show();
     $("#sr-player-controls").show();
-    
+
     $("#btnReplay").off();
     $("#btnNext").off();
 
@@ -1878,27 +1878,27 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       showBt();
     });
   }
-  
+
   function launchQcu(is_final){
-    
+
     if (is_final){
       _qcufinal_count++;
     }
-    
+
     var quiz = _screen.contenu.split("--");
     $("#sr-quiz").show();
     setTimeout(function(){
       $("#sr-quiz-question").html(backTrim(quiz[0]));
       $("#sr-quiz-question").focus();
     }, 50);
-    
-    
+
+
     var answer;
     var not_counted = 0;
     for (var i=1; i<=3; i++){
-      
+
       $("#input"+i).prop('checked', false);
-      
+
       if (quiz[i].substr(0,1) == "1"){
         answer = i;
       }
@@ -1920,10 +1920,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         not_counted++;
       }
     }
-    
+
     $("#sr-quiz").show();
     $("#sr-btnext").html("Valider");
-      
+
     $("#sr-btnext").click(function(){
       $("#sr-quiz").hide();
       $("#sr-btnext").hide();
@@ -1937,21 +1937,21 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
       }
       $("#sr-text").show();
       $("#sr-text").focus();
-      
+
       $("#sr-text").focusout(function(){
         $("#sr-text").off('focusout');
         $("#sr-btnext").focus();
       });
-      
+
       setTimeout(function(){
         $("#sr-btnext").off();
         showBt(is_final);
       }, 50);
-      
+
     });
-    
+
   }
-  
+
   function scormSaveStateSr() {
     if (_isScorm) {
 
@@ -1965,43 +1965,43 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         if (_timeFormat){
           if (try12(time_str_classic)){
             _timeFormat = "classic";
-            
+
           } else if (try12(time_str_iso)){
             _timeFormat = "iso";
-            
+
           } else if (try2004(time_str_classic)){
             wbtAlert();
             _timeFormat = "classic2004";
-            
+
           } else if (try2004(time_str_iso)){
             wbtAlert();
             _timeFormat = "iso2004";
-            
+
           } else {
             _timeFormat = "fail";
           }
         } else {
           switch (_timeFormat){
-            
+
             case "classic":
               try12(time_str_classic);
               break;
-              
+
             case "iso":
               try12(time_str_iso);
               break;
-              
+
             case "classic2004":
               try2004(time_str_classic);
               break;
-              
+
             case "iso2004":
               try2004(time_str_iso);
               break;
-            
+
             case "fail":
               break;
-            
+
           }
         }
         // save location
@@ -2013,10 +2013,10 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         if (!_timeFormat){
           if (try2004(time_str_classic)){
             _timeFormat = "classic2004";
-            
+
           } else if (try2004(time_str_iso)){
             _timeFormat = "iso2004";
-            
+
           } else {
             _timeFormat = "fail";
           }
@@ -2030,7 +2030,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
               break;
             case "fail":
               break;
-            
+
           }
         }
         // save location
@@ -2039,15 +2039,15 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
           console.log("*save location : '"+_counter+"'");
         }
       }
-      
+
       function try12(val){
         return pipwerks.SCORM.set("cmi.core.session_time", val);
       }
-      
+
       function try2004(val){
         return pipwerks.SCORM.set("cmi.session_time", val);
       }
-      
+
       // FIX FOR WBT MANAGER
       function wbtAlert(){
         console.log("****Scorm 1.2 session time failed, using Scorm 2004 instead (WBT LMS fix)******");
@@ -2057,7 +2057,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
 
     }
   }
-  
+
   function scormScoreSr(score, success) {
     if (_isScorm) {
       if (__scorm == "1.2") {
@@ -2071,7 +2071,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
         pipwerks.SCORM.set("cmi.score.scaled", (score / 100).toString());
         pipwerks.SCORM.set("cmi.score.raw", (score).toString());
       }
-      
+
       if (success!=undefined){
         if (__scorm == "1.2") {
           if (success) {
@@ -2109,7 +2109,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
   //
   //  UTILS
   //
-  
+
   // for SR Engine :
   function paddy(num, padlen, padchar) {
     var pad_char = typeof padchar !== 'undefined' ? padchar : '0';
@@ -2121,7 +2121,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     str = str.replace(/(?:\r\n|\r|\n)/g, '<br>');
     return str;
   }
-  
+
   //
   //  INTERNAL FUNCTIONS
   //
@@ -2137,7 +2137,7 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     if (data.toString().toLowerCase() === "nan") return false;
     return true;
   }
-  
+
   // check if mobile or tablet (must be updated in future, keep an eye on it):
   function checkMobile() {
     var check = false;
@@ -2147,5 +2147,5 @@ define(['util/ResponsiveScale', 'util/JsonHandler', 'animator/Tween', 'animator/
     })(navigator.userAgent || navigator.vendor || window.opera);
     return check;
   }
-  
+
 });

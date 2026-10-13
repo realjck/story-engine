@@ -74,6 +74,8 @@ define(['engine/Player',
 
             var has_perso = true;
 
+            var was_scorm = Player.isScorm();
+
             part1();
             // part1
             function part1() {
@@ -218,7 +220,7 @@ define(['engine/Player',
                                   });
                                   Button.enableZoom(s[_screen]["part3"]["attestation"]["bt"],
                                       function () {
-                                      if (Player.isScorm()) {
+                                      if (was_scorm) {
                                           Attestation.print();
                                       } else {
                                           ModalDialog.form(__gtexts[__lang].quizfin_cert1, __gtexts[__lang].quizfin_cert2, [{

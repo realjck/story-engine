@@ -21529,7 +21529,7 @@ define(['engine/Player',
                   } else if (is_previous_anim){
                     is_previous_anim = false;
                   }
-                } else {
+                } else if (!simple_anim) {
                   // else, got animation from column 'anim'
                   simple_anim = JsonHandler.getLine("STORY", index).anim;
                 }

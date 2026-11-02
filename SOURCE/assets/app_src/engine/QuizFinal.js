@@ -281,25 +281,22 @@ define(['engine/Player',
                           },
                           function (next) {
                               Player.unlockCurrent();
-                              if (Player.isScorm()) {
 
-                                  if (JsonHandler.get("CONFIG", "bouton_validation_module").trim().toLowerCase() == "yes") {
+                              if (JsonHandler.get("CONFIG", "bouton_validation_module").trim().toLowerCase() == "yes") {
 
-                                      s[_screen]["part3"]["valider"].y = height_pointer;
-                                      Tween.init(s[_screen]["part3"]["valider"], {
-                                          noInit: true
-                                      });
-                                      Button.enableZoom(s[_screen]["part3"]["valider"]["bt"], finishAndClose);
+                                  s[_screen]["part3"]["valider"].y = height_pointer;
+                                  Tween.init(s[_screen]["part3"]["valider"], {
+                                      noInit: true
+                                  });
+                                  Button.enableZoom(s[_screen]["part3"]["valider"]["bt"], finishAndClose);
 
-                                  } else {
-                                      Player.scormFinish();
-                                  }
+                              } else {
+                                  Player.scormFinish();
+                              }
 
-                                  function finishAndClose() {
-                                      Player.scormFinish();
-                                      ModalDialog.alert(__gtexts[__lang].quizfin_close);
-                                  }
-
+                              function finishAndClose() {
+                                  Player.scormFinish();
+                                  ModalDialog.alert(__gtexts[__lang].quizfin_close);
                               }
                           }
                       ]);
